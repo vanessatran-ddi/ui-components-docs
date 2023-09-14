@@ -1,0 +1,148 @@
+.design-tokens h1 {
+    margin-bottom: var(--goa-space-m);
+}
+.design-tokens h3 {
+    padding-top: 0;
+    padding-bottom: var(--goa-space-xl);
+    margin-bottom: 0;
+    max-width: 100%;
+}
+
+.design-tokens .main {
+    margin: 0;
+    line-height: var(--goa-line-height-3);
+    font-size: var(--goa-font-size-4);
+}
+
+goa-table td {
+    padding: 0 16px;
+}
+
+.content {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.support-info {
+    max-width: 720px;
+}
+
+.box-container {
+    border: 1px solid var(--goa-color-greyscale-200);
+    padding: 1rem 1rem 1rem 1.5rem;
+    border-radius: 4px;
+    width: 21rem;
+}
+
+.code-box {
+    background-color: var(--goa-color-greyscale-100);
+    font: var(--goa-typography-body-m);
+    white-space: nowrap;
+}
+
+.design-token__block-container {
+    width: 70%;
+}
+
+
+p {
+    font: var(--goa-typography-body-m);
+}
+
+
+/**
+  * 1. The following styles are for the responsive site layout
+ */
+
+/*Desktop*/
+@media screen and (min-width: 1232px) {
+    .desktop {
+        display: block;
+    }
+
+    .tablet {
+        display: none;
+    }
+    tbody {
+        border-bottom: 2px solid var(--goa-color-greyscale-200);
+    }
+
+}
+
+/*Tablet*/
+@media screen and (max-width: 1231px) {
+    .desktop {
+        display: none;
+    }
+    .tablet {
+        display: block;
+        padding-right: var(--goa-space-xl);
+    }
+    /*For paragraph, description*/
+    .design-token__anchors a {
+        display: block;
+    }
+    .design-tokens h3 {
+        padding-bottom: 24px;
+    }
+    .design-token__heading-card {
+        font-size: var(--goa-icon-size-l);
+        font-weight: var(--goa-font-weight-regular);
+        line-height: var(--goa-line-height-4);
+    }
+    ul {
+        padding: 12px 0;
+        margin: 0;
+    }
+
+    hr{
+        padding: 0;
+        margin: 0;
+    }
+
+    p {
+        margin-bottom: 8px;
+    }
+
+    pre code.hljs {
+        margin: 0 -10px;
+        padding: 2px 0;
+    }
+
+    li {
+        list-style-type: none;
+    }
+
+    li strong {
+        color: var(--goa-color-text-secondary);
+    }
+
+    .content {
+        margin: 0;
+    }
+
+}
+
+/*Mobile*/
+@media screen and (max-width: 623px) {
+    .design-token__block-container {
+        width: auto;
+    }
+    .design-token__anchors {
+        display: none;
+    }
+    .design-token__heading-card {
+        font-size: var(--goa-font-size-4);
+        font-weight: var(--goa-font-weight-bold);
+        line-height: var(--goa-line-height-3);
+    }
+    h3 {
+        font: var(--goa-typography-body-m);
+    }
+    .main {
+        margin: 0 24px 0 24px;
+    }
+
+}
+
+

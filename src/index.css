@@ -25,3 +25,4 @@ a[href^="#"]::before {
   margin-right: var(--goa-spacing-xs);
   display: inline-block;
 }
+

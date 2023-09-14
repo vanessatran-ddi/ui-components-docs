@@ -1,0 +1,13 @@
+.goa-border-radius-none {
+    height: 24px;
+    width: 64px;
+    border-radius:var(--goa-border-radius-none);
+    background-color: var(--goa-color-greyscale-400);
+}
+
+.goa-border-radius-m {
+    height: 24px;
+    width: 64px;
+    border-radius:var(--goa-border-radius-m);
+    background-color: var(--goa-color-greyscale-400);
+}

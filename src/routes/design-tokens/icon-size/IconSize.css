@@ -1,0 +1,21 @@
+.goa-icon-size-s {
+    height: 18px;
+    width: 18px;
+    border-radius:var(--goa-border-radius-none);
+    background-color: var(--goa-color-emergency-background);
+}
+
+.goa-icon-size-m {
+    height: 24px;
+    width: 24px;
+    border-radius:var(--goa-border-radius-none);
+    background-color: var(--goa-color-emergency-background);
+}
+
+
+.goa-icon-size-l {
+    height: 32px;
+    width: 32px;
+    border-radius:var(--goa-border-radius-none);
+    background-color: var(--goa-color-emergency-background);
+}

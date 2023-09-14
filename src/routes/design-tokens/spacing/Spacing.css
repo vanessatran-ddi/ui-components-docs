@@ -1,0 +1,90 @@
+.container {
+    display:flex;
+    align-items: center;
+}
+
+.grey-circle {
+    width: 8px;
+    height: 8px;
+    border-radius: 99px;
+    background-color: var(--goa-color-greyscale-200);
+}
+
+.goa-space-3xs {
+    width: 2px;
+    height: 22px;
+    border-radius: var(--goa-border-radius-none);
+    background-color: #FF0000;
+    opacity: 40%;
+}
+
+.goa-space-2xs {
+    width: 4px;
+    height: 22px;
+    border-radius: var(--goa-border-radius-none);
+    background-color: #7BE7D2;
+    opacity: 40%;
+}
+
+.goa-space-xs {
+    width: 8px;
+    height: 22px;
+    border-radius: var(--goa-border-radius-none);
+    background-color: #EF80CD;
+    opacity: 40%;
+}
+
+.goa-space-s {
+    width: 12px;
+    height: 22px;
+    border-radius: var(--goa-border-radius-none);
+    background-color: #43C4FC;
+    opacity: 40%;
+}
+
+.goa-space-m {
+    width: 16px;
+    height: 22px;
+    border-radius: var(--goa-border-radius-none);
+    background-color: #FF8000;
+    opacity: 40%;
+}
+
+.goa-space-l {
+    width: 24px;
+    height: 22px;
+    border-radius: var(--goa-border-radius-none);
+    background-color: #46CB89;
+    opacity: 40%;
+}
+
+.goa-space-xl {
+    width: 32px;
+    height: 22px;
+    border-radius: var(--goa-border-radius-none);
+    background-color: #FFDC00;
+    opacity: 40%;
+}
+
+.goa-space-2xl {
+    width: 48px;
+    height: 22px;
+    border-radius: var(--goa-border-radius-none);
+    background-color: rgba(255, 0, 0, 0.4);
+}
+
+.goa-space-3xl {
+    width: 64px;
+    height: 22px;
+    border-radius: var(--goa-border-radius-none);
+    background-color: #7BE7D2;
+    opacity: 40%;
+}
+
+.goa-space-4xl {
+    width: 128px;
+    height: 22px;
+    border-radius: var(--goa-border-radius-none);
+    background-color: #EF80CD;
+    opacity: 40%;
+}

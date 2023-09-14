@@ -1,0 +1,107 @@
+
+.goa-color-interactive-default {
+    height: 22px;
+    width: 24px;
+    border-radius: var(--goa-border-radius-m);
+    background-color: var(--goa-color-interactive-default);
+}
+
+.goa-color-interactive-hover {
+    height: 22px;
+    width: 24px;
+    border-radius: var(--goa-border-radius-m);
+    background-color: var(--goa-color-interactive-hover);
+}
+
+.goa-color-interactive-focus {
+    height: 22px;
+    width: 24px;
+    border-radius: var(--goa-border-radius-m);
+    background-color: var(--goa-color-interactive-focus);
+}
+
+.goa-color-interactive-error {
+    height: 22px;
+    width: 24px;
+    border-radius: var(--goa-border-radius-m);
+    background-color: var(--goa-color-interactive-error);
+}
+
+.goa-color-interactive-disabled {
+    height: 22px;
+    width: 24px;
+    border-radius: var(--goa-border-radius-m);
+    background-color: var(--goa-color-interactive-disabled);
+}
+
+.goa-color-text-default {
+    height: 22px;
+    width: 24px;
+    border-radius: var(--goa-border-radius-m);
+    background-color: var(--goa-color-text-default);
+}
+
+.goa-color-text-secondary {
+    height: 22px;
+    width: 24px;
+    border-radius: var(--goa-border-radius-m);
+    background-color: var(--goa-color-text-secondary);
+}
+
+.goa-color-text-light {
+    height: 22px;
+    width: 24px;
+    border: 1px solid #DCDCDC;
+    border-radius: var(--goa-border-radius-m);
+    background-color: var(--goa-color-text-light);
+}
+
+.goa-color-text-disabled {
+    height: 22px;
+    width: 24px;
+    border-radius: var(--goa-border-radius-m);
+    background-color: var(--goa-color-text-disabled);
+}
+
+.goa-color-brand-default {
+    height: 22px;
+    width: 24px;
+    border-radius: var(--goa-border-radius-m);
+    background-color: var(--goa-color-brand-default);
+}
+
+.goa-color-brand-dark {
+    height: 22px;
+    width: 24px;
+    border-radius: var(--goa-border-radius-m);
+    background-color: var(--goa-color-brand-dark);
+}
+
+.goa-color-brand-light {
+    height: 22px;
+    width: 24px;
+    border-radius: var(--goa-border-radius-m);
+    background-color: var(--goa-color-brand-light);
+}
+
+td[rowspan] {
+    border-right: 1px solid #DCDCDC;
+}
+
+.anchors a {
+    display: block;
+}
+
+
+@media screen and (max-width: 1231px) {
+
+
+    .goa-color-interactive-default, .goa-color-interactive-hover, .goa-color-interactive-focus, .goa-color-interactive-error,
+    .goa-color-interactive-disabled, .goa-color-text-default, .goa-color-text-secondary, .goa-color-text-light,
+    .goa-color-text-disabled, .goa-color-brand-default, .goa-color-brand-dark, .goa-color-brand-light {
+        height: 36px;
+        width: 280px;
+    }
+}
+
+

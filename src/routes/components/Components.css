@@ -3,7 +3,7 @@
 }
 
 .side-menu {
-  min-width: 224px;
+  max-width: 224px;
   border-right: 1px solid var(--goa-color-greyscale-200);
   padding-top: 1rem;
 }
@@ -17,5 +17,5 @@
   flex-direction: column;
   margin: 0 6rem;
   width: 100%;
-  max-width: 1000px;
+  max-width: 1206px;
 }

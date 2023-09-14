@@ -1,0 +1,27 @@
+.goa-token-snippet{
+  display:flex;
+  align-items: center;
+}
+
+.goa-token-snippet a {
+  font-family:var(--goa-font-family-sans);
+}
+
+.copy-icon-logo {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.goa-token-snippet pre a {
+  display:flex;
+}
+
+.goa-token-snippet pre u {
+  padding-top: 8px;
+}
+.goa-token-snippet__copy-feedback {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+}

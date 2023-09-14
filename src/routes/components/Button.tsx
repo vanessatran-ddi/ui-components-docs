@@ -4,7 +4,7 @@ import { Sandbox, ComponentBinding } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { GoAModal } from "@components/mock-modal/Modal"
 
-export default function DropdownPage() {
+export default function ButtonPage() {
 
   const [buttonProps, setButtonProps] = useState({});
   const [buttonBindings, setButtonBindings] = useState<ComponentBinding[]>([

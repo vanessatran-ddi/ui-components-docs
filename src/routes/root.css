@@ -9,3 +9,51 @@
   display: flex;
   align-items: stretch;
 }
+.main {
+  margin: 0 0 0 4rem;
+}
+/**
+  * 1. The following styles are for the responsive site layout
+ */
+
+/*Desktop*/
+@media screen and (min-width: 1232px) {
+  .desktop {
+    display: block;
+  }
+
+  .tablet {
+    display: none;
+  }
+}
+
+/*Tablet*/
+@media screen and (max-width: 1231px) {
+  .desktop {
+    display: none;
+  }
+  .tablet {
+    display: block;
+    padding-right: var(--goa-space-xl);
+  }
+}
+/*Mobile*/
+@media screen and (max-width: 623px) {
+  .container {
+    flex-wrap: wrap;
+  }
+  .side-menu, .main {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+  .content {
+    flex-wrap: wrap;
+  }
+  .side-menu {
+    padding-bottom: var(--goa-space-l);
+    border-bottom: 1px solid var(--goa-color-greyscale-200);
+  }
+  .tablet {
+    padding-right: 0;
+  }
+}

@@ -1,0 +1,89 @@
+[
+  {
+    "name": "Interactive",
+    "tokens": [
+      {
+        "code": "goa-color-interactive-default",
+        "value": "#0070C4",
+        "figmaColorStyle": "Interactive/Default",
+        "description": "Default color for interactive elements."
+      },
+      {
+        "code": "goa-color-interactive-hover",
+        "value": "#004F84",
+        "figmaColorStyle": "Interactive/Hover",
+        "description": "Hover state for interactive elements."
+      },
+      {
+        "code": "goa-color-interactive-focus",
+        "value": "#FEBA35",
+        "figmaColorStyle": "Interactive/Focus",
+        "description": "Focus state color for interactive elements."
+      },
+      {
+        "code": "goa-color-interactive-error",
+        "value": "#EC040B",
+        "figmaColorStyle": "Interactive/Error",
+        "description": "Error state for interactive elements."
+      },
+      {
+        "code": "goa-color-interactive-disabled",
+        "value": "#80B7E1",
+        "figmaColorStyle": "Interactive/Disabled",
+        "description": "Disabled state for interactive elements."
+      }
+    ]
+  },
+  {
+    "name": "Text",
+    "tokens": [
+      {
+        "code": "goa-color-text-default",
+        "value": "#333333",
+        "figmaColorStyle": "Text/Default",
+        "description": "Default color for most text (such as body, headings, subheadings)"
+      },
+      {
+        "code": "goa-color-text-secondary",
+        "value": "#666666",
+        "figmaColorStyle": "Text/Secondary",
+        "description": "Default color for secondary text labels such as \"optional\" or \"required\", or within a table heading."
+      },
+      {
+        "code": "goa-color-text-light",
+        "value": "#FFFFFF",
+        "figmaColorStyle": "Text/Light",
+        "description": "Use as the text colour on dark backgrounds."
+      },
+      {
+        "code": "goa-color-text-disabled",
+        "value": "#666666",
+        "figmaColorStyle": "Text/Disabled",
+        "description": "Text on a grey background within the disabled text input, text area, combobox, and dropdown."
+      }
+    ]
+  },
+  {
+    "name": "Brand",
+    "tokens": [
+      {
+        "code": "goa-color-brand-default",
+        "value": "#0081A2",
+        "figmaColorStyle": "Brand/Default",
+        "description": "GOA brand colour."
+      },
+      {
+        "code": "goa-color-brand-dark",
+        "value": "#005072",
+        "figmaColorStyle": "Brand/Dark",
+        "description": "Dark GOA brand colour."
+      },
+      {
+        "code": "goa-color-brand-light",
+        "value": "#C8EEFA",
+        "figmaColorStyle": "Brand/Default",
+        "description": "Light GOA brand colour."
+      }
+    ]
+  }
+]

@@ -1,0 +1,29 @@
+.goa-opacity-background-modal {
+    height: 24px;
+    width: 24px;
+    border-radius:var(--goa-border-radius-none);
+    background-color: var(--goa-color-greyscale-black);
+    opacity: var(--goa-opacity-background-modal);
+    margin-left: -30px;
+}
+
+.goa-opacity-background-loading {
+    height: 24px;
+    width: 24px;
+    border-radius:var(--goa-border-radius-none);
+    background-color: var(--goa-color-greyscale-black);
+    opacity: var(--goa-opacity-background-loading);
+    margin-left: -30px;
+}
+
+.blue-box {
+    height: 14px;
+    width: 14px;
+    background-color: var(--goa-color-interactive-default);
+    margin-left: 15px;
+    margin-top: 5px
+}
+
+.opacity-container {
+    display: flex;
+}

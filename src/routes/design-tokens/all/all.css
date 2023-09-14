@@ -1,0 +1,10 @@
+.all-design-tokens__code {
+    background-color: #eee;
+    display: inline;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+.all-design-tokens__heading-container {
+    margin-bottom: 9px;
+}
