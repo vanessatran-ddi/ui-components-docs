@@ -1,18 +1,16 @@
 .goa-border-width-s {
   height: var(--goa-border-width-s);
-  width: 64px;
-  background-color: #333333;
 }
 
 .goa-border-width-m {
   height: var(--goa-border-width-m);
-  width: 64px;
-  background-color: #333333;
 }
 
 .goa-border-width-l {
   height: var(--goa-border-width-l);
+}
+
+.goa-border-width-s, .goa-border-width-m, .goa-border-width-l {
   width: 64px;
   background-color: #333333;
 }
-

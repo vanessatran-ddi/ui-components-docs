@@ -1,19 +1,9 @@
 .goa-opacity-background-modal {
-    height: 24px;
-    width: 24px;
-    border-radius:var(--goa-border-radius-none);
-    background-color: var(--goa-color-greyscale-black);
     opacity: var(--goa-opacity-background-modal);
-    margin-left: -30px;
 }
 
 .goa-opacity-background-loading {
-    height: 24px;
-    width: 24px;
-    border-radius:var(--goa-border-radius-none);
-    background-color: var(--goa-color-greyscale-black);
     opacity: var(--goa-opacity-background-loading);
-    margin-left: -30px;
 }
 
 .blue-box {
@@ -26,4 +16,12 @@
 
 .opacity-container {
     display: flex;
+}
+
+.goa-opacity-background-modal, .goa-opacity-background-loading {
+    height: 24px;
+    width: 24px;
+    border-radius:var(--goa-border-radius-none);
+    background-color: var(--goa-color-greyscale-black);
+    margin-left: -30px;
 }
