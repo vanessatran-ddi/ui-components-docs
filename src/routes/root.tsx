@@ -1,7 +1,7 @@
 import {
     GoAAppFooter, GoAAppFooterMetaSection,
     GoAAppFooterNavSection,
-    GoAAppHeader,
+    GoAAppHeader, GoAIcon,
     GoAMicrositeHeader,
     GoAOneColumnLayout
 } from "@abgov/react-components";
@@ -36,10 +36,10 @@ export default function Root() {
         <div className="app" style={{opacity: visible ? "1" : "0"}}>
             <ScrollToTop/>
             <GoAOneColumnLayout>
-                <section slot="header">
+                <section className="header" slot="header">
                     <GoAMicrositeHeader type={"alpha"}
                                         feedbackUrl="https://github.com/GovAlta/ui-components/discussions"
-                                        maxContentWidth="1500px"/>
+                                        maxContentWidth="1440px"/>
                     <GoAAppHeader heading="Design system" maxContentWidth="1500px">
                         <Link to="/get-started">Get started</Link>
                         <Link to="/patterns">Patterns and templates</Link>
@@ -47,7 +47,7 @@ export default function Root() {
                         <Link to="/design-tokens">Styles</Link>
                         <Link to="/content">Content</Link>
                         <Link to="/support">Support</Link>
-                        <Link to="/report-a-bug" className="interactive">Report a bug</Link>
+                        <Link to="/report-a-bug" className="interactive">Report a bug <GoAIcon type="open"/></Link>
                     </GoAAppHeader>
                 </section>
 

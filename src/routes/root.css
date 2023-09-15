@@ -12,6 +12,11 @@
 .main {
   margin: 0 0 0 4rem;
 }
+
+.header a {
+  box-shadow: none;
+}
+
 /**
   * 1. The following styles are for the responsive site layout
  */
