@@ -4,10 +4,10 @@
 .design-tokens h3 {
     padding-top: 0;
     padding-bottom: var(--goa-space-xl);
+    margin-right: var(--goa-space-3xl);
     margin-bottom: 0;
     max-width: 100%;
 }
-
 .design-tokens .main {
     margin: 0;
     line-height: var(--goa-line-height-3);
@@ -24,14 +24,14 @@ goa-table td {
 }
 
 .support-info {
-    max-width: 720px;
+    max-width: 700px;
 }
 
 .box-container {
     border: 1px solid var(--goa-color-greyscale-200);
     padding: 1rem 1rem 1rem 1.5rem;
     border-radius: 4px;
-    width: 21rem;
+    max-width: 22rem;
 }
 
 .code-box {
@@ -41,7 +41,7 @@ goa-table td {
 }
 
 .design-token__block-container {
-    width: 70%;
+    max-width: 700px;
 }
 
 
@@ -142,6 +142,12 @@ p {
     .main {
         margin: 0 24px 0 24px;
     }
+
+    .design-tokens p {
+        margin-right: var(--goa-space-3xl);
+
+    }
+
 
 }
 

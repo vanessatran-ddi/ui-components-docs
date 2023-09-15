@@ -56,7 +56,7 @@ export default function TypographyPage() {
 
                 <section className="tablet">
                     <section>
-                        <GoAGrid gap="2xl" minChildWidth="300px">
+                        <GoAGrid minChildWidth="22rem" gap="xl">
                             {getTokenGroups(tokens as Token[]).map((group) =>
                                 group.map((token: TypographyToken, idx: number) => (
                                     <div className="box-container" key={idx}>

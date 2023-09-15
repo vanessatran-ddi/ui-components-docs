@@ -43,7 +43,7 @@ export default function BorderWidthPage() {
 
             <section className="tablet">
                 <section>
-                    <GoAGrid minChildWidth="300px">
+                    <GoAGrid minChildWidth="22rem" gap="xl">
                         {getTokenGroups(tokens).map((group) =>
                             group.map((token, idx) => (
                                 <div className="box-container" key={idx}>

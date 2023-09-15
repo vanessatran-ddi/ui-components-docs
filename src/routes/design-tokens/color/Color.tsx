@@ -73,7 +73,7 @@ export default function ColorPage() {
                             {index !== 0 && (<GoASpacer vSpacing="m"></GoASpacer>)}
                             <span className="design-token__heading-card" id={color.name.toLowerCase()}>{color.name}</span>
                             <GoASpacer vSpacing="m"></GoASpacer>
-                            <GoAGrid minChildWidth="300px">
+                            <GoAGrid minChildWidth="22rem" gap="xl">
                                 {color.tokens.map((token, tokenIndex) => (
                                     <div className="box-container" key={tokenIndex}>
                                         <ul>

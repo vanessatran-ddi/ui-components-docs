@@ -39,7 +39,7 @@ export default function BorderRadiusPage() {
                 </GoATable>
             </section>
             <section className="tablet">
-                <GoAGrid minChildWidth="300px">
+                <GoAGrid minChildWidth="22rem" gap="xl">
                     {getTokenGroups(tokens).map((group) =>
                         group.map((token, idx) => (
                             <div className="box-container" key={idx}>

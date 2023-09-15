@@ -185,10 +185,14 @@ td[rowspan] {
 
 @media screen and (max-width: 1231px) {
 
-
     .goa-color-interactive-default, .goa-color-interactive-hover, .goa-color-interactive-focus, .goa-color-interactive-error,
-    .goa-color-interactive-disabled, .goa-color-text-default, .goa-color-text-secondary, .goa-color-text-light,
-    .goa-color-text-disabled, .goa-color-brand-default, .goa-color-brand-dark, .goa-color-brand-light {
+    .goa-color-interactive-disabled,  .goa-color-interactive-error-hover, .goa-color-interactive-error-disabled, .goa-color-text-default,
+    .goa-color-text-secondary, .goa-color-text-light, .goa-color-text-disabled, .goa-color-brand-default , .goa-color-brand-dark,
+    .goa-color-brand-light, .goa-color-info-default, .goa-color-info-light, .goa-color-info-dark, .goa-color-info-background,
+    .goa-color-warning-default, .goa-color-warning-light, .goa-color-warning-dark, .goa-color-warning-background, .goa-color-emergency-default,
+    .goa-color-emergency-light, .goa-color-emergency-dark, .goa-color-emergency-background, .goa-color-success-default, .goa-color-success-light,
+    .goa-color-success-dark, .goa-color-success-background, .goa-color-critical, .goa-color-greyscale-white, .goa-color-greyscale-100,
+    .goa-color-greyscale-200, .goa-color-greyscale-400, .goa-color-greyscale-500, .goa-color-greyscale-600, .goa-color-greyscale-700, .goa-color-greyscale-black {
         height: 36px;
         width: 280px;
     }

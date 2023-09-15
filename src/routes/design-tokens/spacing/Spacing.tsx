@@ -58,7 +58,7 @@ export default function SpacingPage() {
 
             <section className="tablet">
                 <section>
-                    <GoAGrid minChildWidth="300px">
+                    <GoAGrid minChildWidth="22rem" gap="xl">
                         {getTokenGroups(tokens).map((group) =>
                             group.map((token: Token, idx: number) => (
                                 <div className="box-container" key={idx}>
