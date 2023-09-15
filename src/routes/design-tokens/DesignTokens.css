@@ -45,7 +45,7 @@ goa-table td {
 }
 
 .design-token__block-container {
-    max-width: 700px;
+    max-width: 72ch;
 }
 
 
