@@ -2,7 +2,7 @@ import {GoAContainer, GoASpacer} from "@abgov/react-components";
 import "./all.css";
 export default function AllDesignTokensPage() {
     return (
-        <section>
+        <section className="styleContainer">
             <h1>Styles</h1>
             <h3>We use design tokens to communicate design decisions across design and development. These design
                 decisions are a limited set of options for spacing, colour,
