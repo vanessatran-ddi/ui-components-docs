@@ -22,6 +22,9 @@
 goa-table td {
     padding: 0 16px;
 }
+goa-table hr {
+    margin: 0;
+}
 
 .content {
     width: 100%;

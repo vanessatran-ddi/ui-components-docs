@@ -31,7 +31,6 @@ export function DesignTokenLayout() {
                 </section>
 
                 <main className="main design-tokens">
-                    <GoASpacer vSpacing="xs"/>
                     <section>
                         <Outlet/>
                         <GoASpacer vSpacing="3xl"/>
