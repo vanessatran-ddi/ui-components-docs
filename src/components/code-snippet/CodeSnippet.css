@@ -1,8 +1,23 @@
-.goa-code-snippet pre code {
-  background-color: #eee;
+.goa-code-snippet pre code, .goa-code-snippet {
+  background-color: var(--goa-color-greyscale-100);
+}
+
+.goa-code-snippet {
+  border: 1px solid var(--goa-color-greyscale-200);
+  border-radius: 4px;
+  padding: 0px 24px;
+  margin-top: var(--goa-space-m);
 }
 
 .goa-code-snippet-actions {
   text-align: right;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+}
+
+.goa-code-snippet-actions goa-button {
+  background-color: var(--goa-color-greyscale-white);
+  padding: 6px 0px 2px 0px;
+  border-radius: 4px;
+  border: 1px solid var(--goa-color-greyscale-200);
 }
