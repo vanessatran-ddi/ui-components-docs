@@ -20,6 +20,7 @@ import ShadowPage from "./routes/design-tokens/shadow/Shadow";
 import SpacingPage from "./routes/design-tokens/spacing/Spacing";
 import TypographyPage from "./routes/design-tokens/typography/Typography";
 import AllDesignTokensPage from "./routes/design-tokens/all/all";
+import LayoutPage from "@routes/design-tokens/layout/layout.tsx";
 
 
 const router = createBrowserRouter(
@@ -39,6 +40,7 @@ const router = createBrowserRouter(
           <Route path="border-radius" element={<BorderRadiusPage />} />
           <Route path="color" element={<ColorPage />} />
           <Route path="icon-size" element={<IconSizePage />} />
+          <Route path="layout" element={<LayoutPage />} />
           <Route path="opacity" element={<OpacityPage />} />
           <Route path="shadow" element={<ShadowPage />} />
           <Route path="spacing" element={<SpacingPage />} />
