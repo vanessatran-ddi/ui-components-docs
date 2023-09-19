@@ -47,7 +47,7 @@ export default function Root() {
                         <Link to="/design-tokens">Styles</Link>
                         <Link to="/content">Content</Link>
                         <Link to="/support">Support</Link>
-                        <Link to="/report-a-bug" className="interactive">Report a bug <GoAIcon type="open"/></Link>
+                        <Link to="/report-a-bug" className="interactive">Report a bug<div className="report-bug-icon"><GoAIcon type="open"/></div></Link>
                     </GoAAppHeader>
                 </section>
 

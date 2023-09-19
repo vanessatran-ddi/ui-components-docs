@@ -8,3 +8,9 @@
 .all-design-tokens__heading-container {
     margin-bottom: 9px;
 }
+
+.design-token__block-container p:nth-child(3),
+.design-token__block-container p:last-child {
+    margin-bottom: 0;
+}
+

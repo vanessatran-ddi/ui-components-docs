@@ -17,11 +17,12 @@ export function DesignTokenLayout() {
                             <GoADropdownItem label="SCSS" value="scss"/>
                             <GoADropdownItem label="CSS" value="css"/>
                         </GoADropdown>
-                        <Link to="">All</Link>
+                        <Link to="">Overview</Link>
                         <Link to="border-radius">Border Radius</Link>
                         <Link to="border-width">Border Width</Link>
                         <Link to="color">Color</Link>
                         <Link to="icon-size">Icon Size</Link>
+                        <Link to="layout">Layout</Link>
                         <Link to="opacity">Opacity</Link>
                         <Link to="shadow">Shadow</Link>
                         <Link to="spacing">Spacing</Link>
@@ -38,7 +39,10 @@ export function DesignTokenLayout() {
                             <SupportInfo/>
                         </div>
                     </section>
+                    <GoASpacer vSpacing="m"/>
+                    <GoASpacer vSpacing="l"/>
                     <GoASpacer vSpacing="3xl"/>
+
                 </main>
 
             </div>

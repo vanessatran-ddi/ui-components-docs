@@ -3,7 +3,8 @@
 }
 
 .design-tokens h1 {
-    margin-bottom: var(--goa-space-m);
+    margin-bottom: var(--goa-space-xl);
+    margin-top: var(--goa-space-2xl);
 }
 
 .design-tokens h3 {
@@ -33,7 +34,7 @@ goa-table td {
 
 .box-container {
     border: 1px solid var(--goa-color-greyscale-200);
-    padding: 1rem 1rem 1rem 1.5rem;
+    padding: 1.5rem;
     border-radius: 4px;
     max-width: 22rem;
 }
@@ -53,6 +54,9 @@ p {
     font: var(--goa-typography-body-m);
 }
 
+.notification {
+    margin-bottom: 0;
+}
 
 /**
   * 1. The following styles are for the responsive site layout
@@ -95,7 +99,7 @@ p {
         line-height: var(--goa-line-height-4);
     }
     ul {
-        padding: 12px 0;
+        padding: 0;
         margin: 0;
     }
 
@@ -144,7 +148,7 @@ p {
         font: var(--goa-typography-body-m);
     }
     .main {
-        margin: 0 24px 0 24px;
+        margin: 0 16px;
     }
 
     .design-tokens p {

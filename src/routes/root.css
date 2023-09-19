@@ -10,12 +10,19 @@
   align-items: stretch;
 }
 .main {
-  margin: 0 0 0 4rem;
+  margin: 0 4rem;
 }
 
 .header a {
   box-shadow: none;
 }
+
+.report-bug-icon {
+  margin-left: var(--goa-space-2xs);
+  margin-top: var(--goa-space-xs);
+}
+
+
 
 /**
   * 1. The following styles are for the responsive site layout
