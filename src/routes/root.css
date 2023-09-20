@@ -20,6 +20,8 @@
 .report-bug-icon {
   margin-left: var(--goa-space-2xs);
   margin-top: var(--goa-space-xs);
+  display:inline-block;
+  vertical-align: -7px;
 }
 
 
@@ -46,7 +48,6 @@
   }
   .tablet {
     display: block;
-    padding-right: var(--goa-space-xl);
   }
 }
 /*Mobile*/
