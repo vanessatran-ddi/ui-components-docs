@@ -2,10 +2,19 @@ import {GoADropdown, GoADropdownItem, GoASideMenu, GoASideMenuHeading, GoASpacer
 import {Link, Outlet} from "react-router-dom";
 import "./DesignTokens.css"
 import {SupportInfo} from "@components/support-info/SupportInfo";
+import {useEffect, useState} from "react";
+import { LanguageContext } from "@components/sandbox";
 
 export function DesignTokenLayout() {
+    const [language, setLanguage] = useState("");
+
+    useEffect(() => {
+        const lang = localStorage.getItem("goa-docs-lang") || "react";
+        setLanguage(lang)
+    }, [])
     return (
         <>
+            <LanguageContext.Provider value={language}>
             <div className="content">
                 <section className="side-menu" style={{paddingTop: 0}}>
                     <GoASideMenu>
@@ -45,6 +54,7 @@ export function DesignTokenLayout() {
                 </main>
 
             </div>
+            </LanguageContext.Provider>
         </>
     )
 }

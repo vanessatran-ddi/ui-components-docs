@@ -20,7 +20,7 @@ import ShadowPage from "./routes/design-tokens/shadow/Shadow";
 import SpacingPage from "./routes/design-tokens/spacing/Spacing";
 import TypographyPage from "./routes/design-tokens/typography/Typography";
 import AllDesignTokensPage from "./routes/design-tokens/all/all";
-import LayoutPage from "@routes/design-tokens/layout/layout.tsx";
+import LayoutPage from "./routes/design-tokens/layout/Layout.tsx";
 
 
 const router = createBrowserRouter(
