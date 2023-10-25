@@ -74,7 +74,7 @@ export function SandboxProperties({ properties = [], onChange }: Props) {
 
   return (
     <>
-      {["list", "boolean", "string", "number"].map((t) => {
+      {["list", "string", "boolean", "number"].map((t) => {
         const propertiesOfTypeT = properties.filter((p) => p.type === t && !p.hidden);
         // Not render when there is no properties of type T (e.g. no type string, shouldn't render div)
         if (propertiesOfTypeT.length === 0) {
