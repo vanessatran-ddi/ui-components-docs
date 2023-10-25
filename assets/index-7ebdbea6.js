@@ -7838,10 +7838,10 @@ function getUrlBasedHistory(getLocation, createHref, validateLocation, options) 
     }
   }
   function createURL(to) {
-    let base = window2.location.origin !== "null" ? window2.location.origin : window2.location.href;
+    let base2 = window2.location.origin !== "null" ? window2.location.origin : window2.location.href;
     let href = typeof to === "string" ? to : createPath(to);
-    invariant(base, "No window.location.(origin|href) available to create URL for href: " + href);
-    return new URL(href, base);
+    invariant(base2, "No window.location.(origin|href) available to create URL for href: " + href);
+    return new URL(href, base2);
   }
   let history = {
     get action() {
@@ -40941,9 +40941,10 @@ const DeviceWidthProvider = ({
   const isMobile = useMediaQuery("(max-width: 623px)");
   return /* @__PURE__ */ jsxRuntimeExports.jsx(DeviceWidthContext.Provider, { value: { isDesktop, isMobile }, children: children2 });
 };
+const base = "/ui-components-docs/";
 const router = createBrowserRouter(
   createRoutesFromChildren(
-    /* @__PURE__ */ jsxRuntimeExports.jsxs(Route, { path: "/", element: /* @__PURE__ */ jsxRuntimeExports.jsx(Root, {}), children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(Route, { path: `${base}`, element: /* @__PURE__ */ jsxRuntimeExports.jsx(Root, {}), children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs(
         Route,
         {
