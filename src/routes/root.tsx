@@ -12,6 +12,7 @@ import { Link, Outlet } from "react-router-dom";
 import "./root.css";
 
 import { useLocation } from "react-router-dom";
+import {base} from "../App";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -42,14 +43,17 @@ export default function Root() {
             feedbackUrl="https://github.com/GovAlta/ui-components/discussions"
             maxContentWidth="1440px"
           />
-          <GoAAppHeader heading="Design system" maxContentWidth="1440px" url={"/"}>
-            <Link to="/get-started">Get started</Link>
-            <Link to="/patterns">Patterns and templates</Link>
-            <Link to="/components">Components</Link>
-            <Link to="/design-tokens">Styles</Link>
-            <Link to="/content">Content</Link>
-            <Link to="/support">Support</Link>
-            <Link to="https://github.com/GovAlta/ui-components/issues/new/choose" target="_blank">
+          <GoAAppHeader heading="Design system" maxContentWidth="1440px" url={`${base}`}>
+            <Link to={`${base}get-started`}>Get started</Link>
+            <Link to={`${base}patterns`}>Patterns and templates</Link>
+            <Link to={`${base}components`}>Components</Link>
+            <Link to={`${base}design-tokens`}>Styles</Link>
+            <Link to={`${base}content`}>Content</Link>
+            <Link to={`${base}support`}>Support</Link>
+            <Link
+              to="https://github.com/GovAlta/ui-components/issues/new/choose"
+              target="_blank"
+            >
               Report a bug
             </Link>
           </GoAAppHeader>
@@ -62,22 +66,24 @@ export default function Root() {
         <section slot="footer">
           <GoAAppFooter maxContentWidth="1440px">
             <GoAAppFooterNavSection heading="Resources" maxColumnCount={2}>
-              <Link to="/get-started">Get started</Link>
-              <Link to="/patterns">Patterns and templates</Link>
-              <Link to="/components">Components</Link>
-              <Link to="/design-tokens">Styles</Link>
-              <Link to="/ux-writing">UX writing</Link>
-              <Link to="/contribute">Contribute</Link>
+              <Link to={`${base}get-started`}>Get started</Link>
+              <Link to={`${base}patterns`}>Patterns and templates</Link>
+              <Link to={`${base}components`}>Components</Link>
+              <Link to={`${base}design-tokens`}>Styles</Link>
+              <Link to={`${base}ux-writing`}>UX writing</Link>
+              <Link to={`${base}contribute`}>Contribute</Link>
             </GoAAppFooterNavSection>
             <GoAAppFooterNavSection heading="Get support">
-              <Link to="/submit-an-issue">Submit an issue</Link>
-              <Link to="/support">#design-system-support</Link>
-              <Link to="/drop-in-hours">Drop in hours</Link>
+              <Link to={`${base}submit-an-issue`}>Submit an issue</Link>
+              <Link to={`${base}support`}>#design-system-support</Link>
+              <Link to={`${base}drop-in-hours`}>Drop in hours</Link>
             </GoAAppFooterNavSection>
             <GoAAppFooterMetaSection>
-              <Link to="/contribute-design-system">Contribute to the design system</Link>
-              <Link to="/leave-feedback">Leave feedback</Link>
-              <Link to="/release-notes">Release notes</Link>
+              <Link to={`${base}contribute-design-system`}>
+                Contribute to the design system
+              </Link>
+              <Link to={`${base}leave-feedback`}>Leave feedback</Link>
+              <Link to={`${base}release-notes`}>Release notes</Link>
             </GoAAppFooterMetaSection>
           </GoAAppFooter>
         </section>

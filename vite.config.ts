@@ -9,6 +9,7 @@ export default defineConfig({
   build: {
     minify: false
   },
+  base: "/ui-components-docs/",
   plugins: [react()],
   resolve: {
     alias: {

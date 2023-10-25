@@ -44,12 +44,12 @@ const DeviceWidthProvider: React.FC<DeviceWidthProviderProps> = ({
     </DeviceWidthContext.Provider>
   );
 };
-
+export const base = "/ui-components-docs/";
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Root />}>
+    <Route path={`${base}`} element={<Root />}>
       <Route
-        path="components"
+        path={`${base}components`}
         element={<ComponentsPage />}
         errorElement={<ComponentNotFoundPage />}
       >
@@ -62,7 +62,7 @@ const router = createBrowserRouter(
         <Route path="*" element={<ComponentNotFoundPage />} />
       </Route>
       <Route
-        path="design-tokens"
+        path={`${base}/design-tokens`}
         element={<DesignTokens />}
         errorElement={<ComponentNotFoundPage />}
       >
