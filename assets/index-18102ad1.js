@@ -40948,7 +40948,7 @@ const router = createBrowserRouter(
       /* @__PURE__ */ jsxRuntimeExports.jsxs(
         Route,
         {
-          path: "components",
+          path: `${base}/components`,
           element: /* @__PURE__ */ jsxRuntimeExports.jsx(Components, {}),
           errorElement: /* @__PURE__ */ jsxRuntimeExports.jsx(ComponentNotFound, {}),
           children: [
@@ -40964,7 +40964,7 @@ const router = createBrowserRouter(
       /* @__PURE__ */ jsxRuntimeExports.jsxs(
         Route,
         {
-          path: "design-tokens",
+          path: `${base}/design-tokens`,
           element: /* @__PURE__ */ jsxRuntimeExports.jsx(DesignTokenLayout, {}),
           errorElement: /* @__PURE__ */ jsxRuntimeExports.jsx(ComponentNotFound, {}),
           children: [
