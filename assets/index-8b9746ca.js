@@ -32377,13 +32377,6 @@ class Tab extends SvelteElement {
   }
 }
 customElements.define("goa-tab", Tab);
-function GoASideMenuGroup(props) {
-  return jsxRuntimeExports.jsx("goa-side-menu-group", Object.assign({
-    heading: props.heading
-  }, {
-    children: props.children
-  }), void 0);
-}
 function GoASideMenuHeading(props) {
   return jsxRuntimeExports.jsxs("goa-side-menu-heading", Object.assign({
     icon: props.icon
@@ -32411,6 +32404,37 @@ function GoAPages(props) {
     children: props.children
   }), void 0);
 }
+const GoAAccordion = ({
+  open,
+  heading,
+  headingSize,
+  secondaryText,
+  headingContent,
+  testid,
+  children: children2,
+  mt,
+  mr,
+  mb: mb2,
+  ml: ml2
+}) => {
+  return jsxRuntimeExports.jsxs("goa-accordion", Object.assign({
+    open,
+    headingSize,
+    heading,
+    secondaryText,
+    "data-testid": testid,
+    mt,
+    mr,
+    mb: mb2,
+    ml: ml2
+  }, {
+    children: [headingContent && jsxRuntimeExports.jsx("div", Object.assign({
+      slot: "headingcontent"
+    }, {
+      children: headingContent
+    }), void 0), children2]
+  }), void 0);
+};
 function GoAFormStep(props) {
   return jsxRuntimeExports.jsx("goa-form-step", {
     text: props.text,
@@ -32471,6 +32495,29 @@ const GoAAppHeader = ({
   }, {
     children: children2
   }), void 0);
+};
+const GoABadge = ({
+  type,
+  content,
+  icon,
+  testId,
+  mt,
+  mr,
+  mb: mb2,
+  ml: ml2,
+  ariaLabel
+}) => {
+  return jsxRuntimeExports.jsx("goa-badge", {
+    type,
+    content,
+    icon,
+    "data-testid": testId,
+    arialabel: ariaLabel,
+    mt,
+    mr,
+    mb: mb2,
+    ml: ml2
+  }, void 0);
 };
 function GoABlock(props) {
   return jsxRuntimeExports.jsx("goa-block", Object.assign({
@@ -33025,6 +33072,28 @@ function GoATable(props) {
     }), void 0)
   }), void 0);
 }
+function GoATabs({
+  initialTab,
+  children: children2
+}) {
+  return jsxRuntimeExports.jsx("goa-tabs", Object.assign({
+    initialtab: initialTab
+  }, {
+    children: children2
+  }), void 0);
+}
+const GoATab = ({
+  heading,
+  children: children2
+}) => {
+  return jsxRuntimeExports.jsxs("goa-tab", {
+    children: [heading && jsxRuntimeExports.jsx("span", Object.assign({
+      slot: "heading"
+    }, {
+      children: heading
+    }), void 0), children2]
+  }, void 0);
+};
 class BaseSerializer {
   constructor(properties) {
     __publicField(this, "isRoot", false);
@@ -33286,23 +33355,35 @@ function SandboxProperties({ properties = [], onChange }) {
     prop.value = checked;
     onChange([...properties]);
   }
+  function toUpperCase(label) {
+    return label.charAt(0).toUpperCase() + label.slice(1);
+  }
   function renderProps(p2) {
     switch (p2.type) {
       case "list":
-        return /* @__PURE__ */ jsxRuntimeExports.jsx(GoADropdown, { name: p2.name, value: p2.value, onChange: onListChange, children: p2.options.map(
-          (option) => /* @__PURE__ */ jsxRuntimeExports.jsx(GoADropdownItem, { value: option || "", label: option || "-" }, option)
-        ) });
+        return /* @__PURE__ */ jsxRuntimeExports.jsx(GoADropdown, { name: p2.name, value: p2.value, onChange: onListChange, children: p2.options.map((option) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+          GoADropdownItem,
+          {
+            value: option || "",
+            label: toUpperCase(option) || "-"
+          },
+          option
+        )) }, p2.name);
       case "boolean":
-        return /* @__PURE__ */ jsxRuntimeExports.jsx(GoACheckbox, { name: p2.name, checked: p2.value, onChange: onCheckboxChange });
+        return /* @__PURE__ */ jsxRuntimeExports.jsx(GoACheckbox, { name: p2.name, checked: p2.value, onChange: onCheckboxChange, text: p2.label });
       case "string":
         return /* @__PURE__ */ jsxRuntimeExports.jsx(GoAInput, { name: p2.name, value: p2.value, onChange: onTextChange });
       case "number":
         return /* @__PURE__ */ jsxRuntimeExports.jsx(GoAInput, { type: "number", name: p2.name, value: `${p2.value}`, onChange: onNumberChange });
     }
   }
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: ["list", "boolean", "string", "number"].map(
-    (t2) => /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { display: "flex", gap: "2rem", flexWrap: "wrap" }, children: properties.filter((p2) => p2.type === t2 && !p2.hidden).map((p2) => /* @__PURE__ */ jsxRuntimeExports.jsx(GoAFormItem, { label: p2.label || "", children: renderProps(p2) }, p2.name)) }, t2)
-  ) });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: ["list", "string", "boolean", "number"].map((t2) => {
+    const propertiesOfTypeT = properties.filter((p2) => p2.type === t2 && !p2.hidden);
+    if (propertiesOfTypeT.length === 0) {
+      return null;
+    }
+    return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "sandbox-container", children: propertiesOfTypeT.map((p2) => /* @__PURE__ */ jsxRuntimeExports.jsx(GoAFormItem, { label: p2.type === "boolean" ? "" : p2.label || "", children: renderProps(p2) }, p2.name)) }, t2);
+  }) });
 }
 const CodeSnippet$1 = "";
 var reactDomServerLegacy_browser_production_min = {};
@@ -39142,6 +39223,7 @@ function xml(hljs) {
 const github = "";
 const CodeSnippet = ({ lang, allowCopy, code, children: children2 }) => {
   const [output, setOutput] = reactExports.useState("");
+  const [isCopied, setIsCopied] = reactExports.useState(false);
   const cleanTabs = (code2 = "", tabSize) => {
     const lines = code2.split("\n");
     if (lines.length === 1) {
@@ -39154,11 +39236,15 @@ const CodeSnippet = ({ lang, allowCopy, code, children: children2 }) => {
   };
   function copyCode() {
     navigator.clipboard.writeText(output);
+    setIsCopied(true);
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 2e3);
   }
   reactExports.useEffect(() => {
     HighlightJS.registerLanguage("typescript", typescript);
     HighlightJS.registerLanguage("html", xml);
-  });
+  }, []);
   reactExports.useEffect(() => {
     setOutput(render());
     setTimeout(HighlightJS.highlightAll, 1);
@@ -39174,7 +39260,17 @@ const CodeSnippet = ({ lang, allowCopy, code, children: children2 }) => {
   }
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "goa-code-snippet", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx("pre", { children: /* @__PURE__ */ jsxRuntimeExports.jsx("code", { className: `highlight-${lang}`, children: output }) }),
-    allowCopy && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "goa-code-snippet-actions", children: /* @__PURE__ */ jsxRuntimeExports.jsx(GoAButton, { type: "tertiary", size: "compact", leadingIcon: "copy", onClick: copyCode, children: "Copy code" }) })
+    allowCopy && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "goa-code-snippet-actions", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(GoAButton, { type: "tertiary", size: "compact", leadingIcon: "copy", onClick: copyCode, children: "Copy code" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "span",
+        {
+          className: "copy-feedback",
+          style: isCopied ? { visibility: "visible" } : { visibility: "hidden" },
+          children: "Copied!"
+        }
+      )
+    ] })
   ] });
 };
 const ReactiveComponents = [
@@ -39305,7 +39401,9 @@ const Sandbox = (props) => {
   }
   function getComponents(type) {
     const children2 = Array.isArray(props.children) ? props.children : [props.children];
-    return children2.filter((el2) => typeof el2.type !== "string" && el2.type.name.toLowerCase().startsWith(type));
+    return children2.filter(
+      (el2) => typeof el2.type !== "string" && el2.type.name.toLowerCase().startsWith(type)
+    );
   }
   function getCodeSnippets(...tags) {
     const matches = (list) => {
@@ -39325,10 +39423,10 @@ const Sandbox = (props) => {
     var _a;
     if (lang === "angular" && ((_a = props.flags) == null ? void 0 : _a.includes("reactive"))) {
       return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-        "Angular",
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h4", { children: "Event based" }),
         getCodeSnippets("angular"),
         /* @__PURE__ */ jsxRuntimeExports.jsx(CodeSnippet, { lang: formatLang, allowCopy: true, children: output(serializers["angular"]) }),
-        "Reactive",
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h4", { children: "Reactive forms (FormControl)" }),
         getCodeSnippets("angular", "reactive"),
         /* @__PURE__ */ jsxRuntimeExports.jsx(CodeSnippet, { lang: formatLang, allowCopy: true, children: output(serializers["angular-reactive"]) })
       ] });
@@ -39354,6 +39452,24 @@ const Sandbox = (props) => {
     render()
   ] });
 };
+function getCssVarValue(tokenName) {
+  return getComputedStyle(document.documentElement).getPropertyValue(tokenName).trim();
+}
+const SupportInfo$1 = "";
+const SupportInfo = () => {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "support-info", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+    GoACallout,
+    {
+      type: "information",
+      heading: "Need help? Connect with us on Slack",
+      children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "https://goa-dio.slack.com/archives/C02PLLT9HQ9", children: "#design-system-support" }),
+        " ",
+        "General information and discussion related to design system including questions, new component proposals, contribution, and other requests."
+      ]
+    }
+  ) });
+};
 function Components() {
   const [language, setLanguage] = reactExports.useState("");
   reactExports.useEffect(() => {
@@ -39367,32 +39483,73 @@ function Components() {
   }
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(LanguageContext.Provider, { value: language, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: "side-menu", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(GoADropdown, { value: language, onChange: onLanguageChange, mb: "m", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs(GoADropdown, { value: language, onChange: onLanguageChange, mb: "m", mt: "m", mr: "m", ml: "m", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(GoADropdownItem, { label: "React", value: "react" }),
         /* @__PURE__ */ jsxRuntimeExports.jsx(GoADropdownItem, { label: "Angular", value: "angular" })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs(GoASideMenu, { children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "", children: "All Components" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs(GoASideMenuGroup, { heading: "Components", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "dropdown", children: "Dropdown" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "button", children: "Button" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "form-stepper", children: "Form Stepper" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "checkbox", children: "Checkbox" })
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(GoASideMenuGroup, { heading: "Layouts" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(GoASideMenuGroup, { heading: "Utilities" })
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "", children: "All" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "accordion", children: "Accordion" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "badge", children: "Badge" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "block", children: "Block" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "button", children: "Button" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "callout", children: "Callout" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "checkbox", children: "Checkbox" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "chip", children: "Chip" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "combobox", children: "Combobox" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "container", children: "Container" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "details", children: "Details" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "divider", children: "Divider" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "dropdown", children: "Dropdown" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "file-uploader", children: "File uploader" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "footer", children: "Footer" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "form-item", children: "Form item" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "grid", children: "Grid" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "hero-banner", children: "Hero banner" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "icons", children: "Icons" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "list", children: "List" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "microsite-header", children: "Microsite header" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "modal", children: "Modal" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "notification-banner", children: "Notification banner" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "pagination", children: "Pagination" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "progress-indicator", children: "Progress indicator" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "radio", children: "Radio" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "skeleton-loader", children: "Skeleton loader" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "snackbar", children: "Snackbar" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "spacer", children: "Spacer" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "site-header", children: "Site header" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "form-stepper", children: "Stepper" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "table", children: "Table" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "text-area", children: "Text area" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "text-field", children: "Text field" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "tooltip", children: "Tooltip" })
       ] })
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("main", { className: "main", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(Outlet, {}),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(GoACallout, { type: "information", mt: "2xl", children: /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#", children: "View installation instructions" }) })
+      /* @__PURE__ */ jsxRuntimeExports.jsx(SupportInfo, {}),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { marginTop: getCssVarValue("--goa-space-2xl") }, children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { children: "Help improve this component" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { children: "To help make sure that this page is useful, relevant, and up to date, you can:" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("ul", { style: { marginLeft: "1.875rem" }, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("li", { children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "https://github.com/GovAlta/ui…ts/issues/new/choose", children: "Propose a change or report a bug on Github" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: " - Read more about " }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "https://goa-dio.atlassian.net/wiki/spaces/DIO/pages/2763096293/How+to+work+with+us", children: "our contribution process" })
+        ] }) })
+      ] })
     ] })
   ] });
 }
 function DropdownPage$1() {
   const [dropdownProps, setDropdownProps] = reactExports.useState({});
   const [dropdownBindings, setDropdownBindings] = reactExports.useState([
-    { label: "Leading Icon", type: "list", name: "leadingIcon", options: ["", "warning"], value: "" },
+    {
+      label: "Leading Icon",
+      type: "list",
+      name: "leadingIcon",
+      options: ["", "warning"],
+      value: ""
+    },
     { label: "Native", type: "boolean", name: "native", value: false },
     { label: "Disabled", type: "boolean", name: "disabled", value: false }
   ]);
@@ -39409,29 +39566,53 @@ function DropdownPage$1() {
         properties: dropdownBindings,
         onChange,
         flags: ["reactive"],
-        note: "When using a dropdown inside a modal where there is limited space for the menu items \n        to display, ensure the `native` property is set to `true` for the dropdown to function properly.",
+        note: "When using a dropdown inside a modal where there is limited space for the menu items\n        to display, ensure the `native` property is set to `true` for the dropdown to function properly.",
         children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(CodeSnippet, { lang: "typescript", tags: "angular", allowCopy: true, code: `
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            CodeSnippet,
+            {
+              lang: "typescript",
+              tags: "angular",
+              allowCopy: true,
+              code: `
           // non-reactive code
           export class MyComponent {
             onChange(event) {
               // handle change
             }
           }  
-        ` }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(CodeSnippet, { lang: "typescript", tags: ["angular", "reactive"], allowCopy: true, code: `
+        `
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            CodeSnippet,
+            {
+              lang: "typescript",
+              tags: ["angular", "reactive"],
+              allowCopy: true,
+              code: `
           // reactive code
           import { FormControl } from "@angular/forms";
           export class MyComponent {
             reactiveFormCtrl = new FormControl("red");
           }  
-        ` }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(CodeSnippet, { lang: "typescript", tags: "react", allowCopy: true, code: `
+        `
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            CodeSnippet,
+            {
+              lang: "typescript",
+              tags: "react",
+              allowCopy: true,
+              code: `
           const [value, setValue] = useState('green');
           function onChange(name: string, value: string | string[]) {
             setValue(value);
           }
-        ` }),
+        `
+            }
+          ),
           /* @__PURE__ */ jsxRuntimeExports.jsxs(GoADropdown, { name: "colors", value: "red", onChange: () => {
           }, ...dropdownProps, children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(GoADropdownItem, { value: "red", label: "Red" }),
@@ -39443,6 +39624,226 @@ function DropdownPage$1() {
     )
   ] });
 }
+const ComponentProperties = (props) => {
+  const lang = reactExports.useContext(LanguageContext);
+  const [filteredProperties, setFilteredProperties] = reactExports.useState([]);
+  const filterBy = (properties) => {
+    const result = properties.filter((child) => {
+      return !child.lang || child.lang === lang;
+    });
+    return result;
+  };
+  reactExports.useEffect(() => {
+    setFilteredProperties([...filterBy(props.properties)]);
+  }, [lang]);
+  const rows = (properties) => {
+    return properties.map((property, index2) => /* @__PURE__ */ jsxRuntimeExports.jsxs("tr", { children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("td", { className: "token-name", children: [
+        property.name,
+        property.required && /* @__PURE__ */ jsxRuntimeExports.jsx(GoABadge, { type: "midtone", content: "Required", ml: "xs" })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("td", { children: property.type }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("td", { children: property.description }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("td", { children: property.defaultValue })
+    ] }, index2));
+  };
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(GoAAccordion, { heading: "Components properties", mt: "xl", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(GoATable, { variant: "relaxed", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("thead", { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("tr", { children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("th", { children: "Name" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("th", { children: "Type" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("th", { children: "Description" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("th", { children: "Default" })
+    ] }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("tbody", { children: rows(filteredProperties) })
+  ] }) });
+};
+const ComponentHeader$1 = "";
+var Category = /* @__PURE__ */ ((Category2) => {
+  Category2["CONTENT_AND_LAYOUT"] = "Content and layout";
+  Category2["FEEDBACK_AND_ALERTS"] = "Feedback and alerts";
+  Category2["STRUCTURE_AND_NAVIGATION"] = "Structure and navigation";
+  Category2["INPUTS_AND_ACTIONS"] = "Inputs and actions";
+  Category2["UTILITIES"] = "Utilities";
+  return Category2;
+})(Category || {});
+const ComponentHeader = (props) => {
+  var _a;
+  const category = () => {
+    switch (props.category) {
+      case "Content and layout":
+        return "emergency";
+      case "Feedback and alerts":
+        return "important";
+      case "Structure and navigation":
+        return "success";
+      case "Inputs and actions":
+        return "information";
+      case "Utilities":
+        return "midtone";
+      default:
+        return "information";
+    }
+  };
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "component-header", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx(GoABadge, { type: category(), content: props.category }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { children: props.name }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { children: props.description }),
+    ((_a = props.relatedComponents) == null ? void 0 : _a.length) && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "Related components: " }),
+      props.relatedComponents.map((relatedComponent, index2, array) => /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: relatedComponent.link, children: relatedComponent.name }),
+        index2 < array.length - 1 && ", "
+      ] }, index2))
+    ] })
+  ] });
+};
+function AccordionPage() {
+  const [accordionProps, setAccordionProps] = reactExports.useState({ heading: "Heading" });
+  const [accordionBindings, setAccordionBindings] = reactExports.useState([
+    {
+      label: "Heading",
+      type: "string",
+      name: "heading",
+      value: "Heading"
+    },
+    {
+      label: "Secondary Text",
+      type: "string",
+      name: "secondaryText",
+      value: ""
+    },
+    {
+      label: "Heading Size",
+      type: "list",
+      name: "headingSize",
+      options: ["", "small", "medium"],
+      value: ""
+    },
+    { label: "Open", type: "boolean", name: "open", value: false }
+  ]);
+  const componentProperties = [
+    {
+      name: "heading",
+      type: "string",
+      required: true,
+      description: "Sets the heading text"
+    },
+    {
+      name: "secondaryText",
+      type: "string",
+      lang: "react",
+      description: "Sets secondary text"
+    },
+    {
+      name: "secondarytext",
+      type: "string",
+      lang: "angular",
+      description: "Sets secondary text"
+    },
+    {
+      name: "open",
+      type: "boolean",
+      defaultValue: "false",
+      description: "Sets the state of the accordion container open or closed"
+    },
+    {
+      name: "headingSize",
+      type: "small | medium",
+      defaultValue: "small",
+      lang: "react",
+      description: "Sets the heading size of the accordion container heading"
+    },
+    {
+      name: "headingsize",
+      type: "small | medium",
+      defaultValue: "small",
+      lang: "angular",
+      description: "Sets the heading size of the accordion container heading"
+    },
+    {
+      name: "headingContent",
+      type: "ReactNode",
+      lang: "react",
+      description: "Add components to the accordion container heading such as badges"
+    },
+    {
+      name: "headingcontent",
+      type: "slot",
+      lang: "angular",
+      description: "Add components to the accordion container heading such as badges"
+    }
+  ];
+  const [open, setOpen] = reactExports.useState(false);
+  function onSandboxChange(bindings, props) {
+    setAccordionBindings(bindings);
+    setAccordionProps(props);
+  }
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "accordion-page", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      ComponentHeader,
+      {
+        name: "Accordion",
+        category: Category.CONTENT_AND_LAYOUT,
+        description: "Accordion containers enable multiple content sections to be displayed in a\n        limited space and collapsed or expanded by the user. You can create hierarchy of information\n        by hiding secondary content inside collapsed expand containers."
+      }
+    ),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(GoATabs, { children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs(GoATab, { heading: "Code examples", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(Sandbox, { properties: accordionBindings, onChange: onSandboxChange, fullWidth: true, children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(GoAAccordion, { ...accordionProps, children: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            GoAAccordion,
+            {
+              ...accordionProps,
+              headingContent: /* @__PURE__ */ jsxRuntimeExports.jsx(GoABadge, { type: "success", content: "Success" }),
+              children: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi"
+            }
+          )
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h4", { children: "Accordion Group" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          Sandbox,
+          {
+            note: "The open prop on accordion component can be used to control a group of accordions.",
+            fullWidth: true,
+            children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(
+                CodeSnippet,
+                {
+                  lang: "typescript",
+                  tags: "angular",
+                  allowCopy: true,
+                  code: `
+          export class SomeOtherComponent {
+            open = "false";
+            onClick() {
+              this.open = this.open === "false" ? "true" : "false";
+            }
+          }
+        `
+                }
+              ),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(GoAButton, { type: "tertiary", mb: "xl", onClick: () => setOpen(!open), children: "Toggle Accordion Group" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(GoAAccordion, { open, heading: "Heading", children: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(GoAAccordion, { open, heading: "Heading", children: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(GoAAccordion, { open, heading: "Heading", children: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi" })
+            ]
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(ComponentProperties, { properties: componentProperties })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        GoATab,
+        {
+          heading: /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+            "Design guidelines",
+            /* @__PURE__ */ jsxRuntimeExports.jsx(GoABadge, { type: "information", content: "In progress" })
+          ] })
+        }
+      )
+    ] })
+  ] });
+}
 const Modal2 = "";
 function GoAModal({ children: children2 }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "modal", children: children2 });
@@ -39450,74 +39851,204 @@ function GoAModal({ children: children2 }) {
 function ButtonPage() {
   const [buttonProps, setButtonProps] = reactExports.useState({});
   const [buttonBindings, setButtonBindings] = reactExports.useState([
-    { label: "Type", type: "list", name: "type", options: ["", "primary", "secondary", "tertiary"], value: "", defaultValue: "primary" },
-    { label: "Size", type: "list", name: "size", options: ["", "normal", "compact"], value: "" },
-    { label: "Variant", type: "list", name: "variant", options: ["", "normal", "destructive"], value: "" },
-    { label: "Leading Icon", type: "list", name: "leadingIcon", options: ["", "warning"], value: "" },
-    { label: "Trailing Icon", type: "list", name: "trailingIcon", options: ["", "warning"], value: "" },
+    {
+      label: "Type",
+      type: "list",
+      name: "type",
+      options: ["primary", "submit", "secondary", "tertiary", "start"],
+      value: "",
+      defaultValue: "primary"
+    },
+    {
+      label: "Size",
+      type: "list",
+      name: "size",
+      options: ["", "normal", "compact"],
+      value: ""
+    },
+    {
+      label: "Variant",
+      type: "list",
+      name: "variant",
+      options: ["", "normal", "destructive"],
+      value: ""
+    },
+    {
+      label: "Leading Icon",
+      type: "list",
+      name: "leadingIcon",
+      options: ["", "airplane"],
+      value: ""
+    },
+    {
+      label: "Trailing Icon",
+      type: "list",
+      name: "trailingIcon",
+      options: ["", "airplane"],
+      value: ""
+    },
     { label: "Disabled", type: "boolean", name: "disabled", value: false }
   ]);
+  const componentProperties = [
+    {
+      name: "type",
+      type: "primary | submit | secondary | tertiary | start",
+      description: "Define the type of button",
+      defaultValue: "primary"
+    },
+    {
+      name: "size",
+      type: "normal | compact",
+      defaultValue: "normal",
+      description: "Set the size of button [to compact]"
+    },
+    {
+      name: "variant",
+      type: "normal | destructive",
+      defaultValue: "normal",
+      description: "Style this button to show a destructive action"
+    },
+    {
+      name: "disabled",
+      type: "boolean",
+      defaultValue: "false",
+      description: "Disable this button"
+    },
+    {
+      name: "leadingIcon",
+      type: "GoAIconType",
+      lang: "react",
+      description: "Show an icon to the left of the text"
+    },
+    {
+      name: "leadingicon",
+      type: "GoAIconType",
+      lang: "angular",
+      description: "Show an icon to the left of the text"
+    },
+    {
+      name: "trailingIcon",
+      type: "GoAIconType",
+      lang: "react",
+      description: "Show an icon to the right of the text"
+    },
+    {
+      name: "trailingicon",
+      type: "GoAIconType",
+      lang: "angular",
+      description: "Show an icon to the right of the text"
+    },
+    {
+      name: "_click",
+      lang: "angular",
+      type: "CustomEvent",
+      description: "Callback function when button is clicked"
+    },
+    {
+      name: "onClick",
+      lang: "react",
+      type: "(e: any) => void",
+      description: "Callback function when button is clicked"
+    }
+  ];
   const noop2 = () => {
   };
-  function onChange(bindings, props) {
+  function SandboxOnChange(bindings, props) {
     setButtonBindings(bindings);
     setButtonProps(props);
   }
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { children: "Button" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { children: "Buttons allow users to perform an action or to navigate to another page. They have multiple styles for various needs, and are ideal for calling attention to where a user needs to do something or so they can move forward in a flow." }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs(
-      Sandbox,
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      ComponentHeader,
       {
-        properties: buttonBindings,
-        onChange,
-        note: "Used to carry out the primary action. Don’t use more than one primary button in a section or screen.",
-        children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(CodeSnippet, { lang: "typescript", tags: "angular", allowCopy: true, code: `
+        name: "Button",
+        category: Category.INPUTS_AND_ACTIONS,
+        description: "Buttons allow users to perform an action or to navigate to another page.\n        They have multiple styles for various needs, and are ideal for calling\n        attention to where a user needs to do something or so they can move\n        forward in a flow.",
+        relatedComponents: [
+          { link: "/components/icon-button", name: "Icon button" },
+          { link: "/components/link", name: "Link" }
+        ]
+      }
+    ),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(GoATabs, { children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs(GoATab, { heading: "Code examples", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(Sandbox, { properties: buttonBindings, onChange: SandboxOnChange, children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            CodeSnippet,
+            {
+              lang: "typescript",
+              tags: "angular",
+              allowCopy: true,
+              code: `
           export class SomeOtherComponent {
             onClick() {
               console.log('clicked');
             }
           }
-        ` }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(GoAButton, { ...buttonProps, onClick: noop2, children: "Click Me" })
-        ]
-      }
-    ),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { children: "Ask a user for an address" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs(Sandbox, { flags: ["reactive"], children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(GoAFormItem, { label: "Street Address", children: /* @__PURE__ */ jsxRuntimeExports.jsx(GoAInput, { name: "address", type: "text", value: "", onChange: noop2, width: "100%" }) }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(GoAFormItem, { label: "Suite or unit #", children: /* @__PURE__ */ jsxRuntimeExports.jsx(GoAInput, { name: "suite", type: "text", value: "", onChange: noop2, width: "100%" }) }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(GoAFormItem, { label: "City/town", children: /* @__PURE__ */ jsxRuntimeExports.jsx(GoAInput, { name: "city", type: "text", value: "", onChange: noop2, width: "100%" }) }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(GoABlock, { direction: "row", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(GoAFormItem, { label: "Provice/territory", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(GoADropdown, { onChange: noop2, name: "province", value: "alberta", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(GoADropdownItem, { label: "Alberta", value: "alberta" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(GoADropdownItem, { label: "BC", value: "bc" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(GoADropdownItem, { label: "Saskatchewan", value: "saskatchewan" })
+        `
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(GoAButton, { ...buttonProps, onClick: noop2, children: "Primary Button" })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(ComponentProperties, { properties: componentProperties }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("goa-block", { gap: "xs", direction: "column", mt: "2xl", mb: "3xl", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#ask-address", children: "Ask a user for an address" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#confirm-action", children: "Confirm a destructive action" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#disabled-button", children: "Disabled button in a form" })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { id: "ask-address", children: "Ask a user for an address" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(Sandbox, { flags: ["reactive"], children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(GoAFormItem, { label: "Street Address", children: /* @__PURE__ */ jsxRuntimeExports.jsx(GoAInput, { name: "address", type: "text", value: "", onChange: noop2, width: "100%" }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(GoAFormItem, { label: "Suite or unit #", children: /* @__PURE__ */ jsxRuntimeExports.jsx(GoAInput, { name: "suite", type: "text", value: "", onChange: noop2, width: "100%" }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(GoAFormItem, { label: "City/town", children: /* @__PURE__ */ jsxRuntimeExports.jsx(GoAInput, { name: "city", type: "text", value: "", onChange: noop2, width: "100%" }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs(GoABlock, { direction: "row", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(GoAFormItem, { label: "Provice/territory", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(GoADropdown, { onChange: noop2, name: "province", value: "alberta", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(GoADropdownItem, { label: "Alberta", value: "alberta" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(GoADropdownItem, { label: "BC", value: "bc" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(GoADropdownItem, { label: "Manitoba", value: "manitoba" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(GoADropdownItem, { label: "New Brunswick", value: "new-brunswick" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(GoADropdownItem, { label: "Newfoundland and Labrador", value: "newfoundland" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(GoADropdownItem, { label: "Nova Scotia", value: "nova-scotia" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(GoADropdownItem, { label: "Ontario", value: "ontario" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(GoADropdownItem, { label: "Prince Edward Island", value: "prince-edward-island" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(GoADropdownItem, { label: "Quebec", value: "quebec" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(GoADropdownItem, { label: "Saskatchewan", value: "saskatchewan" })
+            ] }) }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(GoAFormItem, { label: "Postal Code", children: /* @__PURE__ */ jsxRuntimeExports.jsx(GoAInput, { name: "postalCode", type: "text", value: "", onChange: noop2, width: "100%" }) })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs(GoAButtonGroup, { alignment: "start", mt: "l", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(GoAButton, { type: "primary", onClick: noop2, children: "Submit and continue" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(GoAButton, { type: "secondary", onClick: noop2, children: "Cancel" })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { id: "confirm-action", children: "Confirm a destructive action" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Sandbox, { flags: ["reactive"], children: /* @__PURE__ */ jsxRuntimeExports.jsxs(GoAModal, { children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { children: "Are you sure you want to delete this record?" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { children: "You cannot undo this action." }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs(GoAButtonGroup, { alignment: "end", mt: "l", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(GoAButton, { type: "secondary", onClick: noop2, children: "Cancel" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(GoAButton, { type: "primary", variant: "destructive", onClick: noop2, children: "Delete record" })
+          ] })
         ] }) }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(GoAFormItem, { label: "Postal Code", children: /* @__PURE__ */ jsxRuntimeExports.jsx(GoAInput, { name: "postalCode", type: "text", value: "", onChange: noop2, width: "100%" }) })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { id: "disabled-button", children: "Disabled button with a required field" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(Sandbox, { flags: ["reactive"], children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(GoAFormItem, { label: "Input", children: /* @__PURE__ */ jsxRuntimeExports.jsx(GoAInput, { name: "input", type: "text", value: "", onChange: noop2, width: "400px" }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs(GoAButtonGroup, { alignment: "start", mt: "l", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(GoAButton, { disabled: true, onClick: noop2, children: "Confirm" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(GoAButton, { type: "secondary", onClick: noop2, children: "Cancel" })
+          ] })
+        ] })
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(GoAButtonGroup, { alignment: "start", mt: "l", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(GoAButton, { type: "primary", onClick: noop2, children: "Submit and continue" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(GoAButton, { type: "secondary", onClick: noop2, children: "Cancel" })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { children: "Confirm a destructive action" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(Sandbox, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(GoAModal, { children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { children: "Are you sure you want to delete this record?" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { children: "You cannot undo this action." }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(GoAButtonGroup, { alignment: "end", mt: "l", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(GoAButton, { type: "secondary", onClick: noop2, children: "Cancel" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(GoAButton, { type: "primary", variant: "destructive", onClick: noop2, children: "Delete record" })
-      ] })
-    ] }) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { children: "Disabled button with a required field" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs(Sandbox, { flags: ["reactive"], children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(GoAFormItem, { label: "Input", children: /* @__PURE__ */ jsxRuntimeExports.jsx(GoAInput, { name: "input", type: "text", value: "", onChange: noop2, width: "400px" }) }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(GoAButtonGroup, { alignment: "start", mt: "l", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(GoAButton, { disabled: true, onClick: noop2, children: "Confirm" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(GoAButton, { type: "secondary", onClick: noop2, children: "Cancel" })
-      ] })
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        GoATab,
+        {
+          heading: /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+            "Design guidelines",
+            /* @__PURE__ */ jsxRuntimeExports.jsx(GoABadge, { type: "information", content: "In progress" })
+          ] }),
+          children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { children: "Coming Soon" })
+        }
+      )
     ] })
   ] });
 }
@@ -39643,50 +40174,184 @@ function ComponentCard(props) {
 const AllComponents = "";
 function CheckboxPage() {
   const cards = [
-    { name: "accordion", groups: ["content"], description: "Accordions let users show and hide sections of related content on a page." },
-    { name: "container", groups: ["content"], description: "Group information, create hierarchy, and show related information." },
-    { name: "details", groups: ["content"], description: "Let users reveal more detailed information when they need it." },
+    {
+      name: "accordion",
+      groups: ["content"],
+      description: "Accordions let users show and hide sections of related content on a page."
+    },
+    {
+      name: "container",
+      groups: ["content"],
+      description: "Group information, create hierarchy, and show related information."
+    },
+    {
+      name: "details",
+      groups: ["content"],
+      description: "Let users reveal more detailed information when they need it."
+    },
     { name: "list", groups: ["content"], description: "Needs description" },
-    { name: "table", groups: ["content"], description: "A set of structured data that is easy for a user to scan, examine, and compare." },
-    { name: "badge", groups: ["feedback"], description: "Small labels which hold small amounts of information, system feedback, or states." },
-    { name: "callout", groups: ["feedback"], description: "Communicate important information through a strong visual emphasis." },
-    { name: "modal", groups: ["feedback"], description: "An overlay that appears in front of the main page content." },
-    { name: "notification banner", groups: ["feedback"], description: "Display important page level information or notifications." },
-    { name: "progress indicator", groups: ["feedback"], description: "Provide visual feedback to users while loading." },
-    { name: "snackbar", groups: ["feedback"], description: "A temporary notification showing a process started or completed." },
-    { name: "tooltip", groups: ["feedback"], description: "More information displayed in a popover when a user hovers over an element." },
-    { name: "button", groups: ["inputs"], description: "Use a button to carry out an important action or to navigate to another page." },
-    { name: "checkbox", groups: ["inputs"], description: "Let the user select one or more options." },
-    { name: "chip", groups: ["inputs"], description: "Allow the user to enter information, filter content, and make selections." },
-    { name: "combobox", groups: ["inputs"], description: "Functions like a dropdown with the ability to filter options by typing." },
-    { name: "dropdown", groups: ["inputs"], tags: ["select"], description: "Functions like a dropdown with the ability to filter options by typing." },
-    { name: "file uploader", groups: ["inputs"], description: "Help users select and upload a file from their computer." },
-    { name: "radio", groups: ["inputs"], description: "Allow users to select one option from a set." },
-    { name: "text area", groups: ["inputs"], description: "Let users enter and input text for multiple lines of information." },
-    { name: "input", groups: ["inputs"], tags: ["text"], description: "Let users enter and input text for a single line of information." },
-    { name: "footer", groups: ["structure"], description: "Provides information related your service at the bottom of every page." },
-    { name: "hero banner", groups: ["structure"], description: "A visual band of text, including an image and a call to action." },
-    { name: "microsite header", groups: ["structure"], description: "Communicate what stage the service is at, and connect to Alberta.ca." },
-    { name: "pagination", groups: ["structure"], description: "Help users navigation between multiple pages or screens as part of a set." },
-    { name: "app header", groups: ["structure"], description: "Used to help users find their way around a website or app." },
-    { name: "form stepper", groups: ["structure"], description: "Provides a visual representation of a form through a series of steps." },
-    { name: "block", groups: ["utilities"], description: "Used when grouping components into a block with consistent space between." },
-    { name: "form item", groups: ["utilities"], description: "Wraps an input control with a text label, requirement label, helper text, and error text." },
-    { name: "grid", groups: ["utilities"], description: "The grid helps to arrange a number of components into a responsive grid pattern." },
-    { name: "spacer", groups: ["utilities"], description: "Negative area between the components and the interface." }
+    {
+      name: "table",
+      groups: ["content"],
+      description: "A set of structured data that is easy for a user to scan, examine, and compare."
+    },
+    {
+      name: "badge",
+      groups: ["feedback"],
+      description: "Small labels which hold small amounts of information, system feedback, or states."
+    },
+    {
+      name: "callout",
+      groups: ["feedback"],
+      description: "Communicate important information through a strong visual emphasis."
+    },
+    {
+      name: "modal",
+      groups: ["feedback"],
+      description: "An overlay that appears in front of the main page content."
+    },
+    {
+      name: "notification banner",
+      groups: ["feedback"],
+      description: "Display important page level information or notifications."
+    },
+    {
+      name: "progress indicator",
+      groups: ["feedback"],
+      description: "Provide visual feedback to users while loading."
+    },
+    {
+      name: "snackbar",
+      groups: ["feedback"],
+      description: "A temporary notification showing a process started or completed."
+    },
+    {
+      name: "tooltip",
+      groups: ["feedback"],
+      description: "More information displayed in a popover when a user hovers over an element."
+    },
+    {
+      name: "button",
+      groups: ["inputs"],
+      description: "Use a button to carry out an important action or to navigate to another page."
+    },
+    {
+      name: "checkbox",
+      groups: ["inputs"],
+      description: "Let the user select one or more options."
+    },
+    {
+      name: "chip",
+      groups: ["inputs"],
+      description: "Allow the user to enter information, filter content, and make selections."
+    },
+    {
+      name: "combobox",
+      groups: ["inputs"],
+      description: "Functions like a dropdown with the ability to filter options by typing."
+    },
+    {
+      name: "dropdown",
+      groups: ["inputs"],
+      tags: ["select"],
+      description: "Functions like a dropdown with the ability to filter options by typing."
+    },
+    {
+      name: "file uploader",
+      groups: ["inputs"],
+      description: "Help users select and upload a file from their computer."
+    },
+    {
+      name: "radio",
+      groups: ["inputs"],
+      description: "Allow users to select one option from a set."
+    },
+    {
+      name: "text area",
+      groups: ["inputs"],
+      description: "Let users enter and input text for multiple lines of information."
+    },
+    {
+      name: "input",
+      groups: ["inputs"],
+      tags: ["text"],
+      description: "Let users enter and input text for a single line of information."
+    },
+    {
+      name: "footer",
+      groups: ["structure"],
+      description: "Provides information related your service at the bottom of every page."
+    },
+    {
+      name: "hero banner",
+      groups: ["structure"],
+      description: "A visual band of text, including an image and a call to action."
+    },
+    {
+      name: "microsite header",
+      groups: ["structure"],
+      description: "Communicate what stage the service is at, and connect to Alberta.ca."
+    },
+    {
+      name: "pagination",
+      groups: ["structure"],
+      description: "Help users navigation between multiple pages or screens as part of a set."
+    },
+    {
+      name: "app header",
+      groups: ["structure"],
+      description: "Used to help users find their way around a website or app."
+    },
+    {
+      name: "form stepper",
+      groups: ["structure"],
+      description: "Provides a visual representation of a form through a series of steps."
+    },
+    {
+      name: "block",
+      groups: ["utilities"],
+      description: "Used when grouping components into a block with consistent space between."
+    },
+    {
+      name: "form item",
+      groups: ["utilities"],
+      description: "Wraps an input control with a text label, requirement label, helper text, and error text."
+    },
+    {
+      name: "grid",
+      groups: ["utilities"],
+      description: "The grid helps to arrange a number of components into a responsive grid pattern."
+    },
+    {
+      name: "spacer",
+      groups: ["utilities"],
+      description: "Negative area between the components and the interface."
+    }
   ];
   function getComponentsByGroup(group) {
-    return cards.filter((card) => card.groups.includes(group)).map(
-      (card) => /* @__PURE__ */ jsxRuntimeExports.jsx(ComponentCard, { name: card.name, groups: card.groups, description: card.description }, card.name)
-    );
+    return cards.filter((card) => card.groups.includes(group)).map((card) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+      ComponentCard,
+      {
+        name: card.name,
+        groups: card.groups,
+        description: card.description
+      },
+      card.name
+    ));
   }
   function getComponentsByFilter() {
     return cards.filter((card) => {
       var _a;
       return card.name.includes(filter) || ((_a = card.tags) == null ? void 0 : _a.includes(filter));
-    }).map(
-      (card) => /* @__PURE__ */ jsxRuntimeExports.jsx(ComponentCard, { name: card.name, groups: card.groups, description: card.description }, card.name)
-    );
+    }).map((card) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+      ComponentCard,
+      {
+        name: card.name,
+        groups: card.groups,
+        description: card.description
+      },
+      card.name
+    ));
   }
   const [mode, setMode] = reactExports.useState("list");
   const [filter, setFilter] = reactExports.useState("");
@@ -39715,7 +40380,7 @@ function CheckboxPage() {
     ) }),
     mode === "search" && /* @__PURE__ */ jsxRuntimeExports.jsx(GoAGrid, { minChildWidth: "300px", children: getComponentsByFilter() }),
     mode === "list" && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "anchors", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs(GoAGrid, { minChildWidth: "30ch", gap: "xs", mt: "2xl", mb: "3xl", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#content", children: "Content layout" }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#feedback", children: "Feedback and alerts" }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#structure", children: "Structure and navigation" }),
@@ -39725,26 +40390,26 @@ function CheckboxPage() {
       /* @__PURE__ */ jsxRuntimeExports.jsx("a", { id: "content" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { children: "Content layout" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { children: "Organize content" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(GoAGrid, { minChildWidth: "300px", children: getComponentsByGroup("content") }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(GoAGrid, { minChildWidth: "15rem", gap: "xl", children: getComponentsByGroup("content") }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "back-to-top", children: /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#top", children: "Back to top" }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("a", { id: "feedback" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { children: "Feedback and alerts" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { children: "Capture attention" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(GoAGrid, { minChildWidth: "300px", children: getComponentsByGroup("feedback") }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(GoAGrid, { minChildWidth: "15rem", gap: "xl", children: getComponentsByGroup("feedback") }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "back-to-top", children: /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#top", children: "Back to top" }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("a", { id: "inputs" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { children: "Inputs and actions" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { children: "Gather information" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(GoAGrid, { minChildWidth: "300px", children: getComponentsByGroup("inputs") }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(GoAGrid, { minChildWidth: "15rem", gap: "xl", children: getComponentsByGroup("inputs") }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "back-to-top", children: /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#top", children: "Back to top" }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("a", { id: "structure" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { children: "Structure and navigation" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { children: "Create structure" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(GoAGrid, { minChildWidth: "300px", children: getComponentsByGroup("structure") }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(GoAGrid, { minChildWidth: "15rem", gap: "xl", children: getComponentsByGroup("structure") }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "back-to-top", children: /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#top", children: "Back to top" }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("a", { id: "utilities" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { children: "Utilities" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(GoAGrid, { minChildWidth: "300px", children: getComponentsByGroup("utilities") }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(GoAGrid, { minChildWidth: "15rem", gap: "xl", children: getComponentsByGroup("utilities") }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "back-to-top", children: /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#top", children: "Back to top" }) })
     ] })
   ] });
@@ -39779,13 +40444,13 @@ function Root() {
             maxContentWidth: "1440px"
           }
         ),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs(GoAAppHeader, { heading: "Design system", maxContentWidth: "1500px", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "/get-started", children: "Get started" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "/patterns", children: "Patterns and templates" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "/components", children: "Components" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "/design-tokens", children: "Styles" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "/content", children: "Content" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "/support", children: "Support" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(GoAAppHeader, { heading: "Design system", maxContentWidth: "1440px", url: `${base}`, children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: `${base}get-started`, children: "Get started" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: `${base}patterns`, children: "Patterns and templates" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: `${base}components`, children: "Components" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: `${base}design-tokens`, children: "Styles" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: `${base}content`, children: "Content" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: `${base}support`, children: "Support" }),
           /* @__PURE__ */ jsxRuntimeExports.jsx(
             Link,
             {
@@ -39797,45 +40462,30 @@ function Root() {
         ] })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "content", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Outlet, {}) }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("section", { slot: "footer", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(GoAAppFooter, { maxContentWidth: "1500px", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("section", { slot: "footer", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(GoAAppFooter, { maxContentWidth: "1440px", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs(GoAAppFooterNavSection, { heading: "Resources", maxColumnCount: 2, children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "/get-started", children: "Get started" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "/patterns", children: "Patterns and templates" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "/components", children: "Components" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "/design-tokens", children: "Styles" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "/ux-writing", children: "UX writing" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "/contribute", children: "Contribute" })
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: `${base}get-started`, children: "Get started" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: `${base}patterns`, children: "Patterns and templates" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: `${base}components`, children: "Components" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: `${base}design-tokens`, children: "Styles" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: `${base}ux-writing`, children: "UX writing" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: `${base}contribute`, children: "Contribute" })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(GoAAppFooterNavSection, { heading: "Get support", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "/submit-an-issue", children: "Submit an issue" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "/support", children: "#design-system-support" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "/drop-in-hours", children: "Drop in hours" })
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: `${base}submit-an-issue`, children: "Submit an issue" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: `${base}support`, children: "#design-system-support" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: `${base}drop-in-hours`, children: "Drop in hours" })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(GoAAppFooterMetaSection, { children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "/contribute-design-system", children: "Contribute to the design system" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "/leave-feedback", children: "Leave feedback" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "/release-notes", children: "Release notes" })
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: `${base}contribute-design-system`, children: "Contribute to the design system" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: `${base}leave-feedback`, children: "Leave feedback" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: `${base}release-notes`, children: "Release notes" })
         ] })
       ] }) })
     ] })
   ] });
 }
 const index = "";
-const SupportInfo$1 = "";
-const SupportInfo = () => {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "support-info", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
-    GoACallout,
-    {
-      type: "information",
-      heading: "Need help? Connect with us on Slack",
-      children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "https://goa-dio.slack.com/archives/C02PLLT9HQ9", children: "#design-system-support" }),
-        " ",
-        "General information and discussion related to design system including questions, new component proposals, contribution, and other requests."
-      ]
-    }
-  ) });
-};
 const DesignToken = "";
 function DesignTokenLayout() {
   const [tokenLanguage, setLanguage] = reactExports.useState("");
@@ -39855,6 +40505,10 @@ function DesignTokenLayout() {
         GoADropdown,
         {
           value: tokenLanguage,
+          mb: "m",
+          ml: "m",
+          mr: "m",
+          mt: "m",
           onChange: designTokenLanguageChange,
           children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(GoADropdownItem, { label: "SCSS", value: "scss" }),
@@ -39919,9 +40573,6 @@ const DeviceWidthContext = React.createContext({
   isDesktop: true,
   isMobile: false
 });
-function getCssVarValue(tokenName) {
-  return getComputedStyle(document.documentElement).getPropertyValue(tokenName).trim();
-}
 function BorderWidthPage() {
   const tokens = [
     {
@@ -40948,11 +41599,12 @@ const router = createBrowserRouter(
       /* @__PURE__ */ jsxRuntimeExports.jsxs(
         Route,
         {
-          path: `${base}/components`,
+          path: `${base}components`,
           element: /* @__PURE__ */ jsxRuntimeExports.jsx(Components, {}),
           errorElement: /* @__PURE__ */ jsxRuntimeExports.jsx(ComponentNotFound, {}),
           children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(Route, { index: true, element: /* @__PURE__ */ jsxRuntimeExports.jsx(CheckboxPage, {}) }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Route, { path: "accordion", element: /* @__PURE__ */ jsxRuntimeExports.jsx(AccordionPage, {}) }),
             /* @__PURE__ */ jsxRuntimeExports.jsx(Route, { path: "button", element: /* @__PURE__ */ jsxRuntimeExports.jsx(ButtonPage, {}) }),
             /* @__PURE__ */ jsxRuntimeExports.jsx(Route, { path: "dropdown", element: /* @__PURE__ */ jsxRuntimeExports.jsx(DropdownPage$1, {}) }),
             /* @__PURE__ */ jsxRuntimeExports.jsx(Route, { path: "form-stepper", element: /* @__PURE__ */ jsxRuntimeExports.jsx(DropdownPage, {}) }),
