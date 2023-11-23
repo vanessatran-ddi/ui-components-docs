@@ -11758,9 +11758,6 @@ function get_current_component() {
 function onMount(fn) {
   get_current_component().$$.on_mount.push(fn);
 }
-function afterUpdate(fn) {
-  get_current_component().$$.after_update.push(fn);
-}
 function onDestroy(fn) {
   get_current_component().$$.on_destroy.push(fn);
 }
@@ -12930,7 +12927,7 @@ function create_if_block_6$1(ctx) {
       detach(span);
   } };
 }
-function create_if_block_4$5(ctx) {
+function create_if_block_4$4(ctx) {
   let button;
   let t2;
   let goa_icon;
@@ -12984,7 +12981,7 @@ function create_if_block_2$e(ctx) {
   let dispose;
   let if_block = (
     /*_showMenu*/
-    ctx[8] && create_if_block_3$c(ctx)
+    ctx[8] && create_if_block_3$b(ctx)
   );
   return { c() {
     goa_popover = element("goa-popover");
@@ -13051,7 +13048,7 @@ function create_if_block_2$e(ctx) {
       if (if_block) {
         if_block.p(ctx2, dirty);
       } else {
-        if_block = create_if_block_3$c(ctx2);
+        if_block = create_if_block_3$b(ctx2);
         if_block.c();
         if_block.m(goa_popover, null);
       }
@@ -13077,7 +13074,7 @@ function create_if_block_2$e(ctx) {
     run_all(dispose);
   } };
 }
-function create_if_block_3$c(ctx) {
+function create_if_block_3$b(ctx) {
   let div;
   return { c() {
     div = element("div");
@@ -13150,7 +13147,7 @@ function create_fragment$_(ctx) {
   let if_block1 = (
     /*_showToggleMenu*/
     ctx[7] && /*_mobile*/
-    ctx[10] && create_if_block_4$5(ctx)
+    ctx[10] && create_if_block_4$4(ctx)
   );
   let if_block2 = (
     /*_showToggleMenu*/
@@ -13244,7 +13241,7 @@ function create_fragment$_(ctx) {
       if (if_block1) {
         if_block1.p(ctx2, dirty);
       } else {
-        if_block1 = create_if_block_4$5(ctx2);
+        if_block1 = create_if_block_4$4(ctx2);
         if_block1.c();
         if_block1.m(div0, t1);
       }
@@ -16476,7 +16473,7 @@ function create_if_block$p(ctx) {
   let if_block;
   let if_block_anchor;
   let current;
-  const if_block_creators = [create_if_block_1$d, create_if_block_3$b];
+  const if_block_creators = [create_if_block_1$d, create_if_block_3$a];
   const if_blocks = [];
   function select_block_type(ctx2, dirty) {
     if (
@@ -16549,14 +16546,14 @@ function create_if_block$p(ctx) {
       detach(if_block_anchor);
   } };
 }
-function create_if_block_3$b(ctx) {
+function create_if_block_3$a(ctx) {
   let div;
   let goa_spinner;
   let t2;
   let div_class_value;
   let if_block = (
     /*message*/
-    ctx[0] && create_if_block_4$4(ctx)
+    ctx[0] && create_if_block_4$3(ctx)
   );
   return { c() {
     div = element("div");
@@ -16616,7 +16613,7 @@ function create_if_block_3$b(ctx) {
       if (if_block) {
         if_block.p(ctx2, dirty);
       } else {
-        if_block = create_if_block_4$4(ctx2);
+        if_block = create_if_block_4$3(ctx2);
         if_block.c();
         if_block.m(div, null);
       }
@@ -16762,7 +16759,7 @@ function create_if_block_1$d(ctx) {
     dispose();
   } };
 }
-function create_if_block_4$4(ctx) {
+function create_if_block_4$3(ctx) {
   let div;
   let t2;
   return { c() {
@@ -17542,13 +17539,13 @@ class Divider extends SvelteElement {
 customElements.define("goa-divider", Divider);
 function get_each_context_1$1(ctx, list, i) {
   const child_ctx = ctx.slice();
-  child_ctx[69] = list[i];
-  child_ctx[73] = i;
+  child_ctx[61] = list[i];
+  child_ctx[65] = i;
   return child_ctx;
 }
 function get_each_context$8(ctx, list, i) {
   const child_ctx = ctx.slice();
-  child_ctx[69] = list[i];
+  child_ctx[61] = list[i];
   return child_ctx;
 }
 function create_else_block$a(ctx) {
@@ -17561,14 +17558,14 @@ function create_else_block$a(ctx) {
   let input_style_value;
   let input_aria_controls_value;
   let input_aria_label_value;
-  let input_id_value;
   let input_aria_owns_value;
   let input_readonly_value;
   let t2;
-  let t3;
   let div_style_value;
-  let t4;
+  let t3;
   let ul2;
+  let each_blocks = [];
+  let each_1_lookup = /* @__PURE__ */ new Map();
   let ul_id_value;
   let ul_aria_label_value;
   let ul_style_value;
@@ -17576,29 +17573,37 @@ function create_else_block$a(ctx) {
   let dispose;
   let if_block0 = (
     /*leadingicon*/
-    ctx[4] && create_if_block_4$3(ctx)
-  );
-  let if_block1 = (
-    /*_inputValue*/
-    ctx[16] && /*_filterable*/
-    ctx[20] && create_if_block_3$a(ctx)
-  );
-  let if_block2 = (
-    /*_filterable*/
-    (ctx[20] && /*_inputValue*/
-    ctx[16].length === 0 || !/*_filterable*/
-    ctx[20]) && create_if_block_2$a(ctx)
+    ctx[4] && create_if_block_2$a(ctx)
   );
   function select_block_type_1(ctx2, dirty) {
+    var _ctx$;
     if (
-      /*_filteredOptions*/
-      ctx2[21].length > 0
+      /*_inputEl*/
+      (_ctx$ = ctx2[23]) !== null && _ctx$ !== void 0 && _ctx$.value && /*_filterable*/
+      ctx2[24]
     )
       return create_if_block_1$c;
-    return create_else_block_1;
+    return create_else_block_2;
   }
   let current_block_type = select_block_type_1(ctx);
-  let if_block3 = current_block_type(ctx);
+  let if_block1 = current_block_type(ctx);
+  let each_value_1 = (
+    /*_filteredOptions*/
+    ctx[15]
+  );
+  const get_key = (ctx2) => (
+    /*index*/
+    ctx2[65]
+  );
+  for (let i = 0; i < each_value_1.length; i += 1) {
+    let child_ctx = get_each_context_1$1(ctx, each_value_1, i);
+    let key = get_key(child_ctx);
+    each_1_lookup.set(key, each_blocks[i] = create_each_block_1$1(key, child_ctx));
+  }
+  let each_1_else = null;
+  if (!each_value_1.length) {
+    each_1_else = create_else_block_1();
+  }
   return { c() {
     slot = element("slot");
     t0 = space();
@@ -17609,66 +17614,70 @@ function create_else_block$a(ctx) {
     t1 = space();
     input = element("input");
     t2 = space();
-    if (if_block1)
-      if_block1.c();
+    if_block1.c();
     t3 = space();
-    if (if_block2)
-      if_block2.c();
-    t4 = space();
     ul2 = element("ul");
-    if_block3.c();
-    attr(input, "style", input_style_value = `cursor: ${!/*_disabled*/
-    ctx[28] ? (
+    for (let i = 0; i < each_blocks.length; i += 1) {
+      each_blocks[i].c();
+    }
+    if (each_1_else) {
+      each_1_else.c();
+    }
+    attr(input, "style", input_style_value = `
+            cursor: ${!/*_disabled*/
+    ctx[26] ? (
       /*_filterable*/
-      ctx[20] ? "auto" : "pointer"
-    ) : "default"}`);
-    attr(input, "tabindex", "1");
+      ctx[24] ? "auto" : "pointer"
+    ) : "default"};
+          `);
+    attr(input, "data-testid", "input");
     attr(input, "type", "text");
     attr(input, "role", "combobox");
     attr(input, "autocomplete", "off");
     attr(input, "aria-autocomplete", "list");
-    attr(input, "aria-controls", input_aria_controls_value = `menu-${/*id*/
-    ctx[14] || /*name*/
-    ctx[1]}`);
+    attr(input, "aria-controls", input_aria_controls_value = `menu-${/*name*/
+    ctx[0]}`);
     attr(
       input,
       "aria-expanded",
       /*_isMenuVisible*/
-      ctx[23]
+      ctx[18]
     );
     attr(input, "aria-label", input_aria_label_value = /*arialabel*/
-    ctx[2] || /*name*/
-    ctx[1]);
+    ctx[1] || /*name*/
+    ctx[0]);
     attr(
       input,
       "aria-labelledby",
       /*arialabelledby*/
-      ctx[3]
+      ctx[2]
     );
-    attr(input, "id", input_id_value = `${/*id*/
-    ctx[14] || /*name*/
-    ctx[1]}`);
+    attr(
+      input,
+      "id",
+      /*name*/
+      ctx[0]
+    );
     attr(
       input,
       "aria-activedescendant",
       /*_activeDescendantId*/
-      ctx[29]
+      ctx[25]
     );
     attr(
       input,
       "aria-disabled",
       /*_disabled*/
-      ctx[28]
+      ctx[26]
     );
     attr(input, "aria-owns", input_aria_owns_value = /*_isMenuVisible*/
-    ctx[23] ? `menu-${/*id*/
-    ctx[14] || /*name*/
-    ctx[1]}` : void 0);
+    ctx[18] ? `menu-${/*name*/
+    ctx[0]}` : void 0);
     attr(input, "aria-haspopup", "listbox");
     input.disabled = /*_disabled*/
-    ctx[28];
+    ctx[26];
     input.readOnly = input_readonly_value = !/*_filterable*/
-    ctx[20];
+    ctx[24];
     attr(
       input,
       "placeholder",
@@ -17679,45 +17688,44 @@ function create_else_block$a(ctx) {
       input,
       "name",
       /*name*/
-      ctx[1]
+      ctx[0]
     );
     attr(div, "slot", "target");
-    attr(div, "style", div_style_value = `
-          ${cssVar(
+    attr(div, "style", div_style_value = cssVar(
       "width",
       /*width*/
       ctx[7]
-    )}
-        `);
+    ));
     attr(div, "class", "dropdown-input-group");
     toggle_class(
       div,
       "dropdown-input-group--disabled",
       /*_disabled*/
-      ctx[28]
+      ctx[26]
     );
     toggle_class(
       div,
       "error",
       /*_error*/
-      ctx[30]
+      ctx[27]
     );
-    attr(ul2, "id", ul_id_value = `menu-${/*id*/
-    ctx[14] || /*name*/
-    ctx[1]}`);
+    attr(ul2, "id", ul_id_value = `menu-${/*name*/
+    ctx[0]}`);
     attr(ul2, "role", "listbox");
     attr(ul2, "tabindex", "-1");
     attr(ul2, "data-testid", "dropdown-menu");
     attr(ul2, "aria-label", ul_aria_label_value = /*arialabel*/
-    ctx[2] || /*name*/
-    ctx[1]);
+    ctx[1] || /*name*/
+    ctx[0]);
     attr(
       ul2,
       "aria-labelledby",
       /*arialabelledby*/
-      ctx[3]
+      ctx[2]
     );
     attr(ul2, "style", ul_style_value = `
+          width: ${/*_width*/
+    ctx[19]};
           outline: none;
           overflow-y: auto;
           max-height: ${/*maxheight*/
@@ -17735,25 +17743,21 @@ function create_else_block$a(ctx) {
       /*relative*/
       ctx[9]
     );
+    set_custom_element_data(goa_popover, "data-testid", "option-list");
+    set_custom_element_data(goa_popover, "maxwidth", "1000px");
     set_custom_element_data(
       goa_popover,
       "open",
       /*_isMenuVisible*/
-      ctx[23]
+      ctx[18]
     );
     set_custom_element_data(goa_popover, "padded", "false");
+    set_custom_element_data(goa_popover, "tabindex", "-1");
     set_custom_element_data(
       goa_popover,
       "width",
       /*_width*/
-      ctx[24]
-    );
-    set_custom_element_data(goa_popover, "tabindex", "-1");
-    set_custom_element_data(
-      goa_popover,
-      "maxwidth",
-      /*_inputWidth*/
-      ctx[25]
+      ctx[19]
     );
   }, m(target, anchor) {
     insert(target, slot, anchor);
@@ -17764,43 +17768,41 @@ function create_else_block$a(ctx) {
       if_block0.m(div, null);
     append(div, t1);
     append(div, input);
-    ctx[43](input);
-    set_input_value(
-      input,
-      /*_inputValue*/
-      ctx[16]
-    );
+    ctx[42](input);
     append(div, t2);
-    if (if_block1)
-      if_block1.m(div, null);
-    append(div, t3);
-    if (if_block2)
-      if_block2.m(div, null);
-    append(goa_popover, t4);
+    if_block1.m(div, null);
+    append(goa_popover, t3);
     append(goa_popover, ul2);
-    if_block3.m(ul2, null);
-    ctx[47](ul2);
+    for (let i = 0; i < each_blocks.length; i += 1) {
+      if (each_blocks[i]) {
+        each_blocks[i].m(ul2, null);
+      }
+    }
+    if (each_1_else) {
+      each_1_else.m(ul2, null);
+    }
+    ctx[44](ul2);
     if (!mounted) {
       dispose = [listen(
         input,
-        "input",
-        /*input_input_handler*/
-        ctx[44]
-      ), listen(
-        input,
         "keydown",
         /*onInputKeyDown*/
-        ctx[34]
+        ctx[32]
+      ), listen(
+        input,
+        "keyup",
+        /*onInputKeyUp*/
+        ctx[31]
       ), listen(
         goa_popover,
         "_open",
         /*showMenu*/
-        ctx[31]
+        ctx[28]
       ), listen(
         goa_popover,
         "_close",
-        /*closeMenu*/
-        ctx[32]
+        /*hideMenu*/
+        ctx[29]
       )];
       mounted = true;
     }
@@ -17812,7 +17814,7 @@ function create_else_block$a(ctx) {
       if (if_block0) {
         if_block0.p(ctx2, dirty);
       } else {
-        if_block0 = create_if_block_4$3(ctx2);
+        if_block0 = create_if_block_2$a(ctx2);
         if_block0.c();
         if_block0.m(div, t1);
       }
@@ -17821,82 +17823,85 @@ function create_else_block$a(ctx) {
       if_block0 = null;
     }
     if (dirty[0] & /*_disabled, _filterable*/
-    269484032 && input_style_value !== (input_style_value = `cursor: ${!/*_disabled*/
-    ctx2[28] ? (
+    83886080 && input_style_value !== (input_style_value = `
+            cursor: ${!/*_disabled*/
+    ctx2[26] ? (
       /*_filterable*/
-      ctx2[20] ? "auto" : "pointer"
-    ) : "default"}`)) {
+      ctx2[24] ? "auto" : "pointer"
+    ) : "default"};
+          `)) {
       attr(input, "style", input_style_value);
     }
-    if (dirty[0] & /*id, name*/
-    16386 && input_aria_controls_value !== (input_aria_controls_value = `menu-${/*id*/
-    ctx2[14] || /*name*/
-    ctx2[1]}`)) {
+    if (dirty[0] & /*name*/
+    1 && input_aria_controls_value !== (input_aria_controls_value = `menu-${/*name*/
+    ctx2[0]}`)) {
       attr(input, "aria-controls", input_aria_controls_value);
     }
     if (dirty[0] & /*_isMenuVisible*/
-    8388608) {
+    262144) {
       attr(
         input,
         "aria-expanded",
         /*_isMenuVisible*/
-        ctx2[23]
+        ctx2[18]
       );
     }
     if (dirty[0] & /*arialabel, name*/
-    6 && input_aria_label_value !== (input_aria_label_value = /*arialabel*/
-    ctx2[2] || /*name*/
-    ctx2[1])) {
+    3 && input_aria_label_value !== (input_aria_label_value = /*arialabel*/
+    ctx2[1] || /*name*/
+    ctx2[0])) {
       attr(input, "aria-label", input_aria_label_value);
     }
     if (dirty[0] & /*arialabelledby*/
-    8) {
+    4) {
       attr(
         input,
         "aria-labelledby",
         /*arialabelledby*/
-        ctx2[3]
+        ctx2[2]
       );
     }
-    if (dirty[0] & /*id, name*/
-    16386 && input_id_value !== (input_id_value = `${/*id*/
-    ctx2[14] || /*name*/
-    ctx2[1]}`)) {
-      attr(input, "id", input_id_value);
+    if (dirty[0] & /*name*/
+    1) {
+      attr(
+        input,
+        "id",
+        /*name*/
+        ctx2[0]
+      );
     }
     if (dirty[0] & /*_activeDescendantId*/
-    536870912) {
+    33554432) {
       attr(
         input,
         "aria-activedescendant",
         /*_activeDescendantId*/
-        ctx2[29]
+        ctx2[25]
       );
     }
     if (dirty[0] & /*_disabled*/
-    268435456) {
+    67108864) {
       attr(
         input,
         "aria-disabled",
         /*_disabled*/
-        ctx2[28]
+        ctx2[26]
       );
     }
-    if (dirty[0] & /*_isMenuVisible, id, name*/
-    8404994 && input_aria_owns_value !== (input_aria_owns_value = /*_isMenuVisible*/
-    ctx2[23] ? `menu-${/*id*/
-    ctx2[14] || /*name*/
-    ctx2[1]}` : void 0)) {
+    if (dirty[0] & /*_isMenuVisible, name*/
+    262145 && input_aria_owns_value !== (input_aria_owns_value = /*_isMenuVisible*/
+    ctx2[18] ? `menu-${/*name*/
+    ctx2[0]}` : void 0)) {
       attr(input, "aria-owns", input_aria_owns_value);
     }
     if (dirty[0] & /*_disabled*/
-    268435456) {
+    67108864) {
       input.disabled = /*_disabled*/
-      ctx2[28];
+      ctx2[26];
     }
     if (dirty[0] & /*_filterable*/
-    1048576 && input_readonly_value !== (input_readonly_value = !/*_filterable*/
-    ctx2[20])) {
+    16777216 && input_readonly_value !== (input_readonly_value = !/*_filterable*/
+    ctx2[24])) {
       input.readOnly = input_readonly_value;
     }
     if (dirty[0] & /*placeholder*/
@@ -17909,117 +17914,90 @@ function create_else_block$a(ctx) {
       );
     }
     if (dirty[0] & /*name*/
-    2) {
+    1) {
       attr(
         input,
         "name",
         /*name*/
-        ctx2[1]
+        ctx2[0]
       );
     }
-    if (dirty[0] & /*_inputValue*/
-    65536 && input.value !== /*_inputValue*/
-    ctx2[16]) {
-      set_input_value(
-        input,
-        /*_inputValue*/
-        ctx2[16]
-      );
-    }
-    if (
-      /*_inputValue*/
-      ctx2[16] && /*_filterable*/
-      ctx2[20]
-    ) {
-      if (if_block1) {
-        if_block1.p(ctx2, dirty);
-      } else {
-        if_block1 = create_if_block_3$a(ctx2);
-        if_block1.c();
-        if_block1.m(div, t3);
-      }
-    } else if (if_block1) {
+    if (current_block_type === (current_block_type = select_block_type_1(ctx2)) && if_block1) {
+      if_block1.p(ctx2, dirty);
+    } else {
       if_block1.d(1);
-      if_block1 = null;
-    }
-    if (
-      /*_filterable*/
-      ctx2[20] && /*_inputValue*/
-      ctx2[16].length === 0 || !/*_filterable*/
-      ctx2[20]
-    ) {
-      if (if_block2) {
-        if_block2.p(ctx2, dirty);
-      } else {
-        if_block2 = create_if_block_2$a(ctx2);
-        if_block2.c();
-        if_block2.m(div, null);
+      if_block1 = current_block_type(ctx2);
+      if (if_block1) {
+        if_block1.c();
+        if_block1.m(div, null);
       }
-    } else if (if_block2) {
-      if_block2.d(1);
-      if_block2 = null;
     }
     if (dirty[0] & /*width*/
-    128 && div_style_value !== (div_style_value = `
-          ${cssVar(
+    128 && div_style_value !== (div_style_value = cssVar(
       "width",
       /*width*/
       ctx2[7]
-    )}
-        `)) {
+    ))) {
       attr(div, "style", div_style_value);
     }
     if (dirty[0] & /*_disabled*/
-    268435456) {
+    67108864) {
       toggle_class(
         div,
         "dropdown-input-group--disabled",
         /*_disabled*/
-        ctx2[28]
+        ctx2[26]
       );
     }
     if (dirty[0] & /*_error*/
-    1073741824) {
+    134217728) {
       toggle_class(
         div,
         "error",
         /*_error*/
-        ctx2[30]
+        ctx2[27]
       );
     }
-    if (current_block_type === (current_block_type = select_block_type_1(ctx2)) && if_block3) {
-      if_block3.p(ctx2, dirty);
-    } else {
-      if_block3.d(1);
-      if_block3 = current_block_type(ctx2);
-      if (if_block3) {
-        if_block3.c();
-        if_block3.m(ul2, null);
+    if (dirty[0] & /*_filteredOptions, _inputEl, _highlightedIndex, onSelect*/
+    1082179584) {
+      each_value_1 = /*_filteredOptions*/
+      ctx2[15];
+      each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx2, each_value_1, each_1_lookup, ul2, destroy_block, create_each_block_1$1, null, get_each_context_1$1);
+      if (!each_value_1.length && each_1_else) {
+        each_1_else.p(ctx2, dirty);
+      } else if (!each_value_1.length) {
+        each_1_else = create_else_block_1();
+        each_1_else.c();
+        each_1_else.m(ul2, null);
+      } else if (each_1_else) {
+        each_1_else.d(1);
+        each_1_else = null;
       }
     }
-    if (dirty[0] & /*id, name*/
-    16386 && ul_id_value !== (ul_id_value = `menu-${/*id*/
-    ctx2[14] || /*name*/
-    ctx2[1]}`)) {
+    if (dirty[0] & /*name*/
+    1 && ul_id_value !== (ul_id_value = `menu-${/*name*/
+    ctx2[0]}`)) {
       attr(ul2, "id", ul_id_value);
     }
     if (dirty[0] & /*arialabel, name*/
-    6 && ul_aria_label_value !== (ul_aria_label_value = /*arialabel*/
-    ctx2[2] || /*name*/
-    ctx2[1])) {
+    3 && ul_aria_label_value !== (ul_aria_label_value = /*arialabel*/
+    ctx2[1] || /*name*/
+    ctx2[0])) {
       attr(ul2, "aria-label", ul_aria_label_value);
     }
     if (dirty[0] & /*arialabelledby*/
-    8) {
+    4) {
       attr(
         ul2,
         "aria-labelledby",
         /*arialabelledby*/
-        ctx2[3]
+        ctx2[2]
       );
     }
-    if (dirty[0] & /*maxheight*/
-    32 && ul_style_value !== (ul_style_value = `
+    if (dirty[0] & /*_width, maxheight*/
+    524320 && ul_style_value !== (ul_style_value = `
+          width: ${/*_width*/
+    ctx2[19]};
           outline: none;
           overflow-y: auto;
           max-height: ${/*maxheight*/
@@ -18046,30 +18024,21 @@ function create_else_block$a(ctx) {
       );
     }
     if (dirty[0] & /*_isMenuVisible*/
-    8388608) {
+    262144) {
       set_custom_element_data(
         goa_popover,
         "open",
         /*_isMenuVisible*/
-        ctx2[23]
+        ctx2[18]
       );
     }
     if (dirty[0] & /*_width*/
-    16777216) {
+    524288) {
       set_custom_element_data(
         goa_popover,
         "width",
         /*_width*/
-        ctx2[24]
-      );
-    }
-    if (dirty[0] & /*_inputWidth*/
-    33554432) {
-      set_custom_element_data(
-        goa_popover,
-        "maxwidth",
-        /*_inputWidth*/
-        ctx2[25]
+        ctx2[19]
       );
     }
   }, d(detaching) {
@@ -18081,13 +18050,14 @@ function create_else_block$a(ctx) {
       detach(goa_popover);
     if (if_block0)
       if_block0.d();
-    ctx[43](null);
-    if (if_block1)
-      if_block1.d();
-    if (if_block2)
-      if_block2.d();
-    if_block3.d();
-    ctx[47](null);
+    ctx[42](null);
+    if_block1.d();
+    for (let i = 0; i < each_blocks.length; i += 1) {
+      each_blocks[i].d();
+    }
+    if (each_1_else)
+      each_1_else.d();
+    ctx[44](null);
     mounted = false;
     run_all(dispose);
   } };
@@ -18096,12 +18066,11 @@ function create_if_block$o(ctx) {
   let select;
   let slot;
   let select_aria_label_value;
-  let select_id_value;
   let mounted;
   let dispose;
   let each_value = (
     /*_options*/
-    ctx[15]
+    ctx[17]
   );
   let each_blocks = [];
   for (let i = 0; i < each_value.length; i += 1) {
@@ -18113,31 +18082,34 @@ function create_if_block$o(ctx) {
     for (let i = 0; i < each_blocks.length; i += 1) {
       each_blocks[i].c();
     }
-    select.disabled = /*_disabled*/
-    ctx[28];
-    attr(
-      select,
-      "aria-labelledby",
-      /*arialabelledby*/
-      ctx[3]
-    );
-    attr(select, "aria-label", select_aria_label_value = /*arialabel*/
-    ctx[2] || /*name*/
-    ctx[1]);
-    attr(select, "id", select_id_value = /*id*/
-    ctx[14] || /*name*/
-    ctx[1]);
     attr(
       select,
       "name",
       /*name*/
-      ctx[1]
+      ctx[0]
+    );
+    attr(select, "aria-label", select_aria_label_value = /*arialabel*/
+    ctx[1] || /*name*/
+    ctx[0]);
+    attr(
+      select,
+      "aria-labelledby",
+      /*arialabelledby*/
+      ctx[2]
+    );
+    select.disabled = /*_disabled*/
+    ctx[26];
+    attr(
+      select,
+      "id",
+      /*name*/
+      ctx[0]
     );
     toggle_class(
       select,
       "error",
       /*_error*/
-      ctx[30]
+      ctx[27]
     );
   }, m(target, anchor) {
     insert(target, select, anchor);
@@ -18147,7 +18119,7 @@ function create_if_block$o(ctx) {
         each_blocks[i].m(select, null);
       }
     }
-    ctx[42](select);
+    ctx[41](select);
     if (!mounted) {
       dispose = listen(
         select,
@@ -18159,9 +18131,9 @@ function create_if_block$o(ctx) {
     }
   }, p(ctx2, dirty) {
     if (dirty[0] & /*value, _options*/
-    32769) {
+    131080) {
       each_value = /*_options*/
-      ctx2[15];
+      ctx2[17];
       let i;
       for (i = 0; i < each_value.length; i += 1) {
         const child_ctx = get_each_context$8(ctx2, each_value, i);
@@ -18178,60 +18150,63 @@ function create_if_block$o(ctx) {
       }
       each_blocks.length = each_value.length;
     }
-    if (dirty[0] & /*_disabled*/
-    268435456) {
-      select.disabled = /*_disabled*/
-      ctx2[28];
-    }
-    if (dirty[0] & /*arialabelledby*/
-    8) {
-      attr(
-        select,
-        "aria-labelledby",
-        /*arialabelledby*/
-        ctx2[3]
-      );
-    }
-    if (dirty[0] & /*arialabel, name*/
-    6 && select_aria_label_value !== (select_aria_label_value = /*arialabel*/
-    ctx2[2] || /*name*/
-    ctx2[1])) {
-      attr(select, "aria-label", select_aria_label_value);
-    }
-    if (dirty[0] & /*id, name*/
-    16386 && select_id_value !== (select_id_value = /*id*/
-    ctx2[14] || /*name*/
-    ctx2[1])) {
-      attr(select, "id", select_id_value);
-    }
     if (dirty[0] & /*name*/
-    2) {
+    1) {
       attr(
         select,
         "name",
         /*name*/
-        ctx2[1]
+        ctx2[0]
+      );
+    }
+    if (dirty[0] & /*arialabel, name*/
+    3 && select_aria_label_value !== (select_aria_label_value = /*arialabel*/
+    ctx2[1] || /*name*/
+    ctx2[0])) {
+      attr(select, "aria-label", select_aria_label_value);
+    }
+    if (dirty[0] & /*arialabelledby*/
+    4) {
+      attr(
+        select,
+        "aria-labelledby",
+        /*arialabelledby*/
+        ctx2[2]
+      );
+    }
+    if (dirty[0] & /*_disabled*/
+    67108864) {
+      select.disabled = /*_disabled*/
+      ctx2[26];
+    }
+    if (dirty[0] & /*name*/
+    1) {
+      attr(
+        select,
+        "id",
+        /*name*/
+        ctx2[0]
       );
     }
     if (dirty[0] & /*_error*/
-    1073741824) {
+    134217728) {
       toggle_class(
         select,
         "error",
         /*_error*/
-        ctx2[30]
+        ctx2[27]
       );
     }
   }, d(detaching) {
     if (detaching)
       detach(select);
     destroy_each(each_blocks, detaching);
-    ctx[42](null);
+    ctx[41](null);
     mounted = false;
     dispose();
   } };
 }
-function create_if_block_4$3(ctx) {
+function create_if_block_2$a(ctx) {
   let goa_icon;
   return { c() {
     goa_icon = element("goa-icon");
@@ -18260,74 +18235,8 @@ function create_if_block_4$3(ctx) {
       detach(goa_icon);
   } };
 }
-function create_if_block_3$a(ctx) {
+function create_else_block_2(ctx) {
   let goa_icon;
-  let goa_icon_tabindex_value;
-  let goa_icon_arialabel_value;
-  let mounted;
-  let dispose;
-  return { c() {
-    goa_icon = element("goa-icon");
-    set_custom_element_data(goa_icon, "tabindex", goa_icon_tabindex_value = /*_disabled*/
-    ctx[28] ? -1 : 0);
-    set_custom_element_data(goa_icon, "role", "button");
-    set_custom_element_data(goa_icon, "arialabel", goa_icon_arialabel_value = "clear " + /*arialabel*/
-    (ctx[2] || /*name*/
-    ctx[1]));
-    set_custom_element_data(goa_icon, "class", "dropdown-icon--clear");
-    set_custom_element_data(goa_icon, "size", "medium");
-    set_custom_element_data(goa_icon, "type", "close");
-    toggle_class(
-      goa_icon,
-      "disabled",
-      /*_disabled*/
-      ctx[28]
-    );
-  }, m(target, anchor) {
-    insert(target, goa_icon, anchor);
-    if (!mounted) {
-      dispose = [listen(goa_icon, "click", stop_propagation(
-        /*onClear*/
-        ctx[37]
-      )), listen(
-        goa_icon,
-        "keydown",
-        /*keydown_handler*/
-        ctx[45]
-      )];
-      mounted = true;
-    }
-  }, p(ctx2, dirty) {
-    if (dirty[0] & /*_disabled*/
-    268435456 && goa_icon_tabindex_value !== (goa_icon_tabindex_value = /*_disabled*/
-    ctx2[28] ? -1 : 0)) {
-      set_custom_element_data(goa_icon, "tabindex", goa_icon_tabindex_value);
-    }
-    if (dirty[0] & /*arialabel, name*/
-    6 && goa_icon_arialabel_value !== (goa_icon_arialabel_value = "clear " + /*arialabel*/
-    (ctx2[2] || /*name*/
-    ctx2[1]))) {
-      set_custom_element_data(goa_icon, "arialabel", goa_icon_arialabel_value);
-    }
-    if (dirty[0] & /*_disabled*/
-    268435456) {
-      toggle_class(
-        goa_icon,
-        "disabled",
-        /*_disabled*/
-        ctx2[28]
-      );
-    }
-  }, d(detaching) {
-    if (detaching)
-      detach(goa_icon);
-    mounted = false;
-    run_all(dispose);
-  } };
-}
-function create_if_block_2$a(ctx) {
-  let goa_icon;
-  let goa_icon_id_value;
   let goa_icon_arialabel_value;
   let goa_icon_ariacontrols_value;
   let goa_icon_ariaexpanded_value;
@@ -18337,59 +18246,68 @@ function create_if_block_2$a(ctx) {
   return { c() {
     goa_icon = element("goa-icon");
     set_custom_element_data(goa_icon, "role", "button");
-    set_custom_element_data(goa_icon, "id", goa_icon_id_value = `${/*id*/
-    ctx[14] || /*name*/
-    ctx[1]}`);
+    set_custom_element_data(goa_icon, "tabindex", "-1");
+    set_custom_element_data(
+      goa_icon,
+      "id",
+      /*name*/
+      ctx[0]
+    );
     set_custom_element_data(goa_icon, "arialabel", goa_icon_arialabel_value = /*arialabel*/
-    ctx[2] || /*name*/
-    ctx[1]);
-    set_custom_element_data(goa_icon, "ariacontrols", goa_icon_ariacontrols_value = `menu-${/*id*/
-    ctx[14] || /*name*/
-    ctx[1]}`);
-    set_custom_element_data(goa_icon, "ariaexpanded", goa_icon_ariaexpanded_value = /*_isMenuVisible*/
-    ctx[23] ? "true" : "false");
+    ctx[1] || /*name*/
+    ctx[0]);
+    set_custom_element_data(goa_icon, "ariacontrols", goa_icon_ariacontrols_value = `menu-${/*name*/
+    ctx[0]}`);
+    set_custom_element_data(goa_icon, "ariaexpanded", goa_icon_ariaexpanded_value = fromBoolean(
+      /*_isMenuVisible*/
+      ctx[18]
+    ));
     set_custom_element_data(goa_icon, "class", "dropdown-icon--arrow");
     set_custom_element_data(goa_icon, "size", "medium");
     set_custom_element_data(goa_icon, "type", goa_icon_type_value = /*_isMenuVisible*/
-    ctx[23] ? "chevron-up" : "chevron-down");
+    ctx[18] ? "chevron-up" : "chevron-down");
   }, m(target, anchor) {
     insert(target, goa_icon, anchor);
     if (!mounted) {
       dispose = listen(
         goa_icon,
         "click",
-        /*onClick*/
+        /*onChevronClick*/
         ctx[36]
       );
       mounted = true;
     }
   }, p(ctx2, dirty) {
-    if (dirty[0] & /*id, name*/
-    16386 && goa_icon_id_value !== (goa_icon_id_value = `${/*id*/
-    ctx2[14] || /*name*/
-    ctx2[1]}`)) {
-      set_custom_element_data(goa_icon, "id", goa_icon_id_value);
+    if (dirty[0] & /*name*/
+    1) {
+      set_custom_element_data(
+        goa_icon,
+        "id",
+        /*name*/
+        ctx2[0]
+      );
     }
     if (dirty[0] & /*arialabel, name*/
-    6 && goa_icon_arialabel_value !== (goa_icon_arialabel_value = /*arialabel*/
-    ctx2[2] || /*name*/
-    ctx2[1])) {
+    3 && goa_icon_arialabel_value !== (goa_icon_arialabel_value = /*arialabel*/
+    ctx2[1] || /*name*/
+    ctx2[0])) {
       set_custom_element_data(goa_icon, "arialabel", goa_icon_arialabel_value);
     }
-    if (dirty[0] & /*id, name*/
-    16386 && goa_icon_ariacontrols_value !== (goa_icon_ariacontrols_value = `menu-${/*id*/
-    ctx2[14] || /*name*/
-    ctx2[1]}`)) {
+    if (dirty[0] & /*name*/
+    1 && goa_icon_ariacontrols_value !== (goa_icon_ariacontrols_value = `menu-${/*name*/
+    ctx2[0]}`)) {
       set_custom_element_data(goa_icon, "ariacontrols", goa_icon_ariacontrols_value);
     }
     if (dirty[0] & /*_isMenuVisible*/
-    8388608 && goa_icon_ariaexpanded_value !== (goa_icon_ariaexpanded_value = /*_isMenuVisible*/
-    ctx2[23] ? "true" : "false")) {
+    262144 && goa_icon_ariaexpanded_value !== (goa_icon_ariaexpanded_value = fromBoolean(
+      /*_isMenuVisible*/
+      ctx2[18]
+    ))) {
       set_custom_element_data(goa_icon, "ariaexpanded", goa_icon_ariaexpanded_value);
     }
     if (dirty[0] & /*_isMenuVisible*/
-    8388608 && goa_icon_type_value !== (goa_icon_type_value = /*_isMenuVisible*/
-    ctx2[23] ? "chevron-up" : "chevron-down")) {
+    262144 && goa_icon_type_value !== (goa_icon_type_value = /*_isMenuVisible*/
+    ctx2[18] ? "chevron-up" : "chevron-down")) {
       set_custom_element_data(goa_icon, "type", goa_icon_type_value);
     }
   }, d(detaching) {
@@ -18399,11 +18317,111 @@ function create_if_block_2$a(ctx) {
     dispose();
   } };
 }
+function create_if_block_1$c(ctx) {
+  let goa_icon;
+  let goa_icon_tabindex_value;
+  let goa_icon_arialabel_value;
+  let goa_icon_ariacontrols_value;
+  let goa_icon_ariaexpanded_value;
+  let mounted;
+  let dispose;
+  return { c() {
+    goa_icon = element("goa-icon");
+    set_custom_element_data(
+      goa_icon,
+      "id",
+      /*name*/
+      ctx[0]
+    );
+    set_custom_element_data(goa_icon, "tabindex", goa_icon_tabindex_value = /*_disabled*/
+    ctx[26] ? -1 : 0);
+    set_custom_element_data(goa_icon, "role", "button");
+    set_custom_element_data(goa_icon, "arialabel", goa_icon_arialabel_value = `clear ${/*arialabel*/
+    ctx[1] || /*name*/
+    ctx[0]}`);
+    set_custom_element_data(goa_icon, "ariacontrols", goa_icon_ariacontrols_value = `menu-${/*name*/
+    ctx[0]}`);
+    set_custom_element_data(goa_icon, "ariaexpanded", goa_icon_ariaexpanded_value = fromBoolean(
+      /*_isMenuVisible*/
+      ctx[18]
+    ));
+    set_custom_element_data(goa_icon, "class", "dropdown-icon--clear");
+    set_custom_element_data(goa_icon, "size", "medium");
+    set_custom_element_data(goa_icon, "type", "close");
+    toggle_class(
+      goa_icon,
+      "disabled",
+      /*_disabled*/
+      ctx[26]
+    );
+  }, m(target, anchor) {
+    insert(target, goa_icon, anchor);
+    if (!mounted) {
+      dispose = [listen(goa_icon, "click", stop_propagation(
+        /*onClearIconClick*/
+        ctx[34]
+      )), listen(
+        goa_icon,
+        "keydown",
+        /*onClearIconKeyDown*/
+        ctx[33]
+      )];
+      mounted = true;
+    }
+  }, p(ctx2, dirty) {
+    if (dirty[0] & /*name*/
+    1) {
+      set_custom_element_data(
+        goa_icon,
+        "id",
+        /*name*/
+        ctx2[0]
+      );
+    }
+    if (dirty[0] & /*_disabled*/
+    67108864 && goa_icon_tabindex_value !== (goa_icon_tabindex_value = /*_disabled*/
+    ctx2[26] ? -1 : 0)) {
+      set_custom_element_data(goa_icon, "tabindex", goa_icon_tabindex_value);
+    }
+    if (dirty[0] & /*arialabel, name*/
+    3 && goa_icon_arialabel_value !== (goa_icon_arialabel_value = `clear ${/*arialabel*/
+    ctx2[1] || /*name*/
+    ctx2[0]}`)) {
+      set_custom_element_data(goa_icon, "arialabel", goa_icon_arialabel_value);
+    }
+    if (dirty[0] & /*name*/
+    1 && goa_icon_ariacontrols_value !== (goa_icon_ariacontrols_value = `menu-${/*name*/
+    ctx2[0]}`)) {
+      set_custom_element_data(goa_icon, "ariacontrols", goa_icon_ariacontrols_value);
+    }
+    if (dirty[0] & /*_isMenuVisible*/
+    262144 && goa_icon_ariaexpanded_value !== (goa_icon_ariaexpanded_value = fromBoolean(
+      /*_isMenuVisible*/
+      ctx2[18]
+    ))) {
+      set_custom_element_data(goa_icon, "ariaexpanded", goa_icon_ariaexpanded_value);
+    }
+    if (dirty[0] & /*_disabled*/
+    67108864) {
+      toggle_class(
+        goa_icon,
+        "disabled",
+        /*_disabled*/
+        ctx2[26]
+      );
+    }
+  }, d(detaching) {
+    if (detaching)
+      detach(goa_icon);
+    mounted = false;
+    run_all(dispose);
+  } };
+}
 function create_else_block_1(ctx) {
   let li2;
   return { c() {
     li2 = element("li");
-    li2.textContent = "No matches found";
+    li2.textContent = "No matches found\n          ";
     attr(li2, "class", "dropdown-item");
     attr(li2, "data-testid", "dropdown-item-not-found");
   }, m(target, anchor) {
@@ -18413,73 +18431,28 @@ function create_else_block_1(ctx) {
       detach(li2);
   } };
 }
-function create_if_block_1$c(ctx) {
-  let each_blocks = [];
-  let each_1_lookup = /* @__PURE__ */ new Map();
-  let each_1_anchor;
-  let each_value_1 = (
-    /*_filteredOptions*/
-    ctx[21]
-  );
-  const get_key = (ctx2) => (
-    /*index*/
-    ctx2[73]
-  );
-  for (let i = 0; i < each_value_1.length; i += 1) {
-    let child_ctx = get_each_context_1$1(ctx, each_value_1, i);
-    let key = get_key(child_ctx);
-    each_1_lookup.set(key, each_blocks[i] = create_each_block_1$1(key, child_ctx));
-  }
-  return { c() {
-    for (let i = 0; i < each_blocks.length; i += 1) {
-      each_blocks[i].c();
-    }
-    each_1_anchor = empty();
-  }, m(target, anchor) {
-    for (let i = 0; i < each_blocks.length; i += 1) {
-      if (each_blocks[i]) {
-        each_blocks[i].m(target, anchor);
-      }
-    }
-    insert(target, each_1_anchor, anchor);
-  }, p(ctx2, dirty) {
-    if (dirty[0] & /*_filteredOptions, value, _highlightedIndex*/
-    2228225 | dirty[1] & /*onSelect*/
-    4) {
-      each_value_1 = /*_filteredOptions*/
-      ctx2[21];
-      each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx2, each_value_1, each_1_lookup, each_1_anchor.parentNode, destroy_block, create_each_block_1$1, each_1_anchor, get_each_context_1$1);
-    }
-  }, d(detaching) {
-    for (let i = 0; i < each_blocks.length; i += 1) {
-      each_blocks[i].d(detaching);
-    }
-    if (detaching)
-      detach(each_1_anchor);
-  } };
-}
 function create_each_block_1$1(key_1, ctx) {
   let li2;
   let t0_value = (
     /*option*/
-    (ctx[69].label || /*option*/
-    ctx[69].value) + ""
+    (ctx[61].label || /*option*/
+    ctx[61].value) + ""
   );
   let t0;
   let t1;
   let li_id_value;
   let li_aria_selected_value;
-  let li_data_testid_value;
   let li_data_index_value;
+  let li_data_testid_value;
   let li_data_value_value;
   let mounted;
   let dispose;
   function click_handler() {
     return (
       /*click_handler*/
-      ctx[46](
+      ctx[43](
         /*option*/
-        ctx[69]
+        ctx[61]
       )
     );
   }
@@ -18488,25 +18461,34 @@ function create_each_block_1$1(key_1, ctx) {
     t0 = text(t0_value);
     t1 = space();
     attr(li2, "id", li_id_value = /*option*/
-    ctx[69].value);
+    ctx[61].value);
+    attr(li2, "aria-selected", li_aria_selected_value = /*_inputEl*/
+    ctx[23].value === /*option*/
+    (ctx[61].label || /*option*/
+    ctx[61].value));
+    attr(li2, "class", "dropdown-item");
+    attr(li2, "data-index", li_data_index_value = /*index*/
+    ctx[65]);
+    attr(li2, "data-testid", li_data_testid_value = `dropdown-item-${/*option*/
+    ctx[61].value}`);
+    attr(li2, "data-value", li_data_value_value = /*option*/
+    ctx[61].value);
     attr(li2, "role", "option");
     set_style(li2, "display", "block");
-    attr(li2, "aria-selected", li_aria_selected_value = /*value*/
-    ctx[0] === /*option*/
-    ctx[69].value);
-    attr(li2, "class", "dropdown-item");
-    attr(li2, "data-testid", li_data_testid_value = `dropdown-item-${/*option*/
-    ctx[69].value}`);
-    attr(li2, "data-index", li_data_index_value = /*index*/
-    ctx[73]);
-    attr(li2, "data-value", li_data_value_value = /*option*/
-    ctx[69].value);
     toggle_class(
       li2,
       "dropdown-item--highlighted",
       /*index*/
-      ctx[73] === /*_highlightedIndex*/
-      ctx[17]
+      ctx[65] === /*_highlightedIndex*/
+      ctx[14]
+    );
+    toggle_class(
+      li2,
+      "selected",
+      /*_inputEl*/
+      ctx[23].value === /*option*/
+      (ctx[61].label || /*option*/
+      ctx[61].value)
     );
     this.first = li2;
   }, m(target, anchor) {
@@ -18520,44 +18502,56 @@ function create_each_block_1$1(key_1, ctx) {
   }, p(new_ctx, dirty) {
     ctx = new_ctx;
     if (dirty[0] & /*_filteredOptions*/
-    2097152 && t0_value !== (t0_value = /*option*/
-    (ctx[69].label || /*option*/
-    ctx[69].value) + ""))
+    32768 && t0_value !== (t0_value = /*option*/
+    (ctx[61].label || /*option*/
+    ctx[61].value) + ""))
       set_data(t0, t0_value);
     if (dirty[0] & /*_filteredOptions*/
-    2097152 && li_id_value !== (li_id_value = /*option*/
-    ctx[69].value)) {
+    32768 && li_id_value !== (li_id_value = /*option*/
+    ctx[61].value)) {
       attr(li2, "id", li_id_value);
     }
-    if (dirty[0] & /*value, _filteredOptions*/
-    2097153 && li_aria_selected_value !== (li_aria_selected_value = /*value*/
-    ctx[0] === /*option*/
-    ctx[69].value)) {
+    if (dirty[0] & /*_inputEl, _filteredOptions*/
+    8421376 && li_aria_selected_value !== (li_aria_selected_value = /*_inputEl*/
+    ctx[23].value === /*option*/
+    (ctx[61].label || /*option*/
+    ctx[61].value))) {
       attr(li2, "aria-selected", li_aria_selected_value);
     }
     if (dirty[0] & /*_filteredOptions*/
-    2097152 && li_data_testid_value !== (li_data_testid_value = `dropdown-item-${/*option*/
-    ctx[69].value}`)) {
-      attr(li2, "data-testid", li_data_testid_value);
-    }
-    if (dirty[0] & /*_filteredOptions*/
-    2097152 && li_data_index_value !== (li_data_index_value = /*index*/
-    ctx[73])) {
+    32768 && li_data_index_value !== (li_data_index_value = /*index*/
+    ctx[65])) {
       attr(li2, "data-index", li_data_index_value);
     }
     if (dirty[0] & /*_filteredOptions*/
-    2097152 && li_data_value_value !== (li_data_value_value = /*option*/
-    ctx[69].value)) {
+    32768 && li_data_testid_value !== (li_data_testid_value = `dropdown-item-${/*option*/
+    ctx[61].value}`)) {
+      attr(li2, "data-testid", li_data_testid_value);
+    }
+    if (dirty[0] & /*_filteredOptions*/
+    32768 && li_data_value_value !== (li_data_value_value = /*option*/
+    ctx[61].value)) {
       attr(li2, "data-value", li_data_value_value);
     }
     if (dirty[0] & /*_filteredOptions, _highlightedIndex*/
-    2228224) {
+    49152) {
       toggle_class(
         li2,
         "dropdown-item--highlighted",
         /*index*/
-        ctx[73] === /*_highlightedIndex*/
-        ctx[17]
+        ctx[65] === /*_highlightedIndex*/
+        ctx[14]
+      );
+    }
+    if (dirty[0] & /*_inputEl, _filteredOptions*/
+    8421376) {
+      toggle_class(
+        li2,
+        "selected",
+        /*_inputEl*/
+        ctx[23].value === /*option*/
+        (ctx[61].label || /*option*/
+        ctx[61].value)
       );
     }
   }, d(detaching) {
@@ -18571,7 +18565,7 @@ function create_each_block$8(ctx) {
   let option;
   let t0_value = (
     /*option*/
-    ctx[69].label + ""
+    ctx[61].label + ""
   );
   let t0;
   let t1;
@@ -18582,10 +18576,10 @@ function create_each_block$8(ctx) {
     t0 = text(t0_value);
     t1 = space();
     option.selected = option_selected_value = /*value*/
-    ctx[0] === /*option*/
-    ctx[69].value;
+    ctx[3] === /*option*/
+    ctx[61].value;
     option.__value = option_value_value = /*option*/
-    ctx[69].value;
+    ctx[61].value;
     option.value = option.__value;
   }, m(target, anchor) {
     insert(target, option, anchor);
@@ -18593,18 +18587,18 @@ function create_each_block$8(ctx) {
     append(option, t1);
   }, p(ctx2, dirty) {
     if (dirty[0] & /*_options*/
-    32768 && t0_value !== (t0_value = /*option*/
-    ctx2[69].label + ""))
+    131072 && t0_value !== (t0_value = /*option*/
+    ctx2[61].label + ""))
       set_data(t0, t0_value);
     if (dirty[0] & /*value, _options*/
-    32769 && option_selected_value !== (option_selected_value = /*value*/
-    ctx2[0] === /*option*/
-    ctx2[69].value)) {
+    131080 && option_selected_value !== (option_selected_value = /*value*/
+    ctx2[3] === /*option*/
+    ctx2[61].value)) {
       option.selected = option_selected_value;
     }
     if (dirty[0] & /*_options*/
-    32768 && option_value_value !== (option_value_value = /*option*/
-    ctx2[69].value)) {
+    131072 && option_value_value !== (option_value_value = /*option*/
+    ctx2[61].value)) {
       option.__value = option_value_value;
       option.value = option.__value;
     }
@@ -18620,7 +18614,7 @@ function create_fragment$J(ctx) {
   function select_block_type(ctx2, dirty) {
     if (
       /*_native*/
-      ctx2[22]
+      ctx2[16]
     )
       return create_if_block$o;
     return create_else_block$a;
@@ -18632,9 +18626,11 @@ function create_fragment$J(ctx) {
     if_block.c();
     this.c = noop;
     attr(div, "data-testid", div_data_testid_value = `${/*name*/
-    ctx[1]}-dropdown`);
+    ctx[0]}-dropdown`);
     attr(div, "class", "dropdown");
     attr(div, "style", div_style_value = `
+    --width: ${/*_width*/
+    ctx[19]};
     ${calculateMargin(
       /*mt*/
       ctx[10],
@@ -18645,19 +18641,17 @@ function create_fragment$J(ctx) {
       /*ml*/
       ctx[13]
     )}
-    --width: ${/*_width*/
-    ctx[24]}
   `);
     toggle_class(
       div,
       "dropdown-native",
       /*_native*/
-      ctx[22]
+      ctx[16]
     );
   }, m(target, anchor) {
     insert(target, div, anchor);
     if_block.m(div, null);
-    ctx[48](div);
+    ctx[45](div);
   }, p(ctx2, dirty) {
     if (current_block_type === (current_block_type = select_block_type(ctx2)) && if_block) {
       if_block.p(ctx2, dirty);
@@ -18670,12 +18664,14 @@ function create_fragment$J(ctx) {
       }
     }
     if (dirty[0] & /*name*/
-    2 && div_data_testid_value !== (div_data_testid_value = `${/*name*/
-    ctx2[1]}-dropdown`)) {
+    1 && div_data_testid_value !== (div_data_testid_value = `${/*name*/
+    ctx2[0]}-dropdown`)) {
       attr(div, "data-testid", div_data_testid_value);
     }
-    if (dirty[0] & /*mt, mr, mb, ml, _width*/
-    16792576 && div_style_value !== (div_style_value = `
+    if (dirty[0] & /*_width, mt, mr, mb, ml*/
+    539648 && div_style_value !== (div_style_value = `
+    --width: ${/*_width*/
+    ctx2[19]};
     ${calculateMargin(
       /*mt*/
       ctx2[10],
@@ -18686,29 +18682,24 @@ function create_fragment$J(ctx) {
       /*ml*/
       ctx2[13]
     )}
-    --width: ${/*_width*/
-    ctx2[24]}
   `)) {
       attr(div, "style", div_style_value);
     }
     if (dirty[0] & /*_native*/
-    4194304) {
+    65536) {
       toggle_class(
         div,
         "dropdown-native",
         /*_native*/
-        ctx2[22]
+        ctx2[16]
       );
     }
   }, i: noop, o: noop, d(detaching) {
     if (detaching)
       detach(div);
     if_block.d();
-    ctx[48](null);
+    ctx[45](null);
   } };
-}
-function isPrintableCharacter(inputChar) {
-  return inputChar.length === 1 && inputChar.match(/\S| /) != null;
 }
 function parseValues(selectedValue) {
   let rawValue;
@@ -18720,17 +18711,13 @@ function parseValues(selectedValue) {
   const rawValues = typeof rawValue === "object" ? rawValue : [rawValue];
   return rawValues.map((val) => `${val}`);
 }
-function isMatched(option, query) {
-  if (query.length === 0)
+function isFilterMatch(option, filter) {
+  if (filter.length === 0)
     return true;
-  const queryWords = query.toLowerCase().split(/\s+/);
-  const filterWords = option.filter.toLowerCase().split(/\s+/);
-  if (query.endsWith(" ") || queryWords.length > 1) {
-    if (queryWords.length !== filterWords.length)
-      return false;
-    return queryWords.every((word, index2) => index2 === queryWords.length - 1 ? filterWords[index2].startsWith(word) : filterWords[index2] === word);
-  }
-  return filterWords.some((word) => word.startsWith(queryWords[0]));
+  let value = option.filter || option.label || option.value;
+  value = value.toLowerCase();
+  filter = filter.toLowerCase();
+  return value.startsWith(filter) || value.includes(" " + filter);
 }
 function instance$G($$self, $$props, $$invalidate) {
   let _disabled;
@@ -18738,7 +18725,6 @@ function instance$G($$self, $$props, $$invalidate) {
   let _multiselect;
   let _native;
   let _filterable;
-  let _filteredOptions;
   let _activeDescendantId;
   let { name } = $$props;
   let { arialabel = "" } = $$props;
@@ -18758,43 +18744,55 @@ function instance$G($$self, $$props, $$invalidate) {
   let { mr = null } = $$props;
   let { mb: mb2 = null } = $$props;
   let { ml: ml2 = null } = $$props;
-  let { id: id2 = "" } = $$props;
-  let _values = [];
   let _options = [];
-  let _inputValue = "";
   let _isMenuVisible = false;
   let _highlightedIndex = -1;
   let _width;
-  let _selectedOption = void 0;
-  let _previousSelectedValue = "";
-  let _inputWidth;
-  let _el;
+  let _rootEl;
   let _menuEl;
   let _selectEl;
   let _inputEl;
-  afterUpdate(() => {
-    if (_options.length === 0)
-      return;
-    _isMenuVisible ? _inputEl.focus() : updateInputValue(_selectedOption);
-  });
+  let _eventHandler;
+  let _isDirty = false;
+  let _filteredOptions = [];
+  let _values = [];
   onMount(async () => {
-    const slot = _el.querySelector("slot");
-    slot === null || slot === void 0 ? void 0 : slot.addEventListener("slotchange", (_e) => {
-      _values = parseValues(value);
-      $$invalidate(15, _options = getOptions());
+    var _a, _b;
+    _eventHandler = _filterable ? new ComboboxKeyUpHandler(_inputEl) : new DropdownKeyUpHandler(_inputEl);
+    $$invalidate(17, _options = getOptions());
+    if (!_native) {
+      $$invalidate(23, _inputEl.value = (_b = (_a = _options.find((o) => o.value === value)) === null || _a === void 0 ? void 0 : _a.label) !== null && _b !== void 0 ? _b : "", _inputEl);
+      $$invalidate(19, _width = width || calculateWidth(_options));
+    }
+    syncFilteredOptions();
+    const slot = _rootEl.querySelector("slot");
+    slot === null || slot === void 0 ? void 0 : slot.addEventListener("slotchange", (_) => {
+      var _a2, _b2;
+      $$invalidate(17, _options = getOptions());
+      syncFilteredOptions();
+      $$invalidate(19, _width = width || calculateWidth(_options));
+      if (!_native) {
+        $$invalidate(23, _inputEl.value = (_b2 = (_a2 = _options.find((o) => o.value === value)) === null || _a2 === void 0 ? void 0 : _a2.label) !== null && _b2 !== void 0 ? _b2 : "", _inputEl);
+      }
     });
   });
+  function setDisplayedValue() {
+    var _a, _b;
+    if (_inputEl) {
+      const option = _options.find((o) => o.value == _values[0]);
+      $$invalidate(23, _inputEl.value = (_b = (_a = option === null || option === void 0 ? void 0 : option.label) !== null && _a !== void 0 ? _a : option === null || option === void 0 ? void 0 : option.value) !== null && _b !== void 0 ? _b : "", _inputEl);
+    }
+  }
   function getChildren() {
-    const slot = _el.querySelector("slot");
+    const slot = _rootEl.querySelector("slot");
     if (slot) {
       return slot.assignedElements();
     }
-    const el2 = _native ? _selectEl : _el;
+    const el2 = _native ? _selectEl : _rootEl;
     return [...el2.children];
   }
   function getOptions() {
-    const children2 = getChildren();
-    return children2.filter((child) => child.tagName === "GOA-DROPDOWN-ITEM").map((el2) => {
+    return getChildren().filter((child) => child.tagName === "GOA-DROPDOWN-ITEM").map((el2) => {
       const option = el2;
       const value2 = el2.getAttribute("value") || option.value || "";
       const label = el2.getAttribute("label") || option.label || el2.innerHTML || value2;
@@ -18802,7 +18800,7 @@ function instance$G($$self, $$props, $$invalidate) {
       return { value: value2, label, filter };
     });
   }
-  function getCustomDropdownWidth(options) {
+  function calculateWidth(options) {
     const optionsWidth = options.map((option) => {
       const label = `${option.label}` || `${option.value}` || "";
       return label.length;
@@ -18813,13 +18811,8 @@ function instance$G($$self, $$props, $$invalidate) {
     }
     return `${maxWidth}ch`;
   }
-  function isOptionInView(node) {
-    const liOptionRect = node.getBoundingClientRect();
-    const ulRect = _menuEl.getBoundingClientRect();
-    return liOptionRect.top >= 0 && liOptionRect.left >= 0 && liOptionRect.bottom <= ulRect.height && liOptionRect.right <= ulRect.width;
-  }
-  function changeHighlightedOption(position) {
-    let index2 = _highlightedIndex + position;
+  function changeHighlightedOption(offset) {
+    let index2 = _highlightedIndex + offset;
     let items = !(_filteredOptions === null || _filteredOptions === void 0 ? void 0 : _filteredOptions.length) ? _options : _filteredOptions;
     if (items.length === 0)
       return;
@@ -18828,319 +18821,267 @@ function instance$G($$self, $$props, $$invalidate) {
     } else if (index2 >= items.length) {
       index2 = _filterable ? 0 : items.length - 1;
     }
-    $$invalidate(17, _highlightedIndex = index2);
+    $$invalidate(14, _highlightedIndex = index2);
     scrollToOption(index2);
   }
   function scrollToOption(index2) {
-    const liNode = _menuEl.querySelector(`li[data-index='${index2}']`);
+    const liNode = _menuEl.querySelector(`li[data-index="${index2}"]`);
     if (!liNode)
       return;
-    if (isOptionInView(liNode))
+    const liOptionRect = liNode.getBoundingClientRect();
+    const ulRect = _menuEl.getBoundingClientRect();
+    const isInView = liOptionRect.top >= 0 && liOptionRect.left >= 0 && liOptionRect.bottom <= ulRect.height && liOptionRect.right <= ulRect.width;
+    if (isInView)
       return;
     liNode.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
-  function setSelectedOption(selectedValue) {
-    return _filterable ? setSelectedOptionByInputValue() : _selectedOption = _options.find((item) => item.value === selectedValue);
-  }
-  function setSelectedOptionByInputValue() {
-    const filteredItems = _options.filter((item) => isMatched(item, _inputValue));
-    const isTypingInputMatchedOption = filteredItems.length === 1 && _isMenuVisible;
-    if (!isTypingInputMatchedOption) {
-      _selectedOption = _options.find((item) => item.value === value);
-      return;
-    }
-    _selectedOption = filteredItems[0];
-    updateInputValue(_selectedOption);
-    $$invalidate(29, _activeDescendantId = void 0);
-  }
-  function updateInputValue(option) {
-    $$invalidate(17, _highlightedIndex = -1);
-    $$invalidate(16, _inputValue = option ? option.label : "");
-    $$invalidate(0, value = option ? option.value : "");
-    if (!option) {
-      $$invalidate(29, _activeDescendantId = void 0);
-    }
-  }
-  function updateSelectedValue(newSelectedValue) {
-    if (_previousSelectedValue !== newSelectedValue) {
-      _previousSelectedValue = newSelectedValue;
-      setSelectedOption(newSelectedValue);
-      _values = [value];
-      dispatchValue(value);
-    }
+  function syncFilteredOptions() {
+    $$invalidate(15, _filteredOptions = _filterable ? _options.filter((option) => isFilterMatch(option, _inputEl.value)) : _options);
   }
   function showMenu() {
     if (_disabled) {
       return;
     }
-    $$invalidate(23, _isMenuVisible = true);
+    setTimeout(() => {
+      syncFilteredOptions();
+      $$invalidate(18, _isMenuVisible = true);
+      _inputEl.focus();
+    }, 0);
   }
-  function closeMenu() {
-    $$invalidate(23, _isMenuVisible = false);
+  function hideMenu() {
+    $$invalidate(18, _isMenuVisible = false);
   }
-  function dispatchValue(optionValue) {
-    const option = _options.find((item) => item.value === optionValue);
-    const newValue = option ? option.value : "";
-    let detail;
-    if (_multiselect) {
-      _values.push(newValue);
-      detail = { name, values: _values };
-    } else {
-      _values = [newValue];
-      detail = { name, value: newValue };
-    }
-    _el.dispatchEvent(new CustomEvent("_change", { composed: true, detail }));
+  function dispatchValue(value2) {
+    const detail = _multiselect ? { name, values: [value2, ..._values] } : { name, value: value2 };
+    setTimeout(() => {
+      _rootEl.dispatchEvent(new CustomEvent("_change", { composed: true, detail }));
+      _isDirty = false;
+    }, 1);
   }
   function onSelect(option) {
     if (_disabled)
       return;
-    $$invalidate(0, value = option.value);
-    _selectedOption = option;
     if (!_native) {
-      closeMenu();
-      $$invalidate(16, _inputValue = option.label);
-      _inputEl.focus();
+      _isDirty = true;
+      hideMenu();
+      $$invalidate(23, _inputEl.value = option.label, _inputEl);
     }
+    dispatchValue(option.value);
   }
-  function ComboboxKeyDownHandler() {
-    const handle = (e) => {
-      let stopPropagation = false;
-      switch (e.key) {
-        case "Enter":
-          onEnter();
-          stopPropagation = true;
-          break;
-        case "Escape":
-        case "Esc":
-          closeMenu();
-          removeSelectedValue();
-          stopPropagation = true;
-          break;
-        case "Up":
-        case "ArrowUp":
-          onArrowUp();
-          stopPropagation = true;
-          break;
-        case "Down":
-        case "ArrowDown":
-          onArrowDown();
-          stopPropagation = true;
-          break;
-        case "Tab":
-          closeMenu();
-          break;
-        case "Home":
-          _inputEl.setSelectionRange(0, 0);
-          stopPropagation = true;
-          break;
-        case "End":
-          _inputEl.setSelectionRange(_inputValue.length, _inputValue.length);
-          stopPropagation = true;
-          break;
-        case "Backspace":
-          if (_inputValue.length === 0) {
-            stopPropagation = true;
-            return;
-          }
-          onBackspace();
-          break;
-        case " ":
-          if (_inputValue.length === 0) {
-            stopPropagation = true;
-          }
-          break;
-        default:
-          if (isPrintableCharacter(e.key)) {
-            if (!_isMenuVisible) {
-              showMenu();
-            }
-            if (!_inputValue.length) {
-              removeSelectedValue();
-            }
-          }
-          break;
-      }
-      if (stopPropagation) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-    };
-    const onEnter = () => {
-      $$invalidate(23, _isMenuVisible = !_isMenuVisible);
-      if (_highlightedIndex < 0) {
-        const matchedOption = _filteredOptions.find((option) => option.label.toLowerCase() === (_inputValue === null || _inputValue === void 0 ? void 0 : _inputValue.toLowerCase()));
-        selectOption(matchedOption);
-        return;
-      }
-      const highlightedOption = _filteredOptions[_highlightedIndex];
-      selectOption(highlightedOption);
-      $$invalidate(17, _highlightedIndex = -1);
-    };
-    const onArrowUp = () => {
-      showMenu();
-      changeHighlightedOption(-1);
-    };
-    const onArrowDown = () => {
-      showMenu();
-      changeHighlightedOption(1);
-    };
-    const onBackspace = () => {
-      showMenu();
-      if (_inputValue.length === 1) {
-        removeSelectedValue();
-      }
-    };
-    const selectOption = (option) => {
-      closeMenu();
-      if (option) {
-        $$invalidate(16, _inputValue = option.label);
-        _selectedOption = option;
-        $$invalidate(0, value = option.value);
-      }
-    };
-    return { handle };
-  }
-  function DropdownKeyDownHandler() {
-    const handle = (e) => {
-      let stopPropagation = false;
-      switch (e.key) {
-        case " ":
-          onSpace();
-          stopPropagation = true;
-          break;
-        case "Enter":
-          onEnter();
-          stopPropagation = true;
-          break;
-        case "Escape":
-          closeMenu();
-          break;
-        case "Up":
-        case "ArrowUp":
-          onArrowUp();
-          stopPropagation = true;
-          break;
-        case "Down":
-        case "ArrowDown":
-          onArrowDown();
-          stopPropagation = true;
-          break;
-        case "Tab":
-          closeMenu();
-          break;
-      }
-      if (stopPropagation) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-    };
-    const onSpace = () => {
-      $$invalidate(23, _isMenuVisible = !_isMenuVisible);
-      if (_highlightedIndex > -1 && _filteredOptions[_highlightedIndex].value !== value)
-        $$invalidate(0, value = _filteredOptions[_highlightedIndex].value);
-    };
-    const onEnter = () => {
-      $$invalidate(23, _isMenuVisible = !_isMenuVisible);
-      if (_highlightedIndex > -1 && _filteredOptions[_highlightedIndex].value !== value) {
-        $$invalidate(0, value = _filteredOptions[_highlightedIndex].value);
-        closeMenu();
-      }
-    };
-    const onArrowUp = () => {
-      if (!_isMenuVisible)
-        showMenu();
-      changeHighlightedOption(-1);
-    };
-    const onArrowDown = () => {
-      if (!_isMenuVisible)
-        showMenu();
-      changeHighlightedOption(1);
-    };
-    return { handle };
-  }
-  const comboboxHandler = ComboboxKeyDownHandler();
-  const dropdownHandler = DropdownKeyDownHandler();
-  const onInputKeyDown = (e) => {
+  function onInputKeyUp(e) {
     if (_disabled)
       return;
-    if (_filterable) {
-      comboboxHandler.handle(e);
-    } else {
-      dropdownHandler.handle(e);
+    _eventHandler.handleKeyUp(e);
+  }
+  function onInputKeyDown(e) {
+    if (_disabled)
+      return;
+    _eventHandler.handleKeyDown(e);
+  }
+  function onClearIconKeyDown(e) {
+    if (e.key === "Enter" || e.key === " ") {
+      e.stopPropagation();
+      reset();
+      showMenu();
     }
-  };
+  }
+  function onClearIconClick(e) {
+    reset();
+    showMenu();
+    e.stopPropagation();
+  }
   function onNativeSelect(e) {
     const target = e.currentTarget;
     const option = _options[target.selectedIndex];
     onSelect(option);
   }
-  function removeSelectedValue() {
+  function reset() {
     if (_disabled)
       return;
-    _previousSelectedValue = null;
-    _selectedOption = void 0;
-    updateInputValue(_selectedOption);
+    $$invalidate(25, _activeDescendantId = void 0);
+    $$invalidate(14, _highlightedIndex = -1);
+    $$invalidate(23, _inputEl.value = "", _inputEl);
+    _isDirty = false;
+    syncFilteredOptions();
+    dispatchValue("");
   }
-  async function onClick() {
-    if (_disabled)
-      return;
+  function onChevronClick(e) {
     showMenu();
-    if (_filterable) {
-      await tick();
+    e.stopPropagation();
+  }
+  class ComboboxKeyUpHandler {
+    constructor(input) {
+      this.input = input;
+      input.addEventListener("blur", async function(e) {
+        if (!_isDirty)
+          return;
+        if (!_filterable)
+          return;
+        const input2 = e.target;
+        const selectedOption = _filteredOptions.find((o) => o.label === input2.value);
+        if (!selectedOption) {
+          dispatchValue("");
+          input2.value = "";
+        }
+      });
+    }
+    onEscape(e) {
+      reset();
       _inputEl.focus();
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    onEnter(e) {
+      const option = _filteredOptions[_highlightedIndex];
+      if (option) {
+        onSelect(option);
+      }
+      if (_inputEl.value) {
+        hideMenu();
+      } else {
+        showMenu();
+      }
+      e.stopPropagation();
+    }
+    onArrow(e, direction) {
+      if (!_isMenuVisible)
+        showMenu();
+      changeHighlightedOption(direction === "up" ? -1 : 1);
+      e.stopPropagation();
+    }
+    onTab(_) {
+      const matchedOption = _filteredOptions.find((option) => option.label.toLowerCase() === this.input.value.toLowerCase());
+      if (matchedOption) {
+        onSelect(matchedOption);
+      }
+      hideMenu();
+    }
+    onKeyUp(_) {
+      showMenu();
+      _isDirty = true;
+    }
+    handleKeyUp(e) {
+      switch (e.key) {
+        case "Enter":
+          this.onEnter(e);
+          break;
+        case "ArrowUp":
+          this.onArrow(e, "up");
+          break;
+        case "ArrowDown":
+          this.onArrow(e, "down");
+          break;
+        case "Home":
+          this.input.setSelectionRange(0, 0);
+          break;
+        case "End":
+          this.input.setSelectionRange(this.input.value.length, this.input.value.length);
+          break;
+        default:
+          this.onKeyUp(e);
+          break;
+      }
+    }
+    handleKeyDown(e) {
+      switch (e.key) {
+        case "Escape":
+          this.onEscape(e);
+          break;
+        case "Tab":
+          this.onTab(e);
+          break;
+      }
     }
   }
-  function onClear() {
-    removeSelectedValue();
-    _inputEl.focus();
-    onClick();
+  class DropdownKeyUpHandler {
+    constructor(_input) {
+    }
+    onEnter(e) {
+      if (_isMenuVisible) {
+        const option = _filteredOptions[_highlightedIndex];
+        if (option) {
+          onSelect(option);
+        }
+        hideMenu();
+      } else {
+        showMenu();
+      }
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    onArrow(e, direction) {
+      if (!_isMenuVisible)
+        showMenu();
+      changeHighlightedOption(direction === "up" ? -1 : 1);
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    handleKeyDown(e) {
+      switch (e.key) {
+        case " ":
+        case "Enter":
+          this.onEnter(e);
+          break;
+        case "ArrowUp":
+          this.onArrow(e, "up");
+          break;
+        case "ArrowDown":
+          this.onArrow(e, "down");
+          break;
+        case "Tab":
+          hideMenu();
+          break;
+      }
+      return false;
+    }
+    handleKeyUp(e) {
+      switch (e.key) {
+        case "ArrowUp":
+        case "ArrowDown":
+        case " ":
+        case "Enter":
+          e.preventDefault();
+          e.stopPropagation();
+      }
+    }
   }
   function select_binding($$value) {
     binding_callbacks[$$value ? "unshift" : "push"](() => {
       _selectEl = $$value;
-      $$invalidate(27, _selectEl);
-      $$invalidate(15, _options), $$invalidate(18, _el), $$invalidate(0, value), $$invalidate(22, _native), $$invalidate(7, width), $$invalidate(41, native);
+      $$invalidate(22, _selectEl);
+      $$invalidate(17, _options);
     });
   }
   function input_binding($$value) {
     binding_callbacks[$$value ? "unshift" : "push"](() => {
       _inputEl = $$value;
-      $$invalidate(19, _inputEl);
+      $$invalidate(23, _inputEl);
     });
   }
-  function input_input_handler() {
-    _inputValue = this.value;
-    $$invalidate(16, _inputValue);
-  }
-  const keydown_handler = (e) => {
-    if (e.key === "Enter") {
-      onClear();
-    }
-  };
   const click_handler = (option) => onSelect(option);
   function ul_binding($$value) {
     binding_callbacks[$$value ? "unshift" : "push"](() => {
       _menuEl = $$value;
-      $$invalidate(26, _menuEl);
+      $$invalidate(21, _menuEl);
     });
   }
   function div_binding($$value) {
     binding_callbacks[$$value ? "unshift" : "push"](() => {
-      _el = $$value;
-      $$invalidate(18, _el);
+      _rootEl = $$value;
+      $$invalidate(20, _rootEl);
     });
   }
   $$self.$$set = ($$props2) => {
     if ("name" in $$props2)
-      $$invalidate(1, name = $$props2.name);
+      $$invalidate(0, name = $$props2.name);
     if ("arialabel" in $$props2)
-      $$invalidate(2, arialabel = $$props2.arialabel);
+      $$invalidate(1, arialabel = $$props2.arialabel);
     if ("arialabelledby" in $$props2)
-      $$invalidate(3, arialabelledby = $$props2.arialabelledby);
+      $$invalidate(2, arialabelledby = $$props2.arialabelledby);
     if ("value" in $$props2)
-      $$invalidate(0, value = $$props2.value);
+      $$invalidate(3, value = $$props2.value);
     if ("filterable" in $$props2)
-      $$invalidate(38, filterable = $$props2.filterable);
+      $$invalidate(37, filterable = $$props2.filterable);
     if ("leadingicon" in $$props2)
       $$invalidate(4, leadingicon = $$props2.leadingicon);
     if ("maxheight" in $$props2)
@@ -19152,11 +19093,11 @@ function instance$G($$self, $$props, $$invalidate) {
     if ("disabled" in $$props2)
       $$invalidate(8, disabled = $$props2.disabled);
     if ("error" in $$props2)
-      $$invalidate(39, error2 = $$props2.error);
+      $$invalidate(38, error2 = $$props2.error);
     if ("multiselect" in $$props2)
-      $$invalidate(40, multiselect = $$props2.multiselect);
+      $$invalidate(39, multiselect = $$props2.multiselect);
     if ("native" in $$props2)
-      $$invalidate(41, native = $$props2.native);
+      $$invalidate(40, native = $$props2.native);
     if ("relative" in $$props2)
       $$invalidate(9, relative = $$props2.relative);
     if ("mt" in $$props2)
@@ -19167,60 +19108,42 @@ function instance$G($$self, $$props, $$invalidate) {
       $$invalidate(12, mb2 = $$props2.mb);
     if ("ml" in $$props2)
       $$invalidate(13, ml2 = $$props2.ml);
-    if ("id" in $$props2)
-      $$invalidate(14, id2 = $$props2.id);
   };
   $$self.$$.update = () => {
     if ($$self.$$.dirty[0] & /*disabled*/
     256) {
-      $$invalidate(28, _disabled = toBoolean(disabled));
+      $$invalidate(26, _disabled = toBoolean(disabled));
     }
     if ($$self.$$.dirty[1] & /*error*/
-    256) {
-      $$invalidate(30, _error = toBoolean(error2));
+    128) {
+      $$invalidate(27, _error = toBoolean(error2));
     }
     if ($$self.$$.dirty[1] & /*multiselect*/
-    512) {
+    256) {
       _multiselect = toBoolean(multiselect);
     }
     if ($$self.$$.dirty[1] & /*native*/
-    1024) {
-      $$invalidate(22, _native = toBoolean(native));
+    512) {
+      $$invalidate(16, _native = toBoolean(native));
     }
     if ($$self.$$.dirty[0] & /*_native*/
-    4194304 | $$self.$$.dirty[1] & /*filterable*/
-    128) {
-      $$invalidate(20, _filterable = toBoolean(filterable) && !_native);
-    }
-    if ($$self.$$.dirty[0] & /*_el, value, _native, width, _options*/
-    4489345) {
-      if (_el) {
-        _values = parseValues(value);
-        $$invalidate(15, _options = getOptions());
-        if (!_native) {
-          $$invalidate(24, _width = width || getCustomDropdownWidth(_options));
-        }
-        if (_options.length) {
-          updateSelectedValue(value);
-        }
-      }
-    }
-    if ($$self.$$.dirty[0] & /*_filterable, _options, _inputValue*/
-    1146880) {
-      $$invalidate(21, _filteredOptions = _filterable ? _options.filter((option) => isMatched(option, _inputValue)) : _options);
+    65536 | $$self.$$.dirty[1] & /*filterable*/
+    64) {
+      $$invalidate(24, _filterable = toBoolean(filterable) && !_native);
     }
     if ($$self.$$.dirty[0] & /*_filteredOptions, _highlightedIndex*/
-    2228224) {
-      $$invalidate(29, _activeDescendantId = _filteredOptions[_highlightedIndex] ? _filteredOptions[_highlightedIndex].value : void 0);
+    49152) {
+      $$invalidate(25, _activeDescendantId = _filteredOptions[_highlightedIndex] ? _filteredOptions[_highlightedIndex].value : void 0);
     }
-    if ($$self.$$.dirty[0] & /*_inputEl, _options*/
-    557056) {
-      if (_inputEl && _options.length) {
-        $$invalidate(25, _inputWidth = `${_inputEl.getBoundingClientRect().width}px`);
+    if ($$self.$$.dirty[0] & /*value*/
+    8) {
+      {
+        _values = parseValues(value);
+        setDisplayedValue();
       }
     }
   };
-  return [value, name, arialabel, arialabelledby, leadingicon, maxheight, placeholder, width, disabled, relative, mt, mr, mb2, ml2, id2, _options, _inputValue, _highlightedIndex, _el, _inputEl, _filterable, _filteredOptions, _native, _isMenuVisible, _width, _inputWidth, _menuEl, _selectEl, _disabled, _activeDescendantId, _error, showMenu, closeMenu, onSelect, onInputKeyDown, onNativeSelect, onClick, onClear, filterable, error2, multiselect, native, select_binding, input_binding, input_input_handler, keydown_handler, click_handler, ul_binding, div_binding];
+  return [name, arialabel, arialabelledby, value, leadingicon, maxheight, placeholder, width, disabled, relative, mt, mr, mb2, ml2, _highlightedIndex, _filteredOptions, _native, _options, _isMenuVisible, _width, _rootEl, _menuEl, _selectEl, _inputEl, _filterable, _activeDescendantId, _disabled, _error, showMenu, hideMenu, onSelect, onInputKeyUp, onInputKeyDown, onClearIconKeyDown, onClearIconClick, onNativeSelect, onChevronClick, filterable, error2, multiselect, native, select_binding, input_binding, click_handler, ul_binding, div_binding];
 }
 class Dropdown extends SvelteElement {
   constructor(options) {
@@ -19228,7 +19151,7 @@ class Dropdown extends SvelteElement {
     const style = document.createElement("style");
     style.textContent = `:host{box-sizing:border-box;font-family:var(--goa-font-family-sans)}.dropdown{cursor:pointer;display:inline-block;width:var(--width, 100%)}.dropdown-input-group{box-sizing:border-box;outline:none;transition:box-shadow 0.1s ease-in;border:1px solid var(--goa-color-greyscale-700);border-radius:var(--goa-border-radius-m);display:inline-flex;align-items:stretch;vertical-align:middle;background-color:var(--goa-color-greyscale-white);cursor:pointer;width:100%}.dropdown-input-group:hover{border-color:var(--goa-color-interactive-hover);box-shadow:0 0 0 var(--goa-border-width-m) var(--goa-color-interactive-hover)}.dropdown-input-group:focus,.dropdown-input-group:focus-within{box-shadow:0 0 0 3px var(--goa-color-interactive-focus)}@media screen and (max-width: 623px){@media not (max-color:2147477350){.dropdown-input-group{width:var(--width)}}}@media not  screen and (max-width: 623px){@media not (color:2147477350){.dropdown-input-group{width:var(--width)}}}.dropdown-input-group.error,.dropdown-input-group.error:hover{border:2px solid var(--goa-color-interactive-error);box-shadow:0 0 0 1px var(--goa-color-interactive-error)}.dropdown-input-group.error:focus-within,.dropdown-input-group.error:focus{border:2px solid var(--goa-color-interactive-error);box-shadow:0 0 0 3px var(--goa-color-interactive-focus)}.dropdown-icon--arrow,.dropdown-icon--clear{margin-right:var(--goa-space-s)}.dropdown-icon--clear:focus:not(.disabled),.dropdown-icon--clear:active:not(.disabled){color:var(--goa-color-interactive-focus);outline:none}.dropdown-input--leading-icon{margin-left:0.75rem}.dropdown-input--leading-icon+input{padding-left:0.5rem}input{display:inline-block;color:var(--goa-color-text-default);font-size:var(--goa-font-size-4);padding:var(--goa-space-xs);padding-left:var(--goa-space-s);line-height:calc(40px - calc(var(--goa-space-xs) * 2));background-color:transparent;width:100%;flex:1 1 auto;font-family:var(--goa-font-family-sans);z-index:1}input,input:focus,input:hover,input:active{outline:none;border:none}input[aria-disabled="true"]{color:var(--goa-color-text-secondary)}.dropdown-input-group--disabled,.dropdown-input-group--disabled:hover,.dropdown-input-group--disabled:active,.dropdown-input-group--disabled:focus{background-color:var(--goa-color-greyscale-100);border-color:var(--goa-color-greyscale-200) !important;cursor:default;box-shadow:none !important}ul[role="listbox"]{border-radius:var(--goa-border-radius-m)}.dropdown-item{margin:0;padding:0.5rem;cursor:pointer;color:var(--goa-color-greyscale-black);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.dropdown-item:hover,.dropdown-item--highlighted{background:var(--goa-color-greyscale-100);color:var(--goa-color-interactive-hover)}.dropdown-item[aria-selected="true"]{background:var(--goa-color-interactive-default);color:var(--goa-color-greyscale-white)}.dropdown-item[aria-selected="true"]:hover,.dropdown-item[aria-selected="true"].dropdown-item--highlighted{background:var(--goa-color-interactive-hover);color:var(--goa-color-greyscale-white)}.dropdown-native{position:relative;border:1px solid var(--goa-color-greyscale-700);border-radius:var(--goa-border-radius-m);background-color:var(--goa-color-greyscale-white);transition:box-shadow 0.1s ease-in}.dropdown-native:has(select:disabled){background-color:var(--goa-color-greyscale-100);border-color:var(--goa-color-greyscale-200);box-shadow:none;color:var(--goa-color-text-secondary);cursor:default}.dropdown-native:has(select.error){border:2px solid var(--goa-color-interactive-error)}.dropdown-native:hover{border-color:var(--goa-color-interactive-hover);box-shadow:0 0 0 var(--goa-border-width-m) var(--goa-color-interactive-hover)}select{border:none;font:var(--goa-font-family-sans);background-color:transparent;color:var(--goa-color-text-default);font-size:var(--goa-font-size-4);-webkit-appearance:none;-moz-appearance:none;appearance:none;padding:calc(var(--goa-space-xs) + 1px);padding-left:var(--goa-space-s);padding-right:3rem;outline:none;width:100%}.dropdown-native::after{content:"";position:absolute;right:0.6rem;top:0.6rem;pointer-events:none;width:1.5rem;height:1.5rem;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='none' stroke='%23333333' stroke-linecap='round' stroke-linejoin='round' stroke-width='48' d='M112 184l144 144 144-144' /%3E%3C/svg%3E");background-repeat:none}.dropdown-native:focus-within{box-shadow:0 0 0 3px var(--goa-color-interactive-focus)}`;
     this.shadowRoot.appendChild(style);
-    init(this, { target: this.shadowRoot, props: attribute_to_object(this.attributes), customElement: true }, instance$G, create_fragment$J, safe_not_equal, { name: 1, arialabel: 2, arialabelledby: 3, value: 0, filterable: 38, leadingicon: 4, maxheight: 5, placeholder: 6, width: 7, disabled: 8, error: 39, multiselect: 40, native: 41, relative: 9, mt: 10, mr: 11, mb: 12, ml: 13, id: 14 }, null, [-1, -1, -1]);
+    init(this, { target: this.shadowRoot, props: attribute_to_object(this.attributes), customElement: true }, instance$G, create_fragment$J, safe_not_equal, { name: 0, arialabel: 1, arialabelledby: 2, value: 3, filterable: 37, leadingicon: 4, maxheight: 5, placeholder: 6, width: 7, disabled: 8, error: 38, multiselect: 39, native: 40, relative: 9, mt: 10, mr: 11, mb: 12, ml: 13 }, null, [-1, -1, -1]);
     if (options) {
       if (options.target) {
         insert(options.target, this, options.anchor);
@@ -19240,38 +19163,38 @@ class Dropdown extends SvelteElement {
     }
   }
   static get observedAttributes() {
-    return ["name", "arialabel", "arialabelledby", "value", "filterable", "leadingicon", "maxheight", "placeholder", "width", "disabled", "error", "multiselect", "native", "relative", "mt", "mr", "mb", "ml", "id"];
+    return ["name", "arialabel", "arialabelledby", "value", "filterable", "leadingicon", "maxheight", "placeholder", "width", "disabled", "error", "multiselect", "native", "relative", "mt", "mr", "mb", "ml"];
   }
   get name() {
-    return this.$$.ctx[1];
+    return this.$$.ctx[0];
   }
   set name(name) {
     this.$$set({ name });
     flush();
   }
   get arialabel() {
-    return this.$$.ctx[2];
+    return this.$$.ctx[1];
   }
   set arialabel(arialabel) {
     this.$$set({ arialabel });
     flush();
   }
   get arialabelledby() {
-    return this.$$.ctx[3];
+    return this.$$.ctx[2];
   }
   set arialabelledby(arialabelledby) {
     this.$$set({ arialabelledby });
     flush();
   }
   get value() {
-    return this.$$.ctx[0];
+    return this.$$.ctx[3];
   }
   set value(value) {
     this.$$set({ value });
     flush();
   }
   get filterable() {
-    return this.$$.ctx[38];
+    return this.$$.ctx[37];
   }
   set filterable(filterable) {
     this.$$set({ filterable });
@@ -19313,21 +19236,21 @@ class Dropdown extends SvelteElement {
     flush();
   }
   get error() {
-    return this.$$.ctx[39];
+    return this.$$.ctx[38];
   }
   set error(error2) {
     this.$$set({ error: error2 });
     flush();
   }
   get multiselect() {
-    return this.$$.ctx[40];
+    return this.$$.ctx[39];
   }
   set multiselect(multiselect) {
     this.$$set({ multiselect });
     flush();
   }
   get native() {
-    return this.$$.ctx[41];
+    return this.$$.ctx[40];
   }
   set native(native) {
     this.$$set({ native });
@@ -19366,13 +19289,6 @@ class Dropdown extends SvelteElement {
   }
   set ml(ml2) {
     this.$$set({ ml: ml2 });
-    flush();
-  }
-  get id() {
-    return this.$$.ctx[14];
-  }
-  set id(id2) {
-    this.$$set({ id: id2 });
     flush();
   }
 }
@@ -22996,13 +22912,31 @@ class Input extends SvelteElement {
 customElements.define("goa-input", Input);
 function create_if_block_3$7(ctx) {
   let div;
+  let t0;
+  let a;
+  let t1;
+  let a_target_value;
   return { c() {
     div = element("div");
-    div.innerHTML = `An official site of the <a href="https://www.alberta.ca/index.aspx">Alberta Government</a>`;
+    t0 = text("An official site of the ");
+    a = element("a");
+    t1 = text("Alberta Government");
+    attr(a, "href", "https://www.alberta.ca/index.aspx");
+    attr(a, "target", a_target_value = `_${/*headerurltarget*/
+    ctx[4]}`);
     attr(div, "data-testid", "type");
     attr(div, "class", "site-text");
   }, m(target, anchor) {
     insert(target, div, anchor);
+    append(div, t0);
+    append(div, a);
+    append(a, t1);
+  }, p(ctx2, dirty) {
+    if (dirty & /*headerurltarget*/
+    16 && a_target_value !== (a_target_value = `_${/*headerurltarget*/
+    ctx2[4]}`)) {
+      attr(a, "target", a_target_value);
+    }
   }, d(detaching) {
     if (detaching)
       detach(div);
@@ -23020,6 +22954,8 @@ function create_if_block_1$8(ctx) {
   let div1;
   let t2;
   let a;
+  let t3;
+  let a_target_value;
   let t4;
   let if_block = (
     /*feedbackurl*/
@@ -23032,7 +22968,7 @@ function create_if_block_1$8(ctx) {
     div1 = element("div");
     t2 = text("This is a new ");
     a = element("a");
-    a.textContent = "Alberta Government";
+    t3 = text("Alberta Government");
     t4 = text(" service\n        ");
     if (if_block)
       if_block.c();
@@ -23040,6 +22976,8 @@ function create_if_block_1$8(ctx) {
     attr(div0, "class", div0_class_value = "service-type service-type--" + /*type*/
     ctx[0].toLowerCase());
     attr(a, "href", "https://www.alberta.ca/index.aspx");
+    attr(a, "target", a_target_value = `_${/*headerurltarget*/
+    ctx[4]}`);
     attr(div1, "data-testid", "site-text");
     attr(div1, "class", "site-text");
   }, m(target, anchor) {
@@ -23049,6 +22987,7 @@ function create_if_block_1$8(ctx) {
     insert(target, div1, anchor);
     append(div1, t2);
     append(div1, a);
+    append(a, t3);
     append(div1, t4);
     if (if_block)
       if_block.m(div1, null);
@@ -23063,6 +23002,11 @@ function create_if_block_1$8(ctx) {
     1 && div0_class_value !== (div0_class_value = "service-type service-type--" + /*type*/
     ctx2[0].toLowerCase())) {
       attr(div0, "class", div0_class_value);
+    }
+    if (dirty & /*headerurltarget*/
+    16 && a_target_value !== (a_target_value = `_${/*headerurltarget*/
+    ctx2[4]}`)) {
+      attr(a, "target", a_target_value);
     }
     if (
       /*feedbackurl*/
@@ -23095,6 +23039,7 @@ function create_if_block_2$7(ctx) {
   let t0;
   let a;
   let t1;
+  let a_target_value;
   return { c() {
     span = element("span");
     t0 = text("— help us improve it by giving ");
@@ -23106,6 +23051,8 @@ function create_if_block_2$7(ctx) {
       /*feedbackurl*/
       ctx[2]
     );
+    attr(a, "target", a_target_value = `_${/*feedbackurltarget*/
+    ctx[5]}`);
     attr(span, "data-testid", "feedback");
   }, m(target, anchor) {
     insert(target, span, anchor);
@@ -23121,6 +23068,11 @@ function create_if_block_2$7(ctx) {
         /*feedbackurl*/
         ctx2[2]
       );
+    }
+    if (dirty & /*feedbackurltarget*/
+    32 && a_target_value !== (a_target_value = `_${/*feedbackurltarget*/
+    ctx2[5]}`)) {
+      attr(a, "target", a_target_value);
     }
   }, d(detaching) {
     if (detaching)
@@ -23168,7 +23120,7 @@ function create_fragment$x(ctx) {
   let header_style_value;
   let if_block0 = (
     /*type*/
-    ctx[0] === "live" && create_if_block_3$7()
+    ctx[0] === "live" && create_if_block_3$7(ctx)
   );
   let if_block1 = show_if && create_if_block_1$8(ctx);
   let if_block2 = (
@@ -23212,10 +23164,10 @@ function create_fragment$x(ctx) {
       /*type*/
       ctx2[0] === "live"
     ) {
-      if (if_block0)
-        ;
-      else {
-        if_block0 = create_if_block_3$7();
+      if (if_block0) {
+        if_block0.p(ctx2, dirty);
+      } else {
+        if_block0 = create_if_block_3$7(ctx2);
         if_block0.c();
         if_block0.m(div1, t0);
       }
@@ -23283,8 +23235,13 @@ function instance$u($$self, $$props, $$invalidate) {
   let { version: version2 = "" } = $$props;
   let { feedbackurl = "" } = $$props;
   let { maxcontentwidth = "100%" } = $$props;
+  let { headerurltarget = "blank" } = $$props;
+  let { feedbackurltarget = "blank" } = $$props;
+  const [UrlTarget, validateUrlTargetType] = typeValidator("URL target values", ["self", "blank"]);
   onMount(() => {
     setTimeout(() => validateType(type), 1);
+    validateUrlTargetType(headerurltarget);
+    validateUrlTargetType(feedbackurltarget);
   });
   $$self.$$set = ($$props2) => {
     if ("type" in $$props2)
@@ -23295,16 +23252,22 @@ function instance$u($$self, $$props, $$invalidate) {
       $$invalidate(2, feedbackurl = $$props2.feedbackurl);
     if ("maxcontentwidth" in $$props2)
       $$invalidate(3, maxcontentwidth = $$props2.maxcontentwidth);
+    if ("headerurltarget" in $$props2)
+      $$invalidate(4, headerurltarget = $$props2.headerurltarget);
+    if ("feedbackurltarget" in $$props2)
+      $$invalidate(5, feedbackurltarget = $$props2.feedbackurltarget);
   };
-  return [type, version2, feedbackurl, maxcontentwidth];
+  return [type, version2, feedbackurl, maxcontentwidth, headerurltarget, feedbackurltarget];
 }
 class MicrositeHeader extends SvelteElement {
   constructor(options) {
     super();
     const style = document.createElement("style");
-    style.textContent = `:host{box-sizing:border-box;font-family:var(--goa-font-family-sans)}a{color:var(--goa-color-interactive-default);cursor:pointer}a:hover{color:var(--goa-color-interactive-hover)}a:focus{outline-width:thin;outline-style:solid;outline-color:var(--goa-color-interactive-hover);outline-offset:0px}.goa-official-site-header{font-size:var(--goa-font-size-2);background-color:var(--goa-color-greyscale-100);padding:0.5rem 1rem}.content-container{display:flex;align-items:start;justify-content:space-between;max-width:min(var(--max-content-width), 100%);margin:0 auto}@media screen and (max-width: 623px){@media not (max-color:2147477350){.goa-official-site-header{padding:0.25rem 2rem}.content-container{align-items:center}}}@media not  screen and (max-width: 623px){@media not (color:2147477350){.goa-official-site-header{padding:0.25rem 2rem}.content-container{align-items:center}}}@media screen and (min-width: 1024px){.goa-official-site-header{padding:0.25rem 4.5rem}}.spacer{flex:1 1 auto}.version{color:var(--goa-color-text-secondary);padding-left:1rem;line-height:1.25rem}.service-type{font-weight:bold;padding:0.125rem 0.25rem;display:flex;margin-right:1rem;line-height:initial}.service-type--alpha{background-color:var(--goa-color-warning-default);color:var(--goa-color-text-default)}.service-type--beta{background-color:var(--goa-color-brand-default);color:var(--goa-color-text-light)}.site-text{color:var(--goa-color-text-default);line-height:1.25rem}`;
+    style.textContent = `:host{box-sizing:border-box;font-family:var(--goa-font-family-sans)}a{color:var(--goa-color-interactive-default);cursor:pointer}a:hover{color:var(--goa-color-interactive-hover)}a:focus{outline-width:thin;outline-style:solid;outline-color:var(--goa-color-interactive-hover);outline-offset:0px}a[target="_blank"]::after{content:"";width:var(--goa-icon-size-s);height:var(--goa-icon-size-s);background-color:var(--goa-color-interactive-default);display:inline-block;margin-left:var(--goa-space-2xs);vertical-align:sub;mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20class%3D%22ionicon%22%20viewBox%3D%220%200%20512%20512%22%3E%3Cpath%20d%3D%22M384%20224v184a40%2040%200%200%201-40%2040H104a40%2040%200%200%201-40-40V168a40%2040%200%200%201%2040-40h167.48M336%2064h112v112M224%20288%20440%2072%22%20fill%3D%22none%22%20stroke%3D%22currentColor%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-width%3D%2232%22%2F%3E%3C%2Fsvg%3E")
+    center bottom no-repeat;-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20class%3D%22ionicon%22%20viewBox%3D%220%200%20512%20512%22%3E%3Cpath%20d%3D%22M384%20224v184a40%2040%200%200%201-40%2040H104a40%2040%200%200%201-40-40V168a40%2040%200%200%201%2040-40h167.48M336%2064h112v112M224%20288%20440%2072%22%20fill%3D%22none%22%20stroke%3D%22currentColor%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-width%3D%2232%22%2F%3E%3C%2Fsvg%3E")
+    center bottom no-repeat}a[target="_blank"]:hover:after{background-color:var(--goa-color-interactive-hover)}.goa-official-site-header{font-size:var(--goa-font-size-2);background-color:var(--goa-color-greyscale-100);padding:0.5rem 1rem}.content-container{display:flex;align-items:start;justify-content:space-between;max-width:min(var(--max-content-width), 100%);margin:0 auto}@media screen and (max-width: 623px){@media not (max-color:2147477350){.goa-official-site-header{padding:0.25rem 2rem}.content-container{align-items:center}}}@media not  screen and (max-width: 623px){@media not (color:2147477350){.goa-official-site-header{padding:0.25rem 2rem}.content-container{align-items:center}}}@media screen and (min-width: 1024px){.goa-official-site-header{padding:0.25rem 4.5rem}}.spacer{flex:1 1 auto}.version{color:var(--goa-color-text-secondary);padding-left:1rem;line-height:1.25rem}.service-type{font-weight:bold;padding:0.125rem 0.25rem;display:flex;margin-right:1rem;line-height:initial}.service-type--alpha{background-color:var(--goa-color-warning-default);color:var(--goa-color-text-default)}.service-type--beta{background-color:var(--goa-color-brand-default);color:var(--goa-color-text-light)}.site-text{color:var(--goa-color-text-default);line-height:1.25rem}`;
     this.shadowRoot.appendChild(style);
-    init(this, { target: this.shadowRoot, props: attribute_to_object(this.attributes), customElement: true }, instance$u, create_fragment$x, safe_not_equal, { type: 0, version: 1, feedbackurl: 2, maxcontentwidth: 3 }, null);
+    init(this, { target: this.shadowRoot, props: attribute_to_object(this.attributes), customElement: true }, instance$u, create_fragment$x, safe_not_equal, { type: 0, version: 1, feedbackurl: 2, maxcontentwidth: 3, headerurltarget: 4, feedbackurltarget: 5 }, null);
     if (options) {
       if (options.target) {
         insert(options.target, this, options.anchor);
@@ -23316,7 +23279,7 @@ class MicrositeHeader extends SvelteElement {
     }
   }
   static get observedAttributes() {
-    return ["type", "version", "feedbackurl", "maxcontentwidth"];
+    return ["type", "version", "feedbackurl", "maxcontentwidth", "headerurltarget", "feedbackurltarget"];
   }
   get type() {
     return this.$$.ctx[0];
@@ -23344,6 +23307,20 @@ class MicrositeHeader extends SvelteElement {
   }
   set maxcontentwidth(maxcontentwidth) {
     this.$$set({ maxcontentwidth });
+    flush();
+  }
+  get headerurltarget() {
+    return this.$$.ctx[4];
+  }
+  set headerurltarget(headerurltarget) {
+    this.$$set({ headerurltarget });
+    flush();
+  }
+  get feedbackurltarget() {
+    return this.$$.ctx[5];
+  }
+  set feedbackurltarget(feedbackurltarget) {
+    this.$$set({ feedbackurltarget });
     flush();
   }
 }
@@ -23930,7 +23907,7 @@ let Modal$1 = class Modal extends SvelteElement {
   constructor(options) {
     super();
     const style = document.createElement("style");
-    style.textContent = `:host{box-sizing:border-box;font-family:var(--goa-font-family-sans)}:host *{box-sizing:border-box}.modal{font-family:var(--goa-font-family-sans);position:fixed;inset:0;display:flex;align-items:center;justify-content:center;height:100vh;width:100%;z-index:100}.modal-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background-color:rgba(0, 0, 0, 0.2);z-index:1000}.emergency{background-color:var(--goa-color-emergency-default)}.important{background-color:var(--goa-color-warning-default)}.information{background-color:var(--goa-color-info-default)}.event{background-color:var(--goa-color-info-default)}.success{background-color:var(--goa-color-success-default)}.callout-bar{flex:0 0 3rem;text-align:center;padding-top:2rem;border-radius:4px 0px 0px 4px}.content{flex:1 1 auto;width:100%;margin:var(--goa-space-xl)}.content header{display:flex;justify-content:space-between}.content header.has-content{margin-bottom:var(--goa-space-l)}@media screen and (max-width: 623px){.content{margin:var(--goa-space-l)}.content header.has-content{margin-bottom:var(--goa-space-m)}}.modal-pane{background-color:#fff;z-index:1001;width:90%;display:flex;box-shadow:var(--goa-shadow-modal);border-radius:4px;border:1px solid var(--goa-color-greyscale-700)}.modal-actions ::slotted(*){padding:var(--goa-space-xl) 0 0}@media screen and (max-width: 623px){.modal-pane{max-width:var(--maxwidth)}.modal-actions ::slotted(*){padding:var(--goa-space-l) 0 0}}.modal-content{margin:0 -2rem;line-height:1.75rem}.modal-content ::slotted(:last-child){margin-bottom:0 !important}.modal-title{font:var(--goa-typography-heading-m)}.modal-close{padding-left:var(--goa-space-m);margin-top:var(--goa-space-2xs)}.scroll-top{box-shadow:inset 0px -8px 6px -6px rgba(0, 0, 0, 0.1)}.scroll-middle{box-shadow:inset 0px -8px 6px -6px rgba(0, 0, 0, 0.1), inset 0px 8px 6px -6px rgba(0, 0, 0, 0.1)}.scroll-bottom{box-shadow:inset 0px 8px 6px -6px rgba(0, 0, 0, 0.1)}`;
+    style.textContent = `:host{box-sizing:border-box;font-family:var(--goa-font-family-sans)}:host *{box-sizing:border-box}.modal{font-family:var(--goa-font-family-sans);position:fixed;inset:0;display:flex;align-items:center;justify-content:center;height:100vh;width:100%;z-index:100}.modal-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background-color:rgba(0, 0, 0, 0.2);z-index:1000}.emergency{background-color:var(--goa-color-emergency-default)}.important{background-color:var(--goa-color-warning-default)}.information{background-color:var(--goa-color-info-default)}.event{background-color:var(--goa-color-info-default)}.success{background-color:var(--goa-color-success-default)}.callout-bar{flex:0 0 3rem;text-align:center;padding-top:2rem;border-radius:4px 0px 0px 4px}.content{flex:1 1 auto;width:100%;margin:var(--goa-space-xl)}.content header{display:flex;justify-content:space-between}.content header.has-content{margin-bottom:var(--goa-space-l)}@media screen and (max-width: 623px){.content{margin:var(--goa-space-l)}.content header.has-content{margin-bottom:var(--goa-space-m)}.modal-actions ::slotted(*){padding:var(--goa-space-l) 0 0}}@media screen and (min-width: 1024px){.modal-pane{max-width:var(--maxwidth)}}.modal-pane{background-color:#fff;z-index:1001;width:90%;display:flex;box-shadow:var(--goa-shadow-modal);border-radius:4px;border:1px solid var(--goa-color-greyscale-700)}.modal-actions ::slotted(*){padding:var(--goa-space-xl) 0 0}.modal-content{margin:0 -2rem;line-height:1.75rem}.modal-content ::slotted(:last-child){margin-bottom:0 !important}.modal-title{font:var(--goa-typography-heading-m)}.modal-close{padding-left:var(--goa-space-m);margin-top:var(--goa-space-2xs)}.scroll-top{box-shadow:inset 0px -8px 6px -6px rgba(0, 0, 0, 0.1)}.scroll-middle{box-shadow:inset 0px -8px 6px -6px rgba(0, 0, 0, 0.1), inset 0px 8px 6px -6px rgba(0, 0, 0, 0.1)}.scroll-bottom{box-shadow:inset 0px 8px 6px -6px rgba(0, 0, 0, 0.1)}`;
     this.shadowRoot.appendChild(style);
     init(this, { target: this.shadowRoot, props: attribute_to_object(this.attributes), customElement: true }, instance$t, create_fragment$w, safe_not_equal, { heading: 1, closable: 14, open: 2, transition: 15, calloutvariant: 3, maxwidth: 0, width: 16 }, null);
     if (options) {
@@ -24427,7 +24404,6 @@ function create_if_block$f(ctx) {
       /*pagenumber*/
       ctx[0]
     );
-    set_custom_element_data(goa_dropdown, "width", "70px");
     set_custom_element_data(goa_block, "data-testid", "page-selector");
     set_custom_element_data(goa_block, "alignment", "center");
     set_custom_element_data(goa_block, "gap", "s");
@@ -24865,20 +24841,13 @@ function create_if_block$e(ctx) {
       ctx[2]
     )}
           max-width: ${/*maxwidth*/
-    ctx[1] < /*width*/
-    ctx[2] ? (
-      /*width*/
-      ctx[2]
-    ) : (
-      /*maxwidth*/
-      ctx[1]
-    )};
+    ctx[1]};
           padding: ${/*_padded*/
     ctx[19] ? "var(--goa-space-m)" : "0"};
         `);
     add_render_callback(() => (
       /*section_elementresize_handler*/
-      ctx[30].call(section)
+      ctx[29].call(section)
     ));
     attr(div2, "class", "popover-container");
   }, m(target, anchor) {
@@ -24888,13 +24857,13 @@ function create_if_block$e(ctx) {
     append(div2, section);
     append(section, goa_focus_trap);
     append(goa_focus_trap, div1);
-    ctx[29](div1);
+    ctx[28](div1);
     section_resize_listener = add_iframe_resize_listener(
       section,
       /*section_elementresize_handler*/
-      ctx[30].bind(section)
+      ctx[29].bind(section)
     );
-    ctx[31](section);
+    ctx[30](section);
     if (!mounted) {
       dispose = listen(
         div0,
@@ -24913,14 +24882,7 @@ function create_if_block$e(ctx) {
       ctx2[2]
     )}
           max-width: ${/*maxwidth*/
-    ctx2[1] < /*width*/
-    ctx2[2] ? (
-      /*width*/
-      ctx2[2]
-    ) : (
-      /*maxwidth*/
-      ctx2[1]
-    )};
+    ctx2[1]};
           padding: ${/*_padded*/
     ctx2[19] ? "var(--goa-space-m)" : "0"};
         `)) {
@@ -24933,9 +24895,9 @@ function create_if_block$e(ctx) {
       detach(t2);
     if (detaching)
       detach(div2);
-    ctx[29](null);
+    ctx[28](null);
     section_resize_listener();
-    ctx[31](null);
+    ctx[30](null);
     mounted = false;
     dispose();
   } };
@@ -25021,11 +24983,11 @@ function create_fragment$s(ctx) {
     insert(target, div1, anchor);
     append(div1, div0);
     append(div0, slot);
-    ctx[28](div0);
+    ctx[27](div0);
     append(div1, t2);
     if (if_block)
       if_block.m(div1, null);
-    ctx[32](div1);
+    ctx[31](div1);
     if (!mounted) {
       dispose = listen(
         div0,
@@ -25116,10 +25078,10 @@ function create_fragment$s(ctx) {
   }, i: noop, o: noop, d(detaching) {
     if (detaching)
       detach(div1);
-    ctx[28](null);
+    ctx[27](null);
     if (if_block)
       if_block.d();
-    ctx[32](null);
+    ctx[31](null);
     mounted = false;
     dispose();
   } };
@@ -25144,7 +25106,6 @@ function instance$p($$self, $$props, $$invalidate) {
   let { padded = "true" } = $$props;
   let { position = "auto" } = $$props;
   let { relative = "false" } = $$props;
-  let { autoclose = "false" } = $$props;
   let { mt = null } = $$props;
   let { mr = null } = $$props;
   let { mb: mb2 = null } = $$props;
@@ -25278,8 +25239,6 @@ function instance$p($$self, $$props, $$invalidate) {
       $$invalidate(23, position = $$props2.position);
     if ("relative" in $$props2)
       $$invalidate(24, relative = $$props2.relative);
-    if ("autoclose" in $$props2)
-      $$invalidate(25, autoclose = $$props2.autoclose);
     if ("mt" in $$props2)
       $$invalidate(3, mt = $$props2.mt);
     if ("mr" in $$props2)
@@ -25289,9 +25248,9 @@ function instance$p($$self, $$props, $$invalidate) {
     if ("ml" in $$props2)
       $$invalidate(6, ml2 = $$props2.ml);
     if ("open" in $$props2)
-      $$invalidate(26, open = $$props2.open);
+      $$invalidate(25, open = $$props2.open);
     if ("disabled" in $$props2)
-      $$invalidate(27, disabled = $$props2.disabled);
+      $$invalidate(26, disabled = $$props2.disabled);
     if ("tabindex" in $$props2)
       $$invalidate(7, tabindex = $$props2.tabindex);
     if ("voffset" in $$props2)
@@ -25309,20 +25268,17 @@ function instance$p($$self, $$props, $$invalidate) {
       $$invalidate(19, _padded = toBoolean(padded));
     }
     if ($$self.$$.dirty[0] & /*open*/
-    67108864) {
+    33554432) {
       $$invalidate(13, _open = toBoolean(open));
     }
     if ($$self.$$.dirty[0] & /*disabled*/
-    134217728) {
+    67108864) {
       _disabled = toBoolean(disabled);
     }
     if ($$self.$$.dirty[0] & /*relative*/
     16777216) {
       $$invalidate(18, _relative = toBoolean(relative));
     }
-    if ($$self.$$.dirty[0] & /*autoclose*/
-    33554432)
-      ;
     if ($$self.$$.dirty[0] & /*_open*/
     8192) {
       (async () => _open && await setPopoverPosition())();
@@ -25342,15 +25298,15 @@ function instance$p($$self, $$props, $$invalidate) {
       }
     }
   };
-  return [testid, maxwidth, width, mt, mr, mb2, ml2, tabindex, voffset, hoffset, focusborderwidth, borderradius, _sectionHeight, _open, _rootEl, _targetEl, _popoverEl, _focusTrapEl, _relative, _padded, openPopover, closePopover, padded, position, relative, autoclose, open, disabled, div0_binding, div1_binding, section_elementresize_handler, section_binding, div1_binding_1];
+  return [testid, maxwidth, width, mt, mr, mb2, ml2, tabindex, voffset, hoffset, focusborderwidth, borderradius, _sectionHeight, _open, _rootEl, _targetEl, _popoverEl, _focusTrapEl, _relative, _padded, openPopover, closePopover, padded, position, relative, open, disabled, div0_binding, div1_binding, section_elementresize_handler, section_binding, div1_binding_1];
 }
 class Popover extends SvelteElement {
   constructor(options) {
     super();
     const style = document.createElement("style");
-    style.textContent = `:host{box-sizing:border-box;font-family:var(--goa-font-family-sans);font-size:var(--goa-font-size-4);display:flex;align-items:center}.popover-target{cursor:pointer}.popover-target:focus{outline:var(--focus-border-width) solid var(--goa-color-interactive-focus)}.popover-content{color:var(--goa-color-text-default);position:absolute;width:-moz-fit-content;width:fit-content;max-width:260px;list-style-type:none;background:var(--goa-color-greyscale-white);border-radius:var(--border-radius);outline:none;filter:drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.2));z-index:99;width:-moz-max-content;width:max-content;margin-top:var(--offset-top, 3px);margin-bottom:var(--offset-bottom, 3px);margin-left:var(--offset-left, 0);margin-right:var(--offset-right, 0)}::slotted(ul){display:block;padding:0;margin:0;list-style-type:none;line-height:2rem}.popover-background{cursor:default;position:fixed;z-index:98;inset:0}`;
+    style.textContent = `:host{box-sizing:border-box;font-family:var(--goa-font-family-sans);font-size:var(--goa-font-size-4);display:flex;align-items:center}.popover-target{cursor:pointer}.popover-target:focus{outline:var(--focus-border-width) solid var(--goa-color-interactive-focus)}.popover-content{color:var(--goa-color-text-default);position:absolute;width:-moz-fit-content;width:fit-content;list-style-type:none;background:var(--goa-color-greyscale-white);border-radius:var(--border-radius);outline:none;filter:drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.2));z-index:99;width:-moz-max-content;width:max-content;margin-top:var(--offset-top, 3px);margin-bottom:var(--offset-bottom, 3px);margin-left:var(--offset-left, 0);margin-right:var(--offset-right, 0)}::slotted(ul){display:block;padding:0;margin:0;list-style-type:none;line-height:2rem}.popover-background{cursor:default;position:fixed;z-index:98;inset:0}`;
     this.shadowRoot.appendChild(style);
-    init(this, { target: this.shadowRoot, props: attribute_to_object(this.attributes), customElement: true }, instance$p, create_fragment$s, safe_not_equal, { testid: 0, maxwidth: 1, width: 2, padded: 22, position: 23, relative: 24, autoclose: 25, mt: 3, mr: 4, mb: 5, ml: 6, open: 26, disabled: 27, tabindex: 7, voffset: 8, hoffset: 9, focusborderwidth: 10, borderradius: 11 }, null, [-1, -1]);
+    init(this, { target: this.shadowRoot, props: attribute_to_object(this.attributes), customElement: true }, instance$p, create_fragment$s, safe_not_equal, { testid: 0, maxwidth: 1, width: 2, padded: 22, position: 23, relative: 24, mt: 3, mr: 4, mb: 5, ml: 6, open: 25, disabled: 26, tabindex: 7, voffset: 8, hoffset: 9, focusborderwidth: 10, borderradius: 11 }, null, [-1, -1]);
     if (options) {
       if (options.target) {
         insert(options.target, this, options.anchor);
@@ -25362,7 +25318,7 @@ class Popover extends SvelteElement {
     }
   }
   static get observedAttributes() {
-    return ["testid", "maxwidth", "width", "padded", "position", "relative", "autoclose", "mt", "mr", "mb", "ml", "open", "disabled", "tabindex", "voffset", "hoffset", "focusborderwidth", "borderradius"];
+    return ["testid", "maxwidth", "width", "padded", "position", "relative", "mt", "mr", "mb", "ml", "open", "disabled", "tabindex", "voffset", "hoffset", "focusborderwidth", "borderradius"];
   }
   get testid() {
     return this.$$.ctx[0];
@@ -25406,13 +25362,6 @@ class Popover extends SvelteElement {
     this.$$set({ relative });
     flush();
   }
-  get autoclose() {
-    return this.$$.ctx[25];
-  }
-  set autoclose(autoclose) {
-    this.$$set({ autoclose });
-    flush();
-  }
   get mt() {
     return this.$$.ctx[3];
   }
@@ -25442,14 +25391,14 @@ class Popover extends SvelteElement {
     flush();
   }
   get open() {
-    return this.$$.ctx[26];
+    return this.$$.ctx[25];
   }
   set open(open) {
     this.$$set({ open });
     flush();
   }
   get disabled() {
-    return this.$$.ctx[27];
+    return this.$$.ctx[26];
   }
   set disabled(disabled) {
     this.$$set({ disabled });
@@ -31695,7 +31644,7 @@ function create_fragment$b(ctx) {
     each_blocks[i] = create_each_block$1(get_each_context$1(ctx, each_value, i));
   }
   return { c() {
-    var _ctx$, _ctx$2;
+    var _ctx$2, _ctx$3;
     div1 = element("div");
     goa_block = element("goa-block");
     goa_form_item0 = element("goa-form-item");
@@ -31750,7 +31699,7 @@ function create_fragment$b(ctx) {
     set_custom_element_data(goa_dropdown0, "width", "calc(314px / 2 - 1.5rem)");
     set_custom_element_data(goa_dropdown0, "relative", "true");
     set_custom_element_data(goa_dropdown0, "value", goa_dropdown0_value_value = /*_calendarDate*/
-    (_ctx$ = ctx[8]) === null || _ctx$ === void 0 ? void 0 : _ctx$.getMonth());
+    (_ctx$2 = ctx[8]) === null || _ctx$2 === void 0 ? void 0 : _ctx$2.getMonth());
     set_custom_element_data(goa_form_item0, "label", "Month");
     set_custom_element_data(goa_form_item0, "mt", "0");
     set_custom_element_data(goa_dropdown1, "arialabel", goa_dropdown1_arialabel_value = `${/*name*/
@@ -31759,7 +31708,7 @@ function create_fragment$b(ctx) {
     set_custom_element_data(goa_dropdown1, "width", "calc(314px / 2 - 1.5rem)");
     set_custom_element_data(goa_dropdown1, "relative", "true");
     set_custom_element_data(goa_dropdown1, "value", goa_dropdown1_value_value = /*_calendarDate*/
-    (_ctx$2 = ctx[8]) === null || _ctx$2 === void 0 ? void 0 : _ctx$2.getFullYear());
+    (_ctx$3 = ctx[8]) === null || _ctx$3 === void 0 ? void 0 : _ctx$3.getFullYear());
     set_custom_element_data(goa_form_item1, "label", "Year");
     set_custom_element_data(goa_form_item1, "mt", "0");
     set_custom_element_data(goa_block, "mb", "m");
@@ -31848,7 +31797,7 @@ function create_fragment$b(ctx) {
       mounted = true;
     }
   }, p(ctx2, dirty) {
-    var _ctx$3, _ctx$4;
+    var _ctx$4, _ctx$5;
     if (dirty[0] & /*_months*/
     65536) {
       each_value_4 = /*_months*/
@@ -31876,7 +31825,7 @@ function create_fragment$b(ctx) {
     }
     if (dirty[0] & /*_calendarDate*/
     256 && goa_dropdown0_value_value !== (goa_dropdown0_value_value = /*_calendarDate*/
-    (_ctx$3 = ctx2[8]) === null || _ctx$3 === void 0 ? void 0 : _ctx$3.getMonth())) {
+    (_ctx$4 = ctx2[8]) === null || _ctx$4 === void 0 ? void 0 : _ctx$4.getMonth())) {
       set_custom_element_data(goa_dropdown0, "value", goa_dropdown0_value_value);
     }
     if (dirty[0] & /*_years*/
@@ -31906,7 +31855,7 @@ function create_fragment$b(ctx) {
     }
     if (dirty[0] & /*_calendarDate*/
     256 && goa_dropdown1_value_value !== (goa_dropdown1_value_value = /*_calendarDate*/
-    (_ctx$4 = ctx2[8]) === null || _ctx$4 === void 0 ? void 0 : _ctx$4.getFullYear())) {
+    (_ctx$5 = ctx2[8]) === null || _ctx$5 === void 0 ? void 0 : _ctx$5.getFullYear())) {
       set_custom_element_data(goa_dropdown1, "value", goa_dropdown1_value_value);
     }
     if (dirty[0] & /*_previousMonthDays, _calendarDate, _min, _max, onDateClick*/
@@ -32522,33 +32471,41 @@ function instance$a($$self, $$props, $$invalidate) {
     $$invalidate(10, _showPopover = true);
   }
   function handleKeyDown(e) {
-    if (!_date)
-      return;
     if (["Space", "Enter"].includes(e.key)) {
       showCalendar();
       return;
     }
     switch (e.key) {
       case "ArrowLeft":
+        _date || $$invalidate(9, _date = addDays(/* @__PURE__ */ new Date(), 1));
         $$invalidate(9, _date = addDays(_date, -1));
         break;
       case "ArrowRight":
+        _date || $$invalidate(9, _date = addDays(/* @__PURE__ */ new Date(), -1));
         $$invalidate(9, _date = addDays(_date, 1));
         break;
       case "ArrowDown":
+        _date || $$invalidate(9, _date = addDays(/* @__PURE__ */ new Date(), -7));
         $$invalidate(9, _date = addDays(_date, 7));
         break;
       case "ArrowUp":
+        _date || $$invalidate(9, _date = addDays(/* @__PURE__ */ new Date(), 7));
         $$invalidate(9, _date = addDays(_date, -7));
         break;
       case "PageUp":
+        _date || $$invalidate(9, _date = e.shiftKey ? addYears(/* @__PURE__ */ new Date(), 1) : addMonths(/* @__PURE__ */ new Date(), 1));
         $$invalidate(9, _date = e.shiftKey ? addYears(_date, -1) : addMonths(_date, -1));
         break;
       case "PageDown":
+        _date || $$invalidate(9, _date = e.shiftKey ? addYears(/* @__PURE__ */ new Date(), -1) : addMonths(/* @__PURE__ */ new Date(), -1));
         $$invalidate(9, _date = e.shiftKey ? addYears(_date, 1) : addMonths(_date, 1));
         break;
+      default:
+        return;
     }
     dispatchValue(_date);
+    e.preventDefault();
+    e.stopPropagation();
   }
   function goa_popover_binding($$value) {
     binding_callbacks[$$value ? "unshift" : "push"](() => {
@@ -34843,14 +34800,19 @@ function instance$4($$self, $$props, $$invalidate) {
       return false;
     }
     const links = slot.assignedElements().filter((el2) => el2.tagName === "A");
+    let currentEl;
+    let maxWeight = 0;
     links.forEach((child) => {
-      const current = isUrlMatch(document.location, child.getAttribute("href"));
-      if (current) {
-        child.classList.add("current");
-      } else {
-        child.classList.remove("current");
+      const weight = isUrlMatch(document.location, child.getAttribute("href"));
+      if (weight > maxWeight) {
+        maxWeight = weight;
+        currentEl = child;
       }
+      child.classList.remove("current");
     });
+    if (currentEl) {
+      currentEl.classList.add("current");
+    }
   }
   function addEventListeners() {
     let currentLocation = document.location.href;
@@ -35667,7 +35629,7 @@ function GoAPages(props) {
     children: props.children
   }), void 0);
 }
-const GoAAccordion = ({
+function GoAAccordion({
   open,
   heading,
   headingSize,
@@ -35679,7 +35641,7 @@ const GoAAccordion = ({
   mr,
   mb: mb2,
   ml: ml2
-}) => {
+}) {
   return jsxRuntimeExports.jsxs("goa-accordion", Object.assign({
     open,
     headingSize,
@@ -35697,7 +35659,7 @@ const GoAAccordion = ({
       children: headingContent
     }), void 0), children2]
   }), void 0);
-};
+}
 function GoAFormStep(props) {
   return jsxRuntimeExports.jsx("goa-form-step", {
     text: props.text,
@@ -35743,13 +35705,13 @@ function GoAFormStepper({
     children: children2
   }), void 0);
 }
-const GoAAppHeader = ({
+function GoAAppHeader({
   heading,
   url,
   maxContentWidth,
   testId,
   children: children2
-}) => {
+}) {
   return jsxRuntimeExports.jsx("goa-app-header", Object.assign({
     heading,
     url,
@@ -35758,8 +35720,8 @@ const GoAAppHeader = ({
   }, {
     children: children2
   }), void 0);
-};
-const GoABadge = ({
+}
+function GoABadge({
   type,
   content,
   icon,
@@ -35769,7 +35731,7 @@ const GoABadge = ({
   mb: mb2,
   ml: ml2,
   ariaLabel
-}) => {
+}) {
   return jsxRuntimeExports.jsx("goa-badge", {
     type,
     content,
@@ -35781,7 +35743,7 @@ const GoABadge = ({
     mb: mb2,
     ml: ml2
   }, void 0);
-};
+}
 function GoABlock(props) {
   return jsxRuntimeExports.jsx("goa-block", Object.assign({
     gap: props.gap,
@@ -35796,7 +35758,7 @@ function GoABlock(props) {
     children: props.children
   }), void 0);
 }
-const GoAButtonGroup = ({
+function GoAButtonGroup({
   alignment,
   gap,
   testId,
@@ -35805,7 +35767,7 @@ const GoAButtonGroup = ({
   mr,
   mb: mb2,
   ml: ml2
-}) => {
+}) {
   return jsxRuntimeExports.jsx("goa-button-group", Object.assign({
     alignment,
     gap,
@@ -35817,10 +35779,10 @@ const GoAButtonGroup = ({
   }, {
     children: children2
   }), void 0);
-};
-const GoAButton = ({
-  disabled: _disabled = false,
-  type: _type = "primary",
+}
+function GoAButton({
+  disabled = false,
+  type = "primary",
   size,
   variant,
   leadingIcon,
@@ -35832,7 +35794,7 @@ const GoAButton = ({
   mr,
   mb: mb2,
   ml: ml2
-}) => {
+}) {
   const el2 = reactExports.useRef(null);
   reactExports.useEffect(() => {
     if (!el2.current) {
@@ -35852,10 +35814,10 @@ const GoAButton = ({
   }, [el2, onClick]);
   return jsxRuntimeExports.jsx("goa-button", Object.assign({
     ref: el2,
-    type: _type,
+    type,
     size,
     variant,
-    disabled: _disabled,
+    disabled,
     leadingicon: leadingIcon,
     trailingicon: trailingIcon,
     "data-testid": testId,
@@ -35866,7 +35828,7 @@ const GoAButton = ({
   }, {
     children: children2
   }), void 0);
-};
+}
 const GoACallout = ({
   heading,
   type: _type = "information",
@@ -35891,7 +35853,7 @@ const GoACallout = ({
     children: children2
   }), void 0);
 };
-const GoACheckbox = ({
+function GoACheckbox({
   id: id2,
   name,
   testId,
@@ -35908,7 +35870,7 @@ const GoACheckbox = ({
   mr,
   mb: mb2,
   ml: ml2
-}) => {
+}) {
   const el2 = reactExports.useRef(null);
   reactExports.useEffect(() => {
     if (!el2.current) {
@@ -35943,8 +35905,8 @@ const GoACheckbox = ({
   }, {
     children: children2
   }), void 0);
-};
-const GoAContainer = ({
+}
+function GoAContainer({
   accent,
   heading,
   title,
@@ -35957,7 +35919,7 @@ const GoAContainer = ({
   mb: mb2,
   ml: ml2,
   testId
-}) => {
+}) {
   const headingContent = heading || title;
   return jsxRuntimeExports.jsxs("goa-container", Object.assign({
     type,
@@ -35979,7 +35941,7 @@ const GoAContainer = ({
       children: actions
     }), void 0)]
   }), void 0);
-};
+}
 function GoADivider(props) {
   return jsxRuntimeExports.jsx("goa-divider", {
     mt: props.mt,
@@ -35998,7 +35960,7 @@ function stringify(value) {
   }
   return JSON.stringify(value);
 }
-const GoADropdown = (props) => {
+function GoADropdown(props) {
   const el2 = reactExports.useRef(null);
   reactExports.useEffect(() => {
     if (!el2.current) {
@@ -36043,7 +36005,7 @@ const GoADropdown = (props) => {
   }, {
     children: props.children
   }), void 0);
-};
+}
 function GoADropdownItem({
   value,
   label,
@@ -36095,7 +36057,7 @@ function GoAAppFooter({
     children: children2
   }), void 0);
 }
-const GoAFormItem = ({
+function GoAFormItem({
   children: children2,
   helpText,
   error: error2,
@@ -36108,7 +36070,7 @@ const GoAFormItem = ({
   ml: ml2,
   testId,
   id: id2
-}) => {
+}) {
   return jsxRuntimeExports.jsx("goa-form-item", Object.assign({
     label,
     labelsize: labelSize,
@@ -36124,8 +36086,8 @@ const GoAFormItem = ({
   }, {
     children: children2
   }), void 0);
-};
-const GoAGrid = ({
+}
+function GoAGrid({
   gap,
   minChildWidth,
   mt,
@@ -36134,7 +36096,7 @@ const GoAGrid = ({
   ml: ml2,
   testId,
   children: children2
-}) => {
+}) {
   return jsxRuntimeExports.jsx("goa-grid", Object.assign({
     gap,
     mt,
@@ -36146,7 +36108,7 @@ const GoAGrid = ({
   }, {
     children: children2
   }), void 0);
-};
+}
 function GoAIcon({
   type,
   theme,
@@ -36168,7 +36130,7 @@ function GoAIcon({
     "data-testid": testId
   }, void 0);
 }
-const GoAInput = ({
+function GoAInput({
   id: id2,
   debounce,
   name,
@@ -36176,7 +36138,7 @@ const GoAInput = ({
   autoCapitalize,
   leadingIcon,
   trailingIcon,
-  variant: _variant = "goa",
+  variant = "goa",
   focused,
   disabled,
   readonly,
@@ -36202,7 +36164,7 @@ const GoAInput = ({
   onChange,
   onFocus,
   onBlur
-}) => {
+}) {
   const ref = reactExports.useRef(null);
   reactExports.useEffect(() => {
     if (!ref.current) {
@@ -36254,7 +36216,7 @@ const GoAInput = ({
     id: id2,
     leadingicon: leadingIcon,
     trailingicon: trailingIcon,
-    variant: _variant,
+    variant,
     disabled,
     readonly,
     placeholder,
@@ -36285,22 +36247,26 @@ const GoAInput = ({
       children: trailingContent
     }), void 0)]
   }), void 0);
-};
-const GoAMicrositeHeader = ({
+}
+function GoAMicrositeHeader({
   type,
   version: version2,
   feedbackUrl,
   maxContentWidth,
+  feedbackUrlTarget,
+  headerUrlTarget,
   testId
-}) => {
+}) {
   return jsxRuntimeExports.jsx("goa-microsite-header", {
     type,
     version: version2,
     feedbackurl: feedbackUrl,
     "data-testid": testId,
-    maxcontentwidth: maxContentWidth
+    maxcontentwidth: maxContentWidth,
+    feedbackurltarget: feedbackUrlTarget,
+    headerurltarget: headerUrlTarget
   }, void 0);
-};
+}
 function GoAOneColumnLayout(props) {
   return jsxRuntimeExports.jsx("goa-one-column-layout", {
     children: props.children
@@ -36346,6 +36312,20 @@ function GoATable(props) {
     }), void 0)
   }), void 0);
 }
+function GoATooltip(props) {
+  return jsxRuntimeExports.jsx("goa-tooltip", Object.assign({
+    position: props.position,
+    content: props.content,
+    halign: props.hAlign,
+    "data-testid": props.testId,
+    mt: props.mt,
+    mr: props.mr,
+    mb: props.mb,
+    ml: props.ml
+  }, {
+    children: props.children
+  }), void 0);
+}
 function GoATabs({
   initialTab,
   children: children2
@@ -36356,10 +36336,10 @@ function GoATabs({
     children: children2
   }), void 0);
 }
-const GoATab = ({
+function GoATab({
   heading,
   children: children2
-}) => {
+}) {
   return jsxRuntimeExports.jsxs("goa-tab", {
     children: [heading && jsxRuntimeExports.jsx("span", Object.assign({
       slot: "heading"
@@ -36367,7 +36347,7 @@ const GoATab = ({
       children: heading
     }), void 0), children2]
   }, void 0);
-};
+}
 class BaseSerializer {
   constructor(properties) {
     __publicField(this, "isRoot", false);
@@ -43262,7 +43242,7 @@ function ButtonPage() {
         `
             }
           ),
-          /* @__PURE__ */ jsxRuntimeExports$1.jsx(GoAButton, { ...buttonProps, onClick: noop2, children: "Primary Button" })
+          /* @__PURE__ */ jsxRuntimeExports$1.jsx(GoAButton, { ...buttonProps, type: "primary", onClick: noop2, children: "Primary Button" })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports$1.jsx(ComponentProperties, { properties: componentProperties }),
         /* @__PURE__ */ jsxRuntimeExports$1.jsxs("goa-block", { gap: "xs", direction: "column", mt: "2xl", mb: "3xl", children: [
@@ -43777,7 +43757,16 @@ function CheckboxPage() {
       /* @__PURE__ */ jsxRuntimeExports$1.jsx("a", { id: "utilities" }),
       /* @__PURE__ */ jsxRuntimeExports$1.jsx("h2", { children: "Utilities" }),
       /* @__PURE__ */ jsxRuntimeExports$1.jsx(GoAGrid, { minChildWidth: "15rem", gap: "xl", children: getComponentsByGroup("utilities") }),
-      /* @__PURE__ */ jsxRuntimeExports$1.jsx("div", { className: "back-to-top", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx("a", { href: "#top", children: "Back to top" }) })
+      /* @__PURE__ */ jsxRuntimeExports$1.jsx("div", { className: "back-to-top", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx("a", { href: "#top", children: "Back to top" }) }),
+      /* @__PURE__ */ jsxRuntimeExports$1.jsx(
+        GoATooltip,
+        {
+          content: `This is a tooltip alignment`,
+          position: "left",
+          hAlign: "center",
+          children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(GoAIcon, { type: "information-circle" })
+        }
+      )
     ] })
   ] });
 }
