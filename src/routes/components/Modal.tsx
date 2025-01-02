@@ -101,7 +101,7 @@ export default function ModalPage() {
     },
   ]);
 
-  const componentProperties: ComponentProperty[] = [
+  const oldComponentProperties: ComponentProperty[] = [
     {
       name: "calloutvariant",
       type: "information | important | emergency | success | event",
@@ -185,10 +185,79 @@ export default function ModalPage() {
       lang: "react",
     },
   ];
+  const componentProperties: ComponentProperty[] = [
+    {
+      name: "calloutVariant",
+      type: "GoabModalCalloutVariant (information | important | emergency | success | event)",
+      description:
+        "Define the context and colour of the callout modal. It is required when type is set to callout.",
+    },
+    {
+      name: "heading",
+      type: "string | slot",
+      description: "Heading text within the modal",
+      lang: "angular",
+    },
+    {
+      name: "heading",
+      type: "string | ReactNode",
+      description: "Heading text within the modal",
+      lang: "react",
+    },
+    {
+      name: "open",
+      type: "boolean",
+      description: "Controls if modal is visible or not",
+      defaultValue: "false",
+    },
+    {
+      name: "maxWidth",
+      type: "string",
+      description: "Set the max allowed width of the modal",
+    },
+    {
+      name: "closable",
+      type: "boolean",
+      description: "Show close icon and allow clicking the background to close the modal",
+      defaultValue: "false",
+    },
+    {
+      name: "role",
+      type: "dialog | alertdialog",
+      description:
+        "'dialog' will announce header and the 1st input element, and requires at least one interactive element. 'alert-dialog' will read the entire contents of the modal. If the modal does not include any interactive elements, use the 'alertdialog' role.",
+      defaultValue: "dialog",
+    },
+    {
+      name: "_close",
+      type: "CustomEvent",
+      description: "",
+      lang: "angular",
+    },
+    {
+      name: "onClose",
+      type: "() => void",
+      description: "",
+      lang: "react",
+    },
+    {
+      name: "actions",
+      type: "slot",
+      description: "Buttons displayed in the bottom right of the modal instead of a close icon",
+      lang: "angular",
+    },
+    {
+      name: "actions",
+      type: "ReactNode",
+      description: "Buttons displayed in the bottom right of the modal instead of a close icon",
+      lang: "react",
+    },
+  ];
+
 
   function isClosableChecked(bindings: ComponentBinding[]): boolean {
     const closable = bindings.find(b => b.name == "closable");
-    return closable?.value === true ? true : false;
+    return closable?.value === true;
   }
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
