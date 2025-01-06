@@ -194,7 +194,7 @@ export default function ModalPage() {
     },
     {
       name: "heading",
-      type: "string | slot",
+      type: "string | TemplateRef<any>",
       description: "Heading text within the modal",
       lang: "angular",
     },
@@ -229,20 +229,18 @@ export default function ModalPage() {
       defaultValue: "dialog",
     },
     {
-      name: "_close",
-      type: "CustomEvent",
-      description: "",
-      lang: "angular",
+      name: "testId",
+      type: "string",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests."
     },
     {
       name: "onClose",
       type: "() => void",
       description: "",
-      lang: "react",
     },
     {
       name: "actions",
-      type: "slot",
+      type: "TemplateRef<any>",
       description: "Buttons displayed in the bottom right of the modal instead of a close icon",
       lang: "angular",
     },
@@ -306,7 +304,7 @@ export default function ModalPage() {
                 code={`
                   export class SomeOtherComponent {
                     open = false;
-                    onClick(event: Event) {
+                    onClick() {
                       this.open = !this.open;
                     }
                   }
@@ -332,7 +330,7 @@ export default function ModalPage() {
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia obcaecati id
                   molestiae, natus dicta, eaque qui iusto similique, libero explicabo eligendi eius
                   laboriosam! Repellendus ducimus officia asperiores. Eos, eius numquam.
-                  <GoabButtonGroup alignment="end" mt="xl">
+                  <GoabButtonGroup alignment="end" mt={"xl"}>
                     <GoabButton type="tertiary" onClick={() => setOpen(false)}>
                       Cancel
                     </GoabButton>
@@ -352,7 +350,7 @@ export default function ModalPage() {
               )}
             </Sandbox>
 
-            <ComponentProperties properties={componentProperties} />
+            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
             <ModalExamples/>
           </GoabTab>
 
