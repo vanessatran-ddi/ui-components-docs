@@ -14,6 +14,8 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Sandbox } from "@components/sandbox";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
+import { useContext } from "react";
 
 const componentName = "Side menu";
 const description =
@@ -25,7 +27,9 @@ const relatedComponents = [
 ];
 
 export default function SideMenuPage() {
-  const sideMenuGroupProperties: ComponentProperty[] = [
+  const {version} = useContext(LanguageVersionContext);
+
+  const oldSideMenuGroupProperties: ComponentProperty[] = [
     {
       name: "heading",
       type: "string",
@@ -43,8 +47,31 @@ export default function SideMenuPage() {
       description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
   ];
+  const sideMenuGroupProperties: ComponentProperty[] = [
+    {
+      name: "heading",
+      type: "string",
+      required: true,
+      description: "Group header text",
+    },
+    {
+      name: "icon",
+      type: "GoabIconType",
+      description: "Icon placed left of the heading",
+    },
+    {
+      name: "testId",
+      type: "string",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "Spacing(none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
+  ];
 
-  const sideMenuHeadingProperties: ComponentProperty[] = [
+  const oldSideMenuHeadingProperties: ComponentProperty[] = [
     {
       name: "icon",
       type: "GoAIconType",
@@ -59,6 +86,30 @@ export default function SideMenuPage() {
     {
       name: "meta",
       type: "slot",
+      lang: "angular",
+      description: "Add badges to the right of the heading",
+    },
+  ];
+  const sideMenuHeadingProperties: ComponentProperty[] = [
+    {
+      name: "icon",
+      type: "GoabIconType",
+      description: "Icon to position to the left of heading",
+    },
+    {
+      name: "testId",
+      type: "string",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "meta",
+      type: "ReactNode",
+      lang: "react",
+      description: "Add badges to the right of the heading",
+    },
+    {
+      name: "meta",
+      type: "TemplateRef",
       lang: "angular",
       description: "Add badges to the right of the heading",
     },
@@ -79,7 +130,9 @@ export default function SideMenuPage() {
           <GoabTab heading="Code examples">
             <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox fullWidth allow={["div"]} skipRender>
-              <CodeSnippet
+
+              {/*Angular code*/}
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="angular"
                 allowCopy={true}
@@ -106,7 +159,37 @@ export default function SideMenuPage() {
                   </goa-side-menu>
                 </div>
               `}
-              />
+              />}
+
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                <div style="max-width: 250px">
+                  <goa-side-menu>
+                    <goa-side-menu-heading>
+                      Nav section 1
+                    </goa-side-menu-heading>
+                    <a href="#">Home</a>
+                    <a href="#">Profile</a>
+                    <goa-side-menu-heading icon="home">
+                      Nav section 2
+                    </goa-side-menu-heading>
+                    <a href="#">About</a>
+                    <a href="#">Contact</a>
+                    <goa-side-menu-heading>
+                      Nav with sub nav
+                    </goa-side-menu-heading>
+                    <goa-side-menu-group heading="Group heading" icon="person">
+                      <a href="#">Foo</a>
+                      <a href="#">Bar</a>
+                    </goa-side-menu-group>
+                  </goa-side-menu>
+                </div>
+              `}
+              />}
+
               <CodeSnippet
                 allowCopy={true}
                 lang="typescript"
