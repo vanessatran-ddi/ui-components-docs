@@ -4,7 +4,7 @@ import {
   GoabButton,
   GoabButtonGroup,
   GoabContainer,
-  GoAFilterChip,
+  GoabFilterChip, GoabFilterChipProps,
   GoabInput,
   GoabTab,
   GoabTabs
@@ -18,7 +18,6 @@ import {
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
-import { GoAFilterChipProps } from "@abgov/react-components";
 
 // Page props
 const componentName = "Filter Chip";
@@ -29,7 +28,7 @@ const relatedComponents = [
   { link: "/components/popover", name: "Popover" },
   { link: "/components/Table", name: "Table" },
 ];
-type ComponentPropsType = GoAFilterChipProps;
+type ComponentPropsType = GoabFilterChipProps;
 
 type CastingType = {
   content: string;
@@ -197,7 +196,7 @@ export default function FilterChipPage() {
             <h3 id="component-example-delete">Delete Event</h3>
             <Sandbox skipRender>
               {chips.map(chip => (
-                <GoAFilterChip key={chip} content={chip} onClick={() => deleteChip(chip)} mr="s" />
+                <GoabFilterChip key={chip} content={chip} onClick={() => deleteChip(chip)} mr="s" />
               ))}
 
               <CodeSnippet
@@ -296,7 +295,7 @@ export default function FilterChipPage() {
             <h3 id="component-interactive">Interactive Example</h3>
             <Sandbox skipRender>
               {activeFilters.map(filter => (
-                <GoAFilterChip
+                <GoabFilterChip
                   key={filter}
                   content={filter}
                   onClick={() => removeFilter(filter)}
